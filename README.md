@@ -1,4 +1,1 @@
-gwny-quotes
-===========
-
-Quote generator for GolfWNY
+# GolfWNY Quote Generator
