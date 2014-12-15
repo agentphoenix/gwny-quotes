@@ -29,6 +29,7 @@ class CreateQuotes extends Migration {
 			$table->float('deposit')->nullable();
 			$table->boolean('paid_deposit')->default((int) false);
 			$table->boolean('paid_total')->default((int) false);
+			$table->text('comments')->nullable();
 			$table->text('notes')->nullable();
 			$table->timestamps();
 			$table->softDeletes();
@@ -42,6 +43,7 @@ class CreateQuotes extends Migration {
 			$table->integer('course_id')->unsigned()->nullable();
 			$table->integer('people');
 			$table->integer('holes')->nullable();
+			$table->string('time_preference');
 			$table->float('rate');
 			$table->string('confirmation')->nullable();
 			$table->date('arrival')->nullable();
