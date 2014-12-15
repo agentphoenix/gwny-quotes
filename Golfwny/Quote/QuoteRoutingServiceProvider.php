@@ -11,7 +11,7 @@ class QuoteRoutingServiceProvider extends ServiceProvider {
 	{
 		$this->routeProtections();
 
-		$this->sessionsRoutes();
+		//$this->sessionsRoutes();
 		$this->pagesRoutes();
 		$this->adminRoutes();
 	}
@@ -55,13 +55,16 @@ class QuoteRoutingServiceProvider extends ServiceProvider {
 	{
 		Route::group(['namespace' => 'Golfwny\Quote\Controllers'], function()
 		{
-			Route::get('/', [
+			Route::get('/{location?}/{step?}', [
 				'as'	=> 'home',
 				'uses'	=> 'HomeController@index']);
 
-			Route::get('new/{slug}', [
-				'as'	=> 'new',
-				'uses'	=> 'HomeController@newQuote']);
+			Route::post('/{location}/info', [
+				'as'	=> 'storeInfo',
+				'uses'	=> 'HomeController@storeInfo']);
+			Route::post('/{location}/courses', [
+				'as'	=> 'storeCourses',
+				'uses'	=> 'HomeController@storeCourses']);
 		});
 	}
 

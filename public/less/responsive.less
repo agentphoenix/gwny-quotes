@@ -1,0 +1,80 @@
+@import "mixins.less";
+@import "variables.less";
+
+/* Large desktop */
+@media (min-width: 1200px) {}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 769px) and (max-width: 979px) {
+	body {
+		padding: 0;
+
+		background: @color-bg;
+		font-size: 16px;
+	}
+}
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 768px) {
+	body {
+		background: @color-bg;
+		font-size: 16px;
+	}
+}
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) {
+	body {
+		background: @color-bg;
+	}
+	
+	header {
+		margin-left: -20px;
+		margin-right: -20px;
+		padding-bottom: 0;
+		
+		background: orange;
+		
+		.brand {
+			background-image: url(../img/fr2b-mobile.png);
+		}
+		
+		.jumbotron {
+			padding: 30px 0 0 0;
+			
+			h2 {
+				line-height: 1.15;
+			}
+			
+			.well {
+				.rounded(0);
+			}
+		}
+	}
+	
+	section {
+		background: none;
+	}
+	
+	.nav-list {
+		margin-top: 10px;
+		
+		a {
+			padding-top: 8px !important;
+			padding-bottom: 8px !important;
+			
+			color: @color-dark;
+			font-weight: 600;
+			font-family: @font-primary;
+			font-size: 18px;
+
+			&:hover, &:active {
+				background-color: orange !important;
+				color: @color-white;
+				text-shadow: 0 1px 1px rgba(0, 0, 0, .4);
+				
+				.rounded(@border-radius);
+			}
+		}
+	}
+}
