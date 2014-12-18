@@ -1,12 +1,12 @@
 <?php namespace Golfwny\Quote\Services;
 
-use Parsedown;
+use League\CommonMark\CommonMarkConverter as Parser;
 
 class MarkdownService {
 
 	protected $markdown;
 
-	public function __construct(Parsedown $markdown)
+	public function __construct(Parser $markdown)
 	{
 		$this->markdown = $markdown;
 	}
@@ -19,7 +19,7 @@ class MarkdownService {
 	 */
 	public function parse($str)
 	{
-		return $this->markdown->text($str);
+		return $this->markdown->convertToHtml($str);
 	}
 	
 }
