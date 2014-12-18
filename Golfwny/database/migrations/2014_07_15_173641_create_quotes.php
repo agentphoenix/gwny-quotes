@@ -45,10 +45,11 @@ class CreateQuotes extends Migration {
 			$table->integer('holes')->nullable();
 			$table->string('time_preference');
 			$table->float('rate');
+			$table->float('replay_rate');
 			$table->string('confirmation')->nullable();
 			$table->date('arrival')->nullable();
 			$table->date('departure')->nullable();
-			$table->timestamp('tee_time')->nullable();
+			$table->timestamp('time')->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 		});

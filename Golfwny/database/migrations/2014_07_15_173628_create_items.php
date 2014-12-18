@@ -27,6 +27,7 @@ class CreateItems extends Migration {
 			$table->integer('region_id')->unsigned();
 			$table->string('name');
 			$table->float('rate');
+			$table->float('replay_rate');
 			$table->timestamps();
 			$table->softDeletes();
 		});
