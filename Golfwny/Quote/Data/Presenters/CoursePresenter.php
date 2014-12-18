@@ -1,4 +1,4 @@
-<?php namespace Golfwny\Quote\Data\Presenters;
+<?php namespace Quote\Data\Presenters;
 
 use Markdown;
 use Laracasts\Presenter\Presenter;

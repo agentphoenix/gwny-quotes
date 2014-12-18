@@ -1,4 +1,4 @@
-<?php namespace Golfwny\Quote\Data\Presenters;
+<?php namespace Quote\Data\Presenters;
 
 use Markdown;
 use Laracasts\Presenter\Presenter;
@@ -8,6 +8,11 @@ class QuotePresenter extends Presenter {
 	public function code()
 	{
 		return $this->entity->code;
+	}
+
+	public function dates()
+	{
+		return $this->entity->arrival->format('m/d/Y')." - ".$this->entity->departure->format('m/d/Y');
 	}
 
 	public function status()
@@ -54,22 +59,17 @@ class QuotePresenter extends Presenter {
 
 	public function arrival()
 	{
-		return $this->entity->arrival->format();
+		return $this->entity->arrival->format('l M jS, Y');
 	}
 
 	public function departure()
 	{
-		return $this->entity->departure->format();
-	}
-
-	public function total()
-	{
-		# code...
+		return $this->entity->departure->format('l M jS, Y');
 	}
 
 	public function deposit()
 	{
-		# code...
+		return '$'.number_format(round($this->entity->deposit, 2), 2);
 	}
 
 	public function paidTotal()
@@ -85,6 +85,16 @@ class QuotePresenter extends Presenter {
 	public function notes()
 	{
 		return Markdown::parse($this->entity->notes);
+	}
+
+	public function pricePerPerson()
+	{
+		return '$'.number_format(round($this->entity->total / $this->entity->people, 2), 2);
+	}
+
+	public function price()
+	{
+		return '$'.number_format(round($this->entity->total, 2), 2);
 	}
 
 }
