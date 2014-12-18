@@ -296,6 +296,18 @@ form {
 	}
 }
 
+.text-sm {
+	font-size: @font-size-sm;
+}
+.price, .price-sm {
+	margin: 12px 0;
+
+	font-size: 32px;
+}
+.price-sm {
+	font-size: 20px;
+}
+
 .ui.steps .step .title {
 	font-family: @font-primary;
 }
@@ -310,4 +322,14 @@ form {
 }
 .ui.ordered.steps .step.completed:before, .ui.steps .step.completed>.icon:before {
 	color: @color-green;
+}
+.ui.button {
+	.rounded(50px);
+}
+.ui.green.button, .ui.green.buttons .button {
+	background-color: @color-green;
+
+	&:hover {
+		background-color: darken(@color-green, 5%);
+	}
 }
