@@ -1,8 +1,7 @@
-<?php namespace Golfwny\Quote\Data\Interfaces;
+<?php namespace Quote\Data\Interfaces;
 
-interface RegionRepositoryInterface {
+interface RegionRepositoryInterface extends BaseRepositoryInterface {
 
-	public function all();
 	public function findBySlug($slug);
 	
 }
