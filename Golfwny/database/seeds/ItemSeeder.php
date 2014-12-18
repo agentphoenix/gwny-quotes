@@ -40,17 +40,17 @@ class ItemSeeder extends Seeder {
 
 		foreach ($regions as $region)
 		{
-			RegionModel::create($region);
+			Region::create($region);
 		}
 
 		foreach ($courses as $course)
 		{
-			CourseModel::create($course);
+			Course::create($course);
 		}
 
 		foreach ($hotels as $hotel)
 		{
-			HotelModel::create($hotel);
+			Hotel::create($hotel);
 		}
 	}
 
