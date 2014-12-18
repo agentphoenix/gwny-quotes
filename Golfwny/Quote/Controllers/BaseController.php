@@ -1,3 +1,3 @@
-<?php namespace Golfwny\Quote\Controllers;
+<?php namespace Quote\Controllers;
 
 abstract class BaseController extends \Controller {}
