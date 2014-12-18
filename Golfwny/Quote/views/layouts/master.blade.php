@@ -9,13 +9,11 @@
 		<!-- Use Html5Shiv in order to allow IE render HTML5 -->
 		<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
-		<link href="http://fonts.googleapis.com/css?family=Viga" rel="stylesheet">
-		<link href="http://fonts.googleapis.com/css?family=Gruppo" rel="stylesheet">
-		<link href="http://fonts.googleapis.com/css?family=Contrail+One" rel="stylesheet">
-
+		<link href="//fonts.googleapis.com/css?family=Gruppo" rel="stylesheet">
 		<link href="//fonts.googleapis.com/css?family=Lato:300,400,400italic,700,900italic" rel="stylesheet">
 
 		@if (App::environment() == 'production')
+			<link href="//fonts.googleapis.com/css?family=Gruppo" rel="stylesheet">
 			<link href="//fonts.googleapis.com/css?family=Lato:300,400,400italic,700,900italic" rel="stylesheet">
 			<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
 		@else
@@ -45,15 +43,15 @@
 		<div class="tagline visible-xs">
 			<div class="logo"></div>
 			<h1>Bring Your Game to Us</h1>
-			<h3>Experience everything Rochester, NY has to offer</h3>
+			<h3>Experience everything Western NY has to offer</h3>
 		</div>
 
 		<div class="container">
 			<nav class="nav-main">
 				<ul>
-					<li><a href="#">Create a New Quote</a></li>
-					<li><a href="#">Check the Status of a Quote</a></li>
-					<li><a href="#">Back to GolfWNY</a></li>
+					<li><a href="{{ route('home') }}">Create a New Quote</a></li>
+					<li><a href="{{ route('checkStatus') }}">Check the Status of a Quote</a></li>
+					<li><a href="http://golfwny.com">Back to GolfWNY</a></li>
 				</ul>
 			</nav>
 
