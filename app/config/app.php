@@ -122,8 +122,8 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
-		'Golfwny\Quote\QuoteServiceProvider',
-		'Golfwny\Quote\QuoteRoutingServiceProvider',
+		'Quote\QuoteServiceProvider',
+		'Quote\QuoteRoutingServiceProvider',
 
 	),
 
@@ -196,28 +196,35 @@ return array(
 		 * Classes
 		 */
 		'Date'		=> 'Carbon\Carbon',
-		'Flash'		=> 'Golfwny\Quote\Facades\FlashNotifierFacade',
-		'Markdown'	=> 'Golfwny\Quote\Facades\MarkdownFacade',
+		'Flash'		=> 'Quote\Facades\FlashNotifierFacade',
+		'Markdown'	=> 'Quote\Facades\MarkdownFacade',
+		'Status'	=> 'Quote\Services\StatusService',
 
 		/**
 		 * Models
 		 */
-		'CourseModel'		=> 'Golfwny\Quote\Data\Models\Eloquent\CourseModel',
-		'HotelModel'		=> 'Golfwny\Quote\Data\Models\Eloquent\HotelModel',
-		'QuoteModel'		=> 'Golfwny\Quote\Data\Models\Eloquent\QuoteModel',
-		'QuoteItemModel'	=> 'Golfwny\Quote\Data\Models\Eloquent\QuoteItemModel',
-		'RegionModel'		=> 'Golfwny\Quote\Data\Models\Eloquent\RegionModel',
-		'UserModel'			=> 'Golfwny\Quote\Data\Models\Eloquent\UserModel',
+		'Course'	=> 'Quote\Data\Models\Course',
+		'Hotel'		=> 'Quote\Data\Models\Hotel',
+		'Quote'		=> 'Quote\Data\Models\Quote',
+		'QuoteItem'	=> 'Quote\Data\Models\QuoteItem',
+		'Region'	=> 'Quote\Data\Models\Region',
+		'User'		=> 'Quote\Data\Models\User',
 
 		/**
 		 * Repository Interfaces
 		 */
-		'RegionRepositoryInterface'	=> 'Golfwny\Quote\Data\Interfaces\RegionRepositoryInterface',
+		'CourseRepositoryInterface'		=> 'Quote\Data\Interfaces\CourseRepositoryInterface',
+		'QuoteRepositoryInterface'		=> 'Quote\Data\Interfaces\QuoteRepositoryInterface',
+		'QuoteItemRepositoryInterface'	=> 'Quote\Data\Interfaces\QuoteItemRepositoryInterface',
+		'RegionRepositoryInterface'		=> 'Quote\Data\Interfaces\RegionRepositoryInterface',
 
 		/**
 		 * Repositories
 		 */
-		'RegionRepository'	=> 'Golfwny\Quote\Data\Repositories\Eloquent\RegionRepository',
+		'CourseRepository'		=> 'Quote\Data\Repositories\CourseRepository',
+		'QuoteRepository'		=> 'Quote\Data\Repositories\QuoteRepository',
+		'QuoteItemRepository'	=> 'Quote\Data\Repositories\QuoteItemRepository',
+		'RegionRepository'		=> 'Quote\Data\Repositories\RegionRepository',
 
 	),
 
