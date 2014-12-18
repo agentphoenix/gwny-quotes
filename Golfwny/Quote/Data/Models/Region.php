@@ -1,10 +1,10 @@
-<?php namespace Golfwny\Quote\Data\Models\Eloquent;
+<?php namespace Quote\Data\Models;
 
-use Str;
+use Str, Eloquent;
 use Laracasts\Presenter\PresentableTrait;
 use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
-class RegionModel extends \Eloquent {
+class Region extends Eloquent {
 
 	use PresentableTrait;
 	use SoftDeletingTrait;
@@ -15,7 +15,7 @@ class RegionModel extends \Eloquent {
 
 	protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
-	protected $presenter = 'Golfwny\Quote\Data\Presenters\RegionPresenter';
+	protected $presenter = 'Quote\Data\Presenters\RegionPresenter';
 
 	/*
 	|---------------------------------------------------------------------------
@@ -25,17 +25,17 @@ class RegionModel extends \Eloquent {
 
 	public function courses()
 	{
-		return $this->hasMany('CourseModel', 'region_id');
+		return $this->hasMany('Course', 'region_id');
 	}
 
 	public function hotels()
 	{
-		return $this->hasMany('HotelModel', 'region_id');
+		return $this->hasMany('Hotel', 'region_id');
 	}
 
 	public function quotes()
 	{
-		return $this->hasMany('QuoteModel', 'region_id');
+		return $this->hasMany('Quote', 'region_id');
 	}
 
 	/*

@@ -1,9 +1,10 @@
-<?php namespace Golfwny\Quote\Data\Models\Eloquent;
+<?php namespace Quote\Data\Models;
 
+use Eloquent;
 use Laracasts\Presenter\PresentableTrait;
 use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
-class UserModel extends \Eloquent {
+class User extends Eloquent {
 
 	use PresentableTrait;
 	use SoftDeletingTrait;
@@ -14,6 +15,6 @@ class UserModel extends \Eloquent {
 
 	protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
-	protected $presenter = 'Golfwny\Quote\Data\Presenters\UserPresenter';
+	protected $presenter = 'Quote\Data\Presenters\UserPresenter';
 
 }
