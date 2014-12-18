@@ -15,6 +15,11 @@ class CoursePresenter extends Presenter {
 		return '$'.$this->entity->rate;
 	}
 
+	public function replayRate()
+	{
+		return '$'.$this->entity->replay_rate;
+	}
+
 	public function region()
 	{
 		return $this->entity->region->present()->name;

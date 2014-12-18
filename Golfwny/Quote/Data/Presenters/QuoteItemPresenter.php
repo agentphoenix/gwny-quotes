@@ -32,6 +32,11 @@ class QuoteItemPresenter extends Presenter {
 		return '$'.$this->entity->rate;
 	}
 
+	public function replayRate()
+	{
+		return '$'.$this->entity->replay_rate;
+	}
+
 	public function confirmation()
 	{
 		return $this->entity->confirmation;

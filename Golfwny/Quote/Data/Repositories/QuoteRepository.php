@@ -63,6 +63,7 @@ class QuoteRepository extends BaseRepository implements QuoteRepositoryInterface
 				'holes'				=> $data['courses']['holes'][$key],
 				'time_preference'	=> $data['courses']['time_preference'][$key],
 				'rate'				=> $course->rate,
+				'replay_rate'		=> $course->replay_rate,
 			]);
 		}
 	}
