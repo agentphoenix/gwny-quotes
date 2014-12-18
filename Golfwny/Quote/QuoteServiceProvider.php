@@ -1,13 +1,14 @@
-<?php namespace Golfwny\Quote;
+<?php namespace Quote;
 
 use App,
+	Str,
 	Auth,
 	View,
 	Event,
 	Config;
-use Parsedown;
 use Ikimea\Browser\Browser;
 use Illuminate\Support\ServiceProvider;
+use League\CommonMark\CommonMarkConverter as MarkdownParser;
 
 class QuoteServiceProvider extends ServiceProvider {
 
@@ -30,7 +31,7 @@ class QuoteServiceProvider extends ServiceProvider {
 	{
 		$this->app['markdown'] = $this->app->share(function($app)
 		{
-			return new Services\MarkdownService(new Parsedown);
+			return new Services\MarkdownService(new MarkdownParser);
 		});
 	}
 
@@ -48,6 +49,9 @@ class QuoteServiceProvider extends ServiceProvider {
 		$a = Config::get('app.aliases');
 
 		// Bind the repositories to any calls to their interfaces
+		App::bind($a['CourseRepositoryInterface'], $a['CourseRepository']);
+		App::bind($a['QuoteRepositoryInterface'], $a['QuoteRepository']);
+		App::bind($a['QuoteItemRepositoryInterface'], $a['QuoteItemRepository']);
 		App::bind($a['RegionRepositoryInterface'], $a['RegionRepository']);
 
 		// Make sure we some variables available on all views
@@ -84,7 +88,7 @@ class QuoteServiceProvider extends ServiceProvider {
 
 	protected function setupMacros()
 	{
-		\Str::macro('quoteCode', function($length)
+		Str::macro('quoteCode', function($length)
 		{
 			$pool = '123456789abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ';
 

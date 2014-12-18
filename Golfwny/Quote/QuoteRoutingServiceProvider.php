@@ -1,4 +1,4 @@
-<?php namespace Golfwny\Quote;
+<?php namespace Quote;
 
 use Route;
 use Illuminate\Support\ServiceProvider;
@@ -12,8 +12,9 @@ class QuoteRoutingServiceProvider extends ServiceProvider {
 		$this->routeProtections();
 
 		//$this->sessionsRoutes();
-		$this->pagesRoutes();
+		$this->debugRoutes();
 		$this->adminRoutes();
+		$this->pagesRoutes();
 	}
 
 	protected function routeProtections()
@@ -53,11 +54,22 @@ class QuoteRoutingServiceProvider extends ServiceProvider {
 
 	protected function pagesRoutes()
 	{
-		Route::group(['namespace' => 'Golfwny\Quote\Controllers'], function()
+		Route::group(['namespace' => 'Quote\Controllers'], function()
 		{
-			Route::get('/{location?}/{step?}', [
-				'as'	=> 'home',
-				'uses'	=> 'HomeController@index']);
+			Route::get('check-status', [
+				'as'	=> 'checkStatus',
+				'uses'	=> 'HomeController@checkStatus']);
+			Route::post('check-status', [
+				'as'	=> 'doCheckStatus',
+				'uses'	=> 'HomeController@doCheckStatus']);
+
+			Route::get('package/{code}', [
+				'as'	=> 'package',
+				'uses'	=> 'HomeController@packageDetails']);
+
+			Route::get('thank-you', [
+				'as'	=> 'thank-you',
+				'uses'	=> 'HomeController@thankYou']);
 
 			Route::post('/{location}/info', [
 				'as'	=> 'storeInfo',
@@ -65,6 +77,13 @@ class QuoteRoutingServiceProvider extends ServiceProvider {
 			Route::post('/{location}/courses', [
 				'as'	=> 'storeCourses',
 				'uses'	=> 'HomeController@storeCourses']);
+			Route::post('/{location}/confirm', [
+				'as'	=> 'storeConfirm',
+				'uses'	=> 'HomeController@storeConfirm']);
+
+			Route::get('/{location?}/{step?}', [
+				'as'	=> 'home',
+				'uses'	=> 'HomeController@index']);
 		});
 	}
 
@@ -89,6 +108,24 @@ class QuoteRoutingServiceProvider extends ServiceProvider {
 			Route::resource('products', 'ProductsController', ['except' => ['show']]);
 			Route::resource('types', 'TypesController', ['except' => ['show']]);
 			Route::resource('items', 'ItemsController', ['except' => ['show']]);
+		});
+	}
+
+	protected function debugRoutes()
+	{
+		Route::get('calculate', function()
+		{
+			$item = \Quote::find(6);
+
+			$calculator = new \Quote\Services\QuoteCalculatorService($item);
+			s($calculator->getTotal());
+			s($calculator->getDeposit());
+
+			$calculator->setPackagePercentage(0.18);
+			$calculator->setDepositPercentage(0.35);
+
+			s($calculator->getTotal());
+			s($calculator->getDeposit());
 		});
 	}
 
