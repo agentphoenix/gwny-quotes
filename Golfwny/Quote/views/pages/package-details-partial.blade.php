@@ -1,39 +1,35 @@
-@if ($quote->status == 1)
-	<h2>Package Details</h2>
-
-	<div class="data-table data-table-striped data-table-bordered">
-		<div class="row">
-			<div class="col-sm-3">
-				<p><strong>Arrival Date</strong></p>
-			</div>
-			<div class="col-sm-3">
-				<p><strong>Departure Date</strong></p>
-			</div>
-			<div class="col-sm-3">
-				<p><strong>Number of People</strong></p>
-			</div>
-			<div class="col-sm-3">
-				<p><strong>Package ID</strong></p>
-			</div>
+<div class="data-table data-table-striped data-table-bordered">
+	<div class="row">
+		<div class="col-sm-3">
+			<p><strong>Arrival Date</strong></p>
 		</div>
-		<div class="row">
-			<div class="col-sm-3">
-				<p>{{ $quote->present()->arrival }}</p>
-			</div>
-			<div class="col-sm-3">
-				<p>{{ $quote->present()->departure }}</p>
-			</div>
-			<div class="col-sm-3">
-				<p>{{ $quote->present()->people }}</p>
-			</div>
-			<div class="col-sm-3">
-				<p>{{ $quote->present()->code }}</p>
-			</div>
+		<div class="col-sm-3">
+			<p><strong>Departure Date</strong></p>
+		</div>
+		<div class="col-sm-3">
+			<p><strong>Number of People</strong></p>
+		</div>
+		<div class="col-sm-3">
+			<p><strong>Package ID</strong></p>
 		</div>
 	</div>
-@endif
+	<div class="row">
+		<div class="col-sm-3">
+			<p>{{ $quote->present()->arrival }}</p>
+		</div>
+		<div class="col-sm-3">
+			<p>{{ $quote->present()->departure }}</p>
+		</div>
+		<div class="col-sm-3">
+			<p>{{ $quote->present()->people }}</p>
+		</div>
+		<div class="col-sm-3">
+			<p>{{ $quote->present()->code }}</p>
+		</div>
+	</div>
+</div>
 
-@if ($quote->status == 99)
+@if ($quote->status >= Status::ESTIMATE)
 	<h2>Total Cost <small>Includes all taxes, gratuity not included</small></h2>
 
 	<div class="data-table data-table-striped data-table-bordered">
@@ -65,7 +61,7 @@
 	<p class="price-sm"><strong>Package Total:</strong> $1,400</p>-->
 @endif
 
-@if ($quote->status == 99)
+@if ($quote->status == Status::BOOKED)
 	<h2>Hotel Information</h2>
 	<?php $item = $quote->getHotel();?>
 
@@ -128,6 +124,12 @@
 		<div class="row">
 			<div class="col-sm-6 col-md-4">
 				<p>{{ $item->present()->course }}</p>
+				@if ( ! empty($item->confirmation))
+					<p><em>Confirmation Number: <strong>{{ $item->present()->confirmation }}</strong></em></p>
+				@endif
+				@if ( ! empty($item->time))
+					<p><em>Tee Time: <strong>{{ $item->present()->time }}</strong></em></p>
+				@endif
 			</div>
 			<div class="col-sm-6 col-md-3">
 				<p>{{ $item->present()->people }}</p>

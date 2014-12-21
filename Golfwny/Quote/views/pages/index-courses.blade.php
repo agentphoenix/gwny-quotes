@@ -1,6 +1,6 @@
 <h2>Golf</h2>
 
-{{ Form::open() }}
+{{ Form::open(['route' => ['storeCourses', $location]]) }}
 	<div class="data-table data-table-striped data-table-bordered" id="coursesTable">
 		<div class="row">
 			<div class="col-sm-6 col-md-4">
@@ -14,7 +14,7 @@
 					<label class="control-label">Number of Players</label>
 					<div class="row">
 						<div class="col-md-6">
-							{{ Form::text('courses[people][]', null, ['class' => 'form-control']) }}
+							{{ Form::text('courses[people][]', $quote->people, ['class' => 'form-control']) }}
 						</div>
 					</div>
 				</div>

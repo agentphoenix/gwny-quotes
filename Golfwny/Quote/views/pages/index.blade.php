@@ -61,7 +61,8 @@
 
 			$('#coursesTable .row:first').clone().find("input").each(function()
 			{
-				$(this).val('');
+				if ($(this).attr('name') != "courses[people][]")
+					$(this).val('');
 			}).end().appendTo('#coursesTable');
 		});
 

@@ -1,6 +1,8 @@
 {{ View::make('pages.package-details-partial')->withQuote($quote) }}
 
 {{ Form::open(['route' => ['storeConfirm', $location]]) }}
+	{{ Form::hidden('code', $quote->code) }}
+	
 	<div class="btn-toolbar">
 		<div class="btn-group">
 			{{ Form::button('Submit Quote', ['type' => 'submit', 'class' => 'btn btn-lg btn-primary']) }}

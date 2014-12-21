@@ -9,7 +9,7 @@
 
 	{{ Form::open(['route' => 'doCheckStatus']) }}
 		<div class="row">
-			<div class="col-sm-4 col-md-2">
+			<div class="col-sm-5 col-md-3">
 				<div class="form-group">
 					<label class="control-label">Package Code</label>
 					{{ Form::text('code', false, ['class' => 'form-control input-lg']) }}
