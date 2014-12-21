@@ -44,17 +44,17 @@ class QuoteItemPresenter extends Presenter {
 
 	public function arrival()
 	{
-		return $this->entity->arrival->format('m/d/Y');
+		return $this->entity->arrival->format('D M jS, Y');
 	}
 
 	public function departure()
 	{
-		return $this->entity->departure->format('m/d/Y');
+		return $this->entity->departure->format('D M jS, Y');
 	}
 
 	public function time()
 	{
-		return $this->entity->time->format('l M jS, Y @ g:ia');
+		return $this->entity->time->format('D M jS, Y @ g:ia');
 	}
 
 	public function timePreference()
