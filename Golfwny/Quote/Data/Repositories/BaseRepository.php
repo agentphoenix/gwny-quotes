@@ -7,6 +7,13 @@ abstract class BaseRepository {
 		return $this->model->all();
 	}
 
+	public function countBy($key, $value, array $with = [])
+	{
+		$query = $this->make($with);
+
+		return $query->where($key, $value)->count();
+	}
+
 	public function getById($id, array $with = [])
 	{
 		$query = $this->make($with);
