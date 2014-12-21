@@ -1,3 +1,12 @@
 <?php namespace Quote\Controllers;
 
-abstract class BaseController extends \Controller {}
+use Controller;
+
+abstract class BaseController extends Controller {
+
+	public function __construct()
+	{
+		# code...
+	}
+
+}

@@ -4,6 +4,7 @@ use View,
 	Event,
 	Flash,
 	Input,
+	Status,
 	Session,
 	Redirect,
 	QuoteRepositoryInterface,
@@ -18,6 +19,8 @@ class HomeController extends BaseController {
 	public function __construct(RegionRepositoryInterface $regions,
 			QuoteRepositoryInterface $quotes)
 	{
+		parent::__construct();
+		
 		$this->quotes = $quotes;
 		$this->regions = $regions;
 	}
@@ -156,7 +159,7 @@ class HomeController extends BaseController {
 			'deposit'	=> $calculator->getDeposit(),
 		]);
 
-		return Redirect::route('thank-you', [$quote->code]);
+		return Redirect::route('thank-you');
 	}
 
 	public function checkStatus()
@@ -179,7 +182,7 @@ class HomeController extends BaseController {
 
 	public function thankYou()
 	{
-		return 'Thank you for your quote!';
+		return View::make('pages.thank-you');
 	}
 
 }
