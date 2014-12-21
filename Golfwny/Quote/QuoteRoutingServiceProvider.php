@@ -90,9 +90,9 @@ class QuoteRoutingServiceProvider extends ServiceProvider {
 	protected function adminRoutes()
 	{
 		$groupOptions = [
-			'before'	=> 'auth',
+			//'before'	=> 'auth',
 			'prefix'	=> 'admin',
-			'namespace' => 'Xtras\Controllers\Admin'
+			'namespace' => 'Quote\Controllers'
 		];
 
 		Route::group($groupOptions, function()
@@ -101,13 +101,7 @@ class QuoteRoutingServiceProvider extends ServiceProvider {
 				'as'	=> 'admin',
 				'uses'	=> 'AdminController@index']);
 
-			Route::get('products/{id}/remove', 'ProductsController@remove');
-			Route::get('types/{id}/remove', 'TypesController@remove');
-
-			Route::resource('users', 'UsersController', ['except' => ['show']]);
-			Route::resource('products', 'ProductsController', ['except' => ['show']]);
-			Route::resource('types', 'TypesController', ['except' => ['show']]);
-			Route::resource('items', 'ItemsController', ['except' => ['show']]);
+			Route::resource('quote', 'QuoteController');
 		});
 	}
 

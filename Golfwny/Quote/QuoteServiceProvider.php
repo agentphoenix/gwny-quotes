@@ -5,7 +5,8 @@ use App,
 	Auth,
 	View,
 	Event,
-	Config;
+	Config,
+	Status;
 use Ikimea\Browser\Browser;
 use Illuminate\Support\ServiceProvider;
 use League\CommonMark\CommonMarkConverter as MarkdownParser;
@@ -54,9 +55,14 @@ class QuoteServiceProvider extends ServiceProvider {
 		App::bind($a['QuoteItemRepositoryInterface'], $a['QuoteItemRepository']);
 		App::bind($a['RegionRepositoryInterface'], $a['RegionRepository']);
 
+		$quoteRepo = App::make('QuoteRepository');
+
 		// Make sure we some variables available on all views
 		View::share('_currentUser', Auth::user());
 		View::share('_icons', Config::get('icons'));
+		View::share('_countSubmitted', $quoteRepo->countBy('status', Status::SUBMITTED));
+		View::share('_countAccepted', $quoteRepo->countBy('status', Status::ACCEPTED));
+		View::share('_countRejected', $quoteRepo->countBy('status', Status::REJECTED));
 	}
 
 	protected function setupEventListeners()
