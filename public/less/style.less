@@ -133,7 +133,7 @@ section {
 	}
 	
 	h1 {
-		margin: 18px 0;
+		margin: 0 0 18px 0;
 
 		font-family: @font-headings;
 		color: @color-red;
@@ -285,6 +285,10 @@ form {
 		.rounded(@border-radius);
 	}
 
+	.input-group-addon {
+		.rounded(@border-radius);
+	}
+
 	.checkbox-inline, .radio-inline {
 		font-weight: 400;
 		font-family: @font-primary;
@@ -299,6 +303,21 @@ form {
 .text-sm {
 	font-size: @font-size-sm;
 }
+.text-success {
+	color: darken(@color-green, 3%);
+
+	&:hover {
+		color: darken(@color-green, 3%);
+	}
+}
+.text-danger {
+	color: darken(@color-red, 3%);
+
+	&:hover {
+		color: darken(@color-red, 3%);
+	}
+}
+
 .price, .price-sm {
 	margin: 12px 0;
 
@@ -323,6 +342,7 @@ form {
 .ui.ordered.steps .step.completed:before, .ui.steps .step.completed>.icon:before {
 	color: @color-green;
 }
+
 .ui.button {
 	.rounded(50px);
 }
@@ -332,4 +352,37 @@ form {
 	&:hover {
 		background-color: darken(@color-green, 5%);
 	}
+}
+
+.ui.message {
+	.rounded(@border-radius);
+}
+.ui.green.message {
+	color: darken(@color-green, 10%);
+	background-color: lighten(@color-green, 40%);
+
+	.header {
+		color: darken(@color-green, 15%);
+	}
+}
+.ui.red.message {
+	color: @color-red;
+	background-color: lighten(@color-red, 55%);
+
+	.header {
+		color: darken(@color-red, 5%);
+	}
+}
+
+.ui.menu {
+	.rounded(@border-radius);
+}
+
+.ui.green.label, .ui.green.labels .label {
+	background-color: @color-green !important;
+	border-color: @color-green !important;
+}
+.ui.red.label, .ui.red.labels .label {
+	background-color: @color-red !important;
+	border-color: @color-red !important;
 }
