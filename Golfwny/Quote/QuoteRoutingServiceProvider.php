@@ -101,6 +101,10 @@ class QuoteRoutingServiceProvider extends ServiceProvider {
 				'as'	=> 'admin',
 				'uses'	=> 'AdminController@index']);
 
+			Route::get('quote/get/hotel/{id}', 'QuoteController@getHotel');
+			Route::get('quote/get/course/{id}', 'QuoteController@getCourse');
+			Route::get('quote/recalculate/{id}', 'QuoteController@recalculatePrice');
+
 			Route::resource('quote', 'QuoteController');
 		});
 	}

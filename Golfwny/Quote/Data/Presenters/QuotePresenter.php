@@ -57,14 +57,20 @@ class QuotePresenter extends Presenter {
 		return "{$people} people";
 	}
 
-	public function arrival($full = false)
+	public function arrival($full = true)
 	{
-		return $this->entity->arrival->format('D M jS, Y');
+		if ($full)
+			return $this->entity->arrival->format('D M jS, Y');
+
+		return $this->entity->arrival->format('m/d/Y');
 	}
 
-	public function departure($full = false)
+	public function departure($full = true)
 	{
-		return $this->entity->departure->format('D M jS, Y');
+		if ($full)
+			return $this->entity->departure->format('D M jS, Y');
+
+		return $this->entity->departure->format('m/d/Y');
 	}
 
 	public function deposit()
@@ -95,6 +101,26 @@ class QuotePresenter extends Presenter {
 	public function price()
 	{
 		return '$'.number_format($this->entity->total);
+	}
+
+	public function percentPackage()
+	{
+		return round($this->entity->percent_package, 2) * 100;
+	}
+
+	public function percentPackageRaw()
+	{
+		return round($this->entity->percent_package, 2);
+	}
+
+	public function percentDeposit()
+	{
+		return round($this->entity->percent_deposit, 2) * 100;
+	}
+
+	public function percentDepositRaw()
+	{
+		return round($this->entity->percent_deposit, 2);
 	}
 
 }

@@ -17,5 +17,18 @@ class QuoteItemRepository extends BaseRepository implements QuoteItemRepositoryI
 	{
 		return $this->model->create($data);
 	}
+
+	public function update($id, array $data)
+	{
+		// Get the item
+		$item = $this->getById($id);
+
+		if ($item)
+		{
+			return $item->fill($data)->save();
+		}
+
+		return false;
+	}
 	
 }

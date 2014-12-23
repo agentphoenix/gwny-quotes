@@ -6,6 +6,7 @@ use App,
 	View,
 	Event,
 	Config,
+	Schema,
 	Status;
 use Ikimea\Browser\Browser;
 use Illuminate\Support\ServiceProvider;
@@ -51,6 +52,7 @@ class QuoteServiceProvider extends ServiceProvider {
 
 		// Bind the repositories to any calls to their interfaces
 		App::bind($a['CourseRepositoryInterface'], $a['CourseRepository']);
+		App::bind($a['HotelRepositoryInterface'], $a['HotelRepository']);
 		App::bind($a['QuoteRepositoryInterface'], $a['QuoteRepository']);
 		App::bind($a['QuoteItemRepositoryInterface'], $a['QuoteItemRepository']);
 		App::bind($a['RegionRepositoryInterface'], $a['RegionRepository']);
@@ -60,9 +62,13 @@ class QuoteServiceProvider extends ServiceProvider {
 		// Make sure we some variables available on all views
 		View::share('_currentUser', Auth::user());
 		View::share('_icons', Config::get('icons'));
-		View::share('_countSubmitted', $quoteRepo->countBy('status', Status::SUBMITTED));
-		View::share('_countAccepted', $quoteRepo->countBy('status', Status::ACCEPTED));
-		View::share('_countRejected', $quoteRepo->countBy('status', Status::REJECTED));
+
+		if (Schema::hasTable('quotes'))
+		{
+			View::share('_countSubmitted', $quoteRepo->countBy('status', Status::SUBMITTED));
+			View::share('_countAccepted', $quoteRepo->countBy('status', Status::ACCEPTED));
+			View::share('_countRejected', $quoteRepo->countBy('status', Status::REJECTED));
+		}
 	}
 
 	protected function setupEventListeners()

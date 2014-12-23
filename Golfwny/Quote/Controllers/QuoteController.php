@@ -3,16 +3,25 @@
 use View,
 	Input,
 	Redirect,
-	QuoteRepositoryInterface;
+	HotelRepositoryInterface,
+	QuoteRepositoryInterface,
+	QuoteItemRepositoryInterface;
+use Quote\Services\QuoteCalculatorService;
 
 class QuoteController extends BaseController {
 
+	protected $items;
+	protected $hotels;
 	protected $quotes;
 
-	public function __construct(QuoteRepositoryInterface $quotes)
+	public function __construct(QuoteRepositoryInterface $quotes,
+			QuoteItemRepositoryInterface $items,
+			HotelRepositoryInterface $hotels)
 	{
 		parent::__construct();
 
+		$this->items = $items;
+		$this->hotels = $hotels;
 		$this->quotes = $quotes;
 	}
 
@@ -40,7 +49,14 @@ class QuoteController extends BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		// Get the data
+		$data = Input::all();
+
+		// Update the quote
+		if ($data['table'] == 'quotes')
+			$this->quotes->update($data['id'], [$data['field'] => $data['value']]);
+		else
+			$this->items->update($data['id'], [$data['field'] => $data['value']]);
 	}
 
 	/**
@@ -52,6 +68,35 @@ class QuoteController extends BaseController {
 	public function destroy($id)
 	{
 		//
+	}
+
+	public function getHotel($id)
+	{
+		// Get the hotel
+		$hotel = $this->hotels->getById($id);
+
+		return json_encode($hotel->toArray());
+	}
+
+	public function recalculatePrice($id)
+	{
+		// Get the quote
+		$quote = $this->quotes->getById($id);
+
+		// Create a new calculator
+		$calculator = new QuoteCalculatorService($quote);
+
+		// Update the quote
+		$newQuote = $this->quotes->update($quote->id, [
+			'total'		=> $calculator->getTotal(),
+			'deposit'	=> $calculator->getDeposit(),
+		]);
+
+		return json_encode([
+			'price'		=> $newQuote->present()->price,
+			'deposit'	=> $newQuote->present()->deposit,
+			'pricePerPerson' => $newQuote->present()->pricePerPerson,
+		]);
 	}
 
 }

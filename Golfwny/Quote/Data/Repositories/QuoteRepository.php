@@ -80,7 +80,11 @@ class QuoteRepository extends BaseRepository implements QuoteRepositoryInterface
 
 		if ($quote)
 		{
-			return $quote->fill($data)->save();
+			$item = $quote->fill($data);
+
+			$item->save();
+
+			return $item;
 		}
 
 		return false;
