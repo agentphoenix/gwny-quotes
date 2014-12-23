@@ -13,7 +13,8 @@ class Quote extends Eloquent {
 
 	protected $fillable = ['region_id', 'code', 'status', 'name', 'email',
 		'phone', 'city', 'people', 'arrival', 'departure', 'deposit', 'total',
-		'paid_deposit', 'paid_total', 'notes', 'comments'];
+		'paid_deposit', 'paid_total', 'notes', 'comments', 'percent_package',
+		'percent_deposit'];
 
 	protected $dates = ['created_at', 'updated_at', 'deleted_at', 'arrival',
 		'departure'];
@@ -47,6 +48,20 @@ class Quote extends Eloquent {
 		$this->attributes['code'] = ( ! empty($value)) 
 			? $value 
 			: Str::quoteCode(12);
+	}
+
+	public function setPercentPackageAttribute($value)
+	{
+		$this->attributes['percent_package'] = ( ! empty($value)) 
+			? $value * .01
+			: 0.00;
+	}
+
+	public function setPercentDepositAttribute($value)
+	{
+		$this->attributes['percent_deposit'] = ( ! empty($value)) 
+			? $value * .01
+			: 0.00;
 	}
 
 	/*
