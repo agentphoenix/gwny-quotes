@@ -23,6 +23,7 @@
 		{{ HTML::style('semantic/semantic.min.css') }}
 		{{ HTML::style('css/style.css') }}
 		{{ HTML::style('css/responsive.css') }}
+		@yield('styles')
 
 		<!-- High pixel density displays -->
 		<link rel="stylesheet" href="{{ asset('css/retina.css') }}" media="only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2)">

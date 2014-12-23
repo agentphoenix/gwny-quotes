@@ -23,6 +23,7 @@
 		{{ HTML::style('semantic/semantic.min.css') }}
 		{{ HTML::style('css/style.css') }}
 		{{ HTML::style('css/responsive.css') }}
+		@yield('styles')
 
 		<!-- High pixel density displays -->
 		<link rel="stylesheet" href="{{ asset('css/retina.css') }}" media="only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2)">
@@ -34,99 +35,57 @@
 		<title>@yield('title') &bull; Golf Western NY</title>
 	</head>
 	<body>
-		<header>
-			<div class="container">
-				<div class="overlay"><h1>GolfWNY</h1></div>
-			</div>
-		</header>
-
-		<div class="tagline visible-xs">
-			<div class="logo"></div>
-			<h1>Bring Your Game to Us</h1>
-			<h3>Experience everything Western NY has to offer</h3>
+		<div class="ui left vertical inverted sidebar menu">
+			{{ partial('nav-sub') }}
 		</div>
+		<div class="pusher">
+			<header>
+				<div class="container">
+					<div class="overlay">
+						<a class="sidebar-toggle"><i class="content icon"></i></a>
+						<h1>GolfWNY</h1>
+					</div>
+				</div>
+			</header>
 
-		<div class="container">
-			<nav class="nav-main">
-				<ul>
-					<li><a href="{{ route('home') }}">Create a New Quote</a></li>
-					<li><a href="{{ route('checkStatus') }}">Check the Status of a Quote</a></li>
-					<li><a href="http://golfwny.com">Back to GolfWNY</a></li>
-				</ul>
-			</nav>
+			<div class="container">
+				<nav class="nav-main">
+					<ul>
+						<li><a href="{{ route('home') }}">Create a New Quote</a></li>
+						<li><a href="{{ route('checkStatus') }}">Check the Status of a Quote</a></li>
+						<li><a href="http://golfwny.com">Back to GolfWNY</a></li>
+					</ul>
+				</nav>
 
-			<div class="visible-xs">
-				<ul class="nav nav-list">
-					
-				</ul>
-			</div>
-			
-			<div class="row">
-				<div class="col-xs-12">
-					<div class="row">
-						<div class="col-sm-4 col-md-2">
-							<div class="ui fluid vertical menu">
-								<div class="header item">
-									<i class="dollar icon"></i>
-									Quotes
+				<div class="visible-xs">
+					<ul class="nav nav-list">
+						
+					</ul>
+				</div>
+				
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="row">
+							<div class="col-md-2 visible-md visible-lg">
+								<div class="ui fluid vertical menu">
+									{{ partial('nav-sub') }}
 								</div>
-								<a class="item">
-									Submitted
-									@if ($_countSubmitted > 0)
-										<div class="ui green label">{{ $_countSubmitted }}</div>
-									@endif
-								</a>
-								<a class="item">
-									Accepted
-									@if ($_countAccepted > 0)
-										<div class="ui green label">{{ $_countAccepted }}</div>
-									@endif
-								</a>
-								<a class="item">
-									Rejected
-									@if ($_countRejected > 0)
-										<div class="ui red label">{{ $_countRejected }}</div>
-									@endif
-								</a>
-								<a href="{{ route('admin.quote.index') }}" class="item">All Quotes</a>
-								
-								<div class="header item">
-									<i class="align left icon"></i>
-									Content
-								</div>
-								<a class="item">Regions</a>
-								<a class="item">Courses</a>
-								<a class="item">Hotels</a>
-								<a class="item">Users</a>
-
-								<div class="header item">
-									<i class="bar chart icon"></i>
-									Reports
-								</div>
-								<a class="item">Revenue</a>
-								<a class="item">Course</a>
-								<a class="item">Hotel</a>
-
-								<a class="header item">
-									<i class="announcement icon"></i>
-									Survey Results
-								</a>
 							</div>
-						</div>
 
-						<div class="col-sm-8 col-md-10">
-							<section>
-								@yield('content')
-							</section>
+							<div class="col-sm-8 col-md-10">
+								<section>
+									@yield('content')
+								</section>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
 
-			<footer>
-				<div class="pull-right">Check out <a href="/">other GolfWNY cities</a>!</div>
-				&copy; {{ date('Y') }} Golf Western NY<br>Follow <a href="http://twitter.com/GolfWesternNY" target="_blank">@GolfWesternNY</a>
-			</footer>
+				<footer>
+					<div class="pull-right">Check out <a href="/">other GolfWNY cities</a>!</div>
+					&copy; {{ date('Y') }} Golf Western NY<br>Follow <a href="http://twitter.com/GolfWesternNY" target="_blank">@GolfWesternNY</a>
+				</footer>
+			</div>
 
 			@if (App::environment() == 'production')
 				<!--[if lt IE 9]>
@@ -164,6 +123,14 @@
 				<script src="//localhost/global/jquery.validate/1.13/additional-methods.min.js"></script>
 			@endif
 			{{ HTML::script('semantic/semantic.min.js') }}
+			<script>
+				$('.sidebar-toggle').on('click', function(e)
+				{
+					e.preventDefault();
+
+					$('.left.sidebar').sidebar('toggle');
+				});
+			</script>
 			@yield('scripts')
 		</div>
 	</body>
