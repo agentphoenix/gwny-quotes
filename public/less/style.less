@@ -9,6 +9,9 @@ body {
 	font-size: @font-size;
 	line-height: @line-height;
 }
+.pushable > .pusher {
+	background: @color-bg;
+}
 
 header {
 	position: relative;
@@ -23,6 +26,16 @@ header {
 		width: 100%;
 		
 		background: transparent url(../img/header-bg.jpg) no-repeat top center;
+
+		.sidebar-toggle {
+			float: left;
+			display: none;
+
+			color: white;
+			text-decoration: none;
+			font-size: 24px;
+			cursor: pointer;
+		}
 	}
 	
 	h1 {
@@ -281,6 +294,12 @@ form {
 		font-size: @font-size;
 	}
 
+	.control-label {
+		&.transparent {
+			color: @color-bg !important;
+		}
+	}
+
 	.form-control {
 		.rounded(@border-radius);
 	}
@@ -297,6 +316,18 @@ form {
 
 	.help-block {
 		font-size: @font-size-sm;
+	}
+}
+
+label {
+	display: block;
+	font-weight: 700;
+	font-family: @font-primary;
+	color: @color-gray-dark;
+	font-size: @font-size;
+
+	&.transparent {
+		color: transparent !important;
 	}
 }
 
@@ -385,4 +416,11 @@ form {
 .ui.red.label, .ui.red.labels .label {
 	background-color: @color-red !important;
 	border-color: @color-red !important;
+}
+
+.ui.toggle.checkbox input:checked ~ .box, .ui.toggle.checkbox input:checked ~ label {
+	color: darken(@color-green, 5%);
+}
+.ui.toggle.checkbox input:checked ~ .box:before, .ui.toggle.checkbox input:checked ~ label:before {
+	background-color: @color-green;
 }
