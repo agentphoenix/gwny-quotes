@@ -214,6 +214,7 @@ return array(
 		 * Repository Interfaces
 		 */
 		'CourseRepositoryInterface'		=> 'Quote\Data\Interfaces\CourseRepositoryInterface',
+		'HotelRepositoryInterface'		=> 'Quote\Data\Interfaces\HotelRepositoryInterface',
 		'QuoteRepositoryInterface'		=> 'Quote\Data\Interfaces\QuoteRepositoryInterface',
 		'QuoteItemRepositoryInterface'	=> 'Quote\Data\Interfaces\QuoteItemRepositoryInterface',
 		'RegionRepositoryInterface'		=> 'Quote\Data\Interfaces\RegionRepositoryInterface',
@@ -222,6 +223,7 @@ return array(
 		 * Repositories
 		 */
 		'CourseRepository'		=> 'Quote\Data\Repositories\CourseRepository',
+		'HotelRepository'		=> 'Quote\Data\Repositories\HotelRepository',
 		'QuoteRepository'		=> 'Quote\Data\Repositories\QuoteRepository',
 		'QuoteItemRepository'	=> 'Quote\Data\Repositories\QuoteItemRepository',
 		'RegionRepository'		=> 'Quote\Data\Repositories\RegionRepository',
