@@ -112,9 +112,15 @@ class HomeController extends BaseController {
 	public function storeInfo($location)
 	{
 		// Validate
+
+		// Build the input
+		$input = Input::all() + [
+			'percent_package'	=> config('gwny.percent.package'),
+			'percent_deposit'	=> config('gwny.percent.deposit'),
+		];
 		
 		// Create a new quote record
-		$quote = $this->quotes->create(Input::all());
+		$quote = $this->quotes->create($input);
 
 		// Create a new item for the hotel
 		$this->quotes->createHotelQuote($quote);
