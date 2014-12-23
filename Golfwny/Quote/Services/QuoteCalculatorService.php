@@ -24,14 +24,14 @@ class QuoteCalculatorService {
 		$this->total += $this->calculateGolf();
 
 		// Add in the package percentage
-		$this->total *= (1 + $this->packagePercentage);
+		$this->total *= (1 + $this->quote->percent_package);
 
 		return (float) ceil($this->total);
 	}
 
 	public function getDeposit()
 	{
-		return (float) ceil($this->total * $this->depositPercentage);
+		return (float) ceil($this->total * $this->quote->percent_deposit);
 	}
 
 	protected function calculateHotel()
