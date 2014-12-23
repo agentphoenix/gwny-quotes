@@ -16,6 +16,11 @@
  
 /* Landscape phone to portrait tablet */
 @media (max-width: 768px) {
+	html {
+		overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+	}
+	
 	body {
 		background: @color-bg;
 		font-size: 16px;
@@ -27,54 +32,35 @@
 	body {
 		background: @color-bg;
 	}
-	
-	header {
-		margin-left: -20px;
-		margin-right: -20px;
-		padding-bottom: 0;
-		
-		background: orange;
-		
-		.brand {
-			background-image: url(../img/fr2b-mobile.png);
-		}
-		
-		.jumbotron {
-			padding: 30px 0 0 0;
-			
-			h2 {
-				line-height: 1.15;
-			}
-			
-			.well {
-				.rounded(0);
-			}
-		}
-	}
-	
-	section {
-		background: none;
-	}
-	
-	.nav-list {
-		margin-top: 10px;
-		
-		a {
-			padding-top: 8px !important;
-			padding-bottom: 8px !important;
-			
-			color: @color-dark;
-			font-weight: 600;
-			font-family: @font-primary;
-			font-size: 18px;
 
-			&:hover, &:active {
-				background-color: orange !important;
-				color: @color-white;
-				text-shadow: 0 1px 1px rgba(0, 0, 0, .4);
-				
-				.rounded(@border-radius);
+	header {
+		height: 64px;
+		line-height: 64px;
+
+		.overlay {
+			background: none;
+
+			h1 {
+				margin: 0;
+				padding: 0;
+				line-height: 64px;
+
+				text-align: center;
+				font-size: 48px;
+			}
+
+			.sidebar-toggle {
+				display: block;
 			}
 		}
+	}
+
+	nav.nav-main {
+		display: none;
+		margin: 0;
+	}
+	
+	.lead {
+		font-size: 22px;
 	}
 }
