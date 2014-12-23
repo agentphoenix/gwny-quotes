@@ -27,6 +27,8 @@ class CreateQuotes extends Migration {
 			$table->date('departure');
 			$table->float('total')->nullable();
 			$table->float('deposit')->nullable();
+			$table->float('percent_package');
+			$table->float('percent_deposit');
 			$table->boolean('paid_deposit')->default((int) false);
 			$table->boolean('paid_total')->default((int) false);
 			$table->text('comments')->nullable();
