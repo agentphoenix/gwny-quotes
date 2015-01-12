@@ -228,6 +228,13 @@ return array(
 		'QuoteItemRepository'	=> 'Quote\Data\Repositories\QuoteItemRepository',
 		'RegionRepository'		=> 'Quote\Data\Repositories\RegionRepository',
 
+		/**
+		 * Validators
+		 */
+		'CourseValidator'		=> 'Quote\Data\Validators\CourseValidator',
+		'HotelValidator'		=> 'Quote\Data\Validators\HotelValidator',
+		'RegionValidator'		=> 'Quote\Data\Validators\RegionValidator',
+
 	),
 
 );
