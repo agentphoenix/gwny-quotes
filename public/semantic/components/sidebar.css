@@ -1,5 +1,5 @@
  /*
- * # Semantic UI
+ * # Semantic UI - 1.6.4
  * https://github.com/Semantic-Org/Semantic-UI
  * http://www.semantic-ui.com/
  *
@@ -37,8 +37,8 @@
   z-index: 102;
 }
 
-/* 3D Rendering */
-.ui.sidebar * {
+/* GPU Layers for Child Elements */
+.ui.sidebar > * {
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
   -webkit-transform: rotateZ(0deg);
@@ -195,11 +195,9 @@
   iOS incorrectly sizes document when content
   is presented outside of view with 2Dtranslate
 */
-@media only screen and (max-width: 992px) {
-  html.ios {
-    overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
-  }
+html.ios {
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 

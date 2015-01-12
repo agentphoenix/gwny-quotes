@@ -1,5 +1,5 @@
  /*
- * # Semantic UI
+ * # Semantic UI - 1.6.4
  * https://github.com/Semantic-Org/Semantic-UI
  * http://www.semantic-ui.com/
  *
@@ -469,17 +469,18 @@ select.ui.dropdown {
 
 /* Search Dropdown */
 .ui.search.dropdown > input.search {
-  background: none transparent;
-  border: none;
+  background: none transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0em !important;
   cursor: pointer;
   position: absolute;
-  border-radius: 0em !important;
   top: 0em;
   left: 0em;
   width: 100%;
   outline: none;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-  padding: inherit
+  padding: inherit;
   /*Amazing trick */
 }
 

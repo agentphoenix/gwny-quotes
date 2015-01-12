@@ -1,5 +1,5 @@
  /*
- * # Semantic UI
+ * # Semantic UI - 1.6.4
  * https://github.com/Semantic-Org/Semantic-UI
  * http://www.semantic-ui.com/
  *
@@ -420,7 +420,7 @@
 .ui.steps .step.completed > .icon:before,
 .ui.ordered.steps .step.completed:before {
   font-family: 'Step';
-  content: '\e800'
+  content: '\e800';
   
 /* '' */
 }
