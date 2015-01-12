@@ -73,7 +73,17 @@ class QuoteServiceProvider extends ServiceProvider {
 
 	protected function setupEventListeners()
 	{
-		//
+		Event::listen('region.created', 'Quote\Events\RegionEventHandler@onCreate');
+		Event::listen('region.deleted', 'Quote\Events\RegionEventHandler@onDelete');
+		Event::listen('region.updated', 'Quote\Events\RegionEventHandler@onUpdate');
+
+		Event::listen('hotel.created', 'Quote\Events\HotelEventHandler@onCreate');
+		Event::listen('hotel.deleted', 'Quote\Events\HotelEventHandler@onDelete');
+		Event::listen('hotel.updated', 'Quote\Events\HotelEventHandler@onUpdate');
+
+		Event::listen('course.created', 'Quote\Events\CourseEventHandler@onCreate');
+		Event::listen('course.deleted', 'Quote\Events\CourseEventHandler@onDelete');
+		Event::listen('course.updated', 'Quote\Events\CourseEventHandler@onUpdate');
 	}
 
 	protected function browserCheck()
