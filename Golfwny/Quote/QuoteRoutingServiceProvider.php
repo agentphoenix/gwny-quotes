@@ -11,7 +11,7 @@ class QuoteRoutingServiceProvider extends ServiceProvider {
 	{
 		$this->routeProtections();
 
-		//$this->sessionsRoutes();
+		$this->sessionsRoutes();
 		$this->debugRoutes();
 		$this->adminRoutes();
 		$this->pagesRoutes();
@@ -27,29 +27,15 @@ class QuoteRoutingServiceProvider extends ServiceProvider {
 	{
 		Route::get('login', [
 			'as'	=> 'login',
-			'uses'	=> 'Xtras\Controllers\HomeController@login']);
+			'uses'	=> 'Quote\Controllers\LoginController@index']);
 		Route::post('login', [
 			'as'	=> 'login.do',
-			'uses'	=> 'Xtras\Controllers\HomeController@doLogin']);
+			'uses'	=> 'Quote\Controllers\LoginController@doLogin']);
 		Route::get('logout', [
 			'as'	=> 'logout',
-			'uses'	=> 'Xtras\Controllers\HomeController@logout']);
+			'uses'	=> 'Quote\Controllers\LoginController@logout']);
 
-		Route::group(['prefix' => 'password', 'namespace' => 'Xtras\Controllers'], function()
-		{
-			Route::get('remind', [
-				'as'	=> 'password.remind',
-				'uses'	=> 'RemindersController@remind']);
-			Route::post('remind', [
-				'as'	=> 'password.remind.do',
-				'uses'	=> 'RemindersController@doRemind']);
-			Route::get('reset/{token}', [
-				'as'	=> 'password.reset',
-				'uses'	=> 'RemindersController@reset']);
-			Route::post('reset', [
-				'as'	=> 'password.reset.do',
-				'uses'	=> 'RemindersController@doReset']);
-		});
+		Route::controller('password', 'Quote\Controllers\RemindersController');
 	}
 
 	protected function pagesRoutes()
@@ -71,17 +57,17 @@ class QuoteRoutingServiceProvider extends ServiceProvider {
 				'as'	=> 'thank-you',
 				'uses'	=> 'HomeController@thankYou']);
 
-			Route::post('/{location}/info', [
+			Route::post('{location}/info', [
 				'as'	=> 'storeInfo',
 				'uses'	=> 'HomeController@storeInfo']);
-			Route::post('/{location}/courses', [
+			Route::post('{location}/courses', [
 				'as'	=> 'storeCourses',
 				'uses'	=> 'HomeController@storeCourses']);
-			Route::post('/{location}/confirm', [
+			Route::post('{location}/confirm', [
 				'as'	=> 'storeConfirm',
 				'uses'	=> 'HomeController@storeConfirm']);
 
-			Route::get('/{location?}/{step?}', [
+			Route::get('{location?}/{step?}', [
 				'as'	=> 'home',
 				'uses'	=> 'HomeController@index']);
 		});
@@ -92,7 +78,7 @@ class QuoteRoutingServiceProvider extends ServiceProvider {
 		$groupOptions = [
 			//'before'	=> 'auth',
 			'prefix'	=> 'admin',
-			'namespace' => 'Quote\Controllers'
+			'namespace' => 'Quote\Controllers\Admin'
 		];
 
 		Route::group($groupOptions, function()
@@ -105,26 +91,28 @@ class QuoteRoutingServiceProvider extends ServiceProvider {
 			Route::get('quote/get/course/{id}', 'QuoteController@getCourse');
 			Route::get('quote/recalculate/{id}', 'QuoteController@recalculatePrice');
 
+			Route::get('regions/{id}/remove', [
+				'as'	=> 'admin.regions.remove',
+				'uses'	=> 'RegionController@remove']);
+
+			Route::get('hotels/{id}/remove', [
+				'as'	=> 'admin.hotels.remove',
+				'uses'	=> 'HotelController@remove']);
+
+			Route::get('courses/{id}/remove', [
+				'as'	=> 'admin.courses.remove',
+				'uses'	=> 'CourseController@remove']);
+
 			Route::resource('quote', 'QuoteController');
+			Route::resource('regions', 'RegionController');
+			Route::resource('hotels', 'HotelController');
+			Route::resource('courses', 'CourseController');
 		});
 	}
 
 	protected function debugRoutes()
 	{
-		Route::get('calculate', function()
-		{
-			$item = \Quote::find(6);
-
-			$calculator = new \Quote\Services\QuoteCalculatorService($item);
-			s($calculator->getTotal());
-			s($calculator->getDeposit());
-
-			$calculator->setPackagePercentage(0.18);
-			$calculator->setDepositPercentage(0.35);
-
-			s($calculator->getTotal());
-			s($calculator->getDeposit());
-		});
+		//
 	}
 
 }
