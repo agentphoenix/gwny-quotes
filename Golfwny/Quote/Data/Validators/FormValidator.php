@@ -1,6 +1,6 @@
-<?php namespace Help\Data\Validators;
+<?php namespace Quote\Data\Validators;
 
-use FormValidationException;
+use Quote\Exceptions\FormValidationException;
 use Illuminate\Validation\Factory as Validator;
 
 abstract class FormValidator {

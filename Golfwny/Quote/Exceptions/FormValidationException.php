@@ -1,8 +1,9 @@
-<?php namespace Help\Exceptions;
+<?php namespace Quote\Exceptions;
 
+use Exception;
 use Illuminate\Support\MessageBag;
 
-class FormValidationException extends \Exception {
+class FormValidationException extends Exception {
 
 	protected $errors;
 

@@ -43,7 +43,13 @@ Log::useDailyFiles(storage_path().'/logs/'.$logFile);
 
 App::error(function(Exception $exception, $code)
 {
+	Log::error("URL: ".Request::instance()->fullUrl());
 	Log::error($exception);
+});
+
+App::error(function(Quote\Exceptions\FormValidationException $exception, $code)
+{
+	return Redirect::back()->withInput()->withErrors($exception->getErrors());
 });
 
 /*
