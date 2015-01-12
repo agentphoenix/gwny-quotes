@@ -74,6 +74,10 @@
 
 							<div class="col-sm-8 col-md-10">
 								<section>
+									@if (Session::has('flash.message'))
+										@include('partials.flash')
+									@endif
+									
 									@yield('content')
 								</section>
 							</div>

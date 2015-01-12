@@ -65,6 +65,10 @@
 			<div class="row">
 				<div class="col-xs-12">
 					<section>
+						@if (Session::has('flash.message'))
+							@include('partials.flash')
+						@endif
+						
 						@yield('content')
 					</section>
 				</div>
