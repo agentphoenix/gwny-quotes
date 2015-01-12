@@ -105,22 +105,22 @@ class QuotePresenter extends Presenter {
 
 	public function percentPackage()
 	{
-		return round($this->entity->percent_package, 2) * 100;
+		return round($this->entity->percent_package, 4) * 100;
 	}
 
 	public function percentPackageRaw()
 	{
-		return round($this->entity->percent_package, 2);
+		return round($this->entity->percent_package, 4);
 	}
 
 	public function percentDeposit()
 	{
-		return round($this->entity->percent_deposit, 2) * 100;
+		return round($this->entity->percent_deposit, 4) * 100;
 	}
 
 	public function percentDepositRaw()
 	{
-		return round($this->entity->percent_deposit, 2);
+		return round($this->entity->percent_deposit, 4);
 	}
 
 }
