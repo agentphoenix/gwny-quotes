@@ -1,10 +1,10 @@
 @import "mixins.less";
 @import "variables.less";
 
-/* Large desktop */
+/* lg */
 @media (min-width: 1200px) {}
 
-/* Portrait tablet to landscape and desktop */
+/* md */
 @media (min-width: 769px) and (max-width: 979px) {
 	body {
 		padding: 0;
@@ -12,9 +12,13 @@
 		background: @color-bg;
 		font-size: 16px;
 	}
+
+	.ui.statistic>.value {
+		font-size: 3rem;
+	}
 }
  
-/* Landscape phone to portrait tablet */
+/* sm */
 @media (max-width: 768px) {
 	html {
 		overflow-x: hidden;
@@ -27,7 +31,7 @@
 	}
 }
  
-/* Landscape phones and down */
+/* xs */
 @media (max-width: 480px) {
 	body {
 		background: @color-bg;

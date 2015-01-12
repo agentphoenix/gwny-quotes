@@ -234,10 +234,10 @@ a:hover {
 }
 
 hr {
-	border-color: #ccc;
+	height: 1px;
+
+	border-color: @color-bg;
 	border-top: none;
-	
-	.box-shadow(~"0 1px 0 rgba(255, 255, 255, .3)");
 }
 
 .data-table {
@@ -422,5 +422,30 @@ label {
 	color: darken(@color-green, 5%);
 }
 .ui.toggle.checkbox input:checked ~ .box:before, .ui.toggle.checkbox input:checked ~ label:before {
+	background-color: @color-green;
+}
+
+.ui.statistic {
+	max-width: 300px;
+	margin: 0 4em 2em 2em;
+}
+.ui.statistic>.value {
+	font-family: @font-primary;
+	font-weight: 400;
+	color: @color-dark;
+}
+.ui.statistic>.label {
+	display: block;
+
+	font-family: @font-primary;
+	font-weight: 700;
+	font-style: italic;
+	font-size: @font-size;
+}
+
+.nav-pills>li>a {
+	.rounded(@border-radius);
+}
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
 	background-color: @color-green;
 }
