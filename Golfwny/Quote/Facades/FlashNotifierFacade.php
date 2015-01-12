@@ -1,8 +1,8 @@
-<?php namespace Golfwny\Quote\Facades;
+<?php namespace Quote\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class FlashFacade extends Facade {
+class FlashNotifierFacade extends Facade {
 
 	/**
 	 * Get the registered name of the component.

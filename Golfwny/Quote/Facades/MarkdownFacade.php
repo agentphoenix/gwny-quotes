@@ -1,4 +1,4 @@
-<?php namespace Golfwny\Quote\Facades;
+<?php namespace Quote\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
