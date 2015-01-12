@@ -10,6 +10,29 @@
 	<h2>Cost</h2>
 
 	<div class="row">
+		<div class="col-sm-4">
+			<div class="ui statistic">
+				<div class="value" id="displayPrice">{{ $quote->present()->price }}</div>
+				<div class="label">Total Cost</div>
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<div class="ui statistic">
+				<div class="value" id="displayDeposit">{{ $quote->present()->deposit }}</div>
+				<div class="label">Deposit</div>
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<div class="ui statistic">
+				<div class="value" id="displayPricePerPerson">{{ $quote->present()->pricePerPerson }}</div>
+				<div class="label">Cost per Person</div>
+			</div>
+		</div>
+	</div>
+
+	<hr>
+
+	<div class="row">
 		<div class="col-xs-6 col-md-3">
 			<div class="form-group">
 				<label class="control-label">Package Percentage</label>
@@ -21,20 +44,13 @@
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-		<div class="col-xs-6 col-md-4">
-			<div class="form-group">
-				<label class="control-label transparent">Deposit</label>
+
 				<div class="ui toggle checkbox">
 					{{ Form::checkbox('paid_total', null, $quote->paid_total, ['class' => 'js-toggleField', 'data-id' => $quote->id, 'data-table' => 'quotes', 'data-field' => 'paid_total']) }}
 					<label>Package Paid</label>
 				</div>
 			</div>
 		</div>
-	</div>
-
-	<div class="row">
 		<div class="col-xs-6 col-md-3">
 			<div class="form-group">
 				<label class="control-label">Deposit Percentage</label>
@@ -46,11 +62,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-		<div class="col-xs-6 col-md-4">
-			<div class="form-group">
-				<label class="control-label transparent">Deposit</label>
+
 				<div class="ui toggle checkbox">
 					{{ Form::checkbox('paid_deposit', null, $quote->paid_deposit, ['class' => 'js-updateField', 'data-id' => $quote->id, 'data-table' => 'quotes', 'data-field' => 'paid_deposit']) }}
 					<label>Deposit Paid</label>
@@ -59,30 +71,7 @@
 		</div>
 	</div>
 
-	<div class="row">
-		<div class="col-xs-4">
-			<div class="form-group">
-				<label class="control-label">Total Cost</label>
-				<p class="lead"><strong id="displayPrice">{{ $quote->present()->price }}</strong></p>
-			</div>
-		</div>
-
-		<div class="col-xs-4">
-			<div class="form-group">
-				<label class="control-label">Deposit</label>
-				<p class="lead"><strong id="displayDeposit">{{ $quote->present()->deposit }}</strong></p>
-			</div>
-		</div>
-
-		<div class="col-xs-4">
-			<div class="form-group">
-				<label class="control-label">Cost/Person</label>
-				<p class="lead"><strong id="displayPricePerPerson">{{ $quote->present()->pricePerPerson }}</strong></p>
-			</div>
-		</div>
-	</div>
-
-	<hr>
+	<div class="ui divider"></div>
 
 	<ul class="nav nav-pills">
 		<li class="active"><a href="#submitter" data-toggle="pill">Submitter</a></li>
@@ -181,7 +170,7 @@
 							<label class="control-label">Number of People</label>
 							<div class="row">
 								<div class="col-md-4">
-									{{ Form::text('people', null, ['class' => 'form-control js-updateField', 'data-id' => $quote->id, 'data-table' => 'quotes', 'data-field' => 'people']) }}
+									{{ Form::text('people', null, ['class' => 'form-control js-updateField', 'data-id' => $quote->id, 'data-table' => 'quotes', 'data-field' => 'people', 'data-old' => $quote->people]) }}
 								</div>
 							</div>
 						</div>
@@ -253,7 +242,64 @@
 
 		<div id="golf" class="tab-pane">
 			{{ Form::model($quote, ['route' => ['admin.quote.update', $quote->id], 'method' => 'put']) }}
+				<?php $courses = $quote->getCourses();?>
 				<h2>Golf Details</h2>
+
+				@foreach ($courses as $item)
+					<div class="row">
+						<div class="col-md-4">
+							<div class="form-group">
+								<label class="control-label">Course</label>
+								{{ Form::select('golf[course]', $golfCourses, $item->course_id, ['class' => 'form-control js-updateField', 'data-id' => $item->id, 'data-table' => 'quotes_items', 'data-field' => 'course_id']) }}
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="form-group">
+								<label class="control-label">Rate</label>
+								<div class="input-group">
+									<span class="input-group-addon"><strong>$</strong></span>
+									{{ Form::text('golf[rate]', $item->rate, ['class' => 'form-control js-updateField', 'data-id' => $item->id, 'data-table' => 'quotes_items', 'data-field' => 'rate']) }}
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="form-group">
+								<label class="control-label">Replay Rate</label>
+								<div class="input-group">
+									<span class="input-group-addon"><strong>$</strong></span>
+									{{ Form::text('golf[replay]', $item->replay_rate, ['class' => 'form-control js-updateField', 'data-id' => $item->id, 'data-table' => 'quotes_items', 'data-field' => 'replay_rate']) }}
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="form-group">
+								<label class="control-label">No. of Players</label>
+								{{ Form::text('golf[people]', $item->people, ['class' => 'form-control js-updateField', 'data-id' => $item->id, 'data-table' => 'quotes_items', 'data-field' => 'people']) }}
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="form-group">
+								<label class="control-label">No. of Holes</label>
+								{{ Form::select('golf[holes]', [18 => '18 holes', 36 => '36 holes'], $item->holes, ['class' => 'form-control js-updateField', 'data-id' => $item->id, 'data-table' => 'quotes_items', 'data-field' => 'holes']) }}
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4">
+							<div class="form-group">
+								<label class="control-label">Confirmation Number</label>
+								{{ Form::text('golf[confirmation]', $item->confirmation, ['class' => 'form-control js-updateField', 'data-id' => $item->id, 'data-table' => 'quotes_items', 'data-field' => 'confirmation']) }}
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="form-group">
+								<label class="control-label">Tee Time</label>
+								{{ Form::text('golf[time]', $item->time, ['class' => 'form-control js-updateField', 'data-id' => $item->id, 'data-table' => 'quotes_items', 'data-field' => 'time']) }}
+							</div>
+						</div>
+					</div>
+					<div class="ui divider"></div>
+				@endforeach
 			{{ Form::close() }}
 		</div>
 	</div>
@@ -324,6 +370,20 @@
 				{
 					$('[name="hotel[rate]"]').val(data.rate).trigger('change');
 				}
+			});
+		});
+
+		$('[name="people"]').on('change', function(e)
+		{
+			var oldValue = $(this).data('old');
+			var newValue = $(this).val();
+
+			if ($('[name="hotel[people]"]').val() == oldValue)
+				$('[name="hotel[people]"]').val(newValue).trigger('change');
+
+			$('[name="golf[people]"]').each(function()
+			{
+				$(this).val(newValue).trigger('change');
 			});
 		});
 
