@@ -1,0 +1,65 @@
+@extends('layouts.admin')
+
+@section('title')
+	Add New Course
+@stop
+
+@section('content')
+	<h1>Add New Course</h1>
+
+	<div class="btn-toolbar">
+		<div class="btn-group">
+			<a href="{{ route('admin.courses.index') }}" class="btn btn-default">Back</a>
+		</div>
+	</div>
+
+	{{ Form::open(['route' => 'admin.courses.store']) }}
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-group">
+					<label class="control-label">Name</label>
+					{{ Form::text('name', null, ['class' => 'form-control']) }}
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-group">
+					<label class="control-label">Region</label>
+					{{ Form::select('region_id', $regions, null, ['class' => 'form-control']) }}
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-2">
+				<div class="form-group">
+					<label class="control-label">Rate</label>
+					<div class="input-group">
+						<span class="input-group-addon"><strong>$</strong></span>
+						{{ Form::text('rate', null, ['class' => 'form-control']) }}
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-2">
+				<div class="form-group">
+					<label class="control-label">Replay Rate</label>
+					<div class="input-group">
+						<span class="input-group-addon"><strong>$</strong></span>
+						{{ Form::text('replay_rate', null, ['class' => 'form-control']) }}
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="btn-toolbar">
+			<div class="btn-group">
+				{{ Form::button('Create', ['type' => 'submit', 'class' => 'btn btn-lg btn-primary']) }}
+			</div>
+		</div>
+	{{ Form::close() }}
+@stop
