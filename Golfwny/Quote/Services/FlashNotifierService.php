@@ -1,4 +1,4 @@
-<?php namespace Golfwny\Quote\Services;
+<?php namespace Quote\Services;
 
 use Illuminate\Session\Store as SessionStore;
 

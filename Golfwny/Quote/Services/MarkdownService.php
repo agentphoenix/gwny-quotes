@@ -1,4 +1,4 @@
-<?php namespace Golfwny\Quote\Services;
+<?php namespace Quote\Services;
 
 use League\CommonMark\CommonMarkConverter as Parser;
 
