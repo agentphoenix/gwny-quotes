@@ -24,9 +24,9 @@
 <a href="{{ route('admin.quote.index') }}" class="item">All Quotes</a>
 
 <div class="header item"><i class="align left icon"></i>Content</div>
-<a class="item">Regions</a>
-<a class="item">Courses</a>
-<a class="item">Hotels</a>
+<a href="{{ route('admin.regions.index') }}" class="item">Regions</a>
+<a href="{{ route('admin.courses.index') }}" class="item">Courses</a>
+<a href="{{ route('admin.hotels.index') }}" class="item">Hotels</a>
 <a class="item">Users</a>
 
 <div class="header item">
