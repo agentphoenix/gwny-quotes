@@ -1,10 +1,11 @@
-<?php namespace Quote\Controllers;
+<?php namespace Quote\Controllers\Admin;
 
 use View,
 	Input,
 	Redirect,
 	HotelRepositoryInterface,
 	QuoteRepositoryInterface,
+	CourseRepositoryInterface,
 	QuoteItemRepositoryInterface;
 use Quote\Services\QuoteCalculatorService;
 
@@ -13,16 +14,19 @@ class QuoteController extends BaseController {
 	protected $items;
 	protected $hotels;
 	protected $quotes;
+	protected $courses;
 
 	public function __construct(QuoteRepositoryInterface $quotes,
 			QuoteItemRepositoryInterface $items,
-			HotelRepositoryInterface $hotels)
+			HotelRepositoryInterface $hotels,
+			CourseRepositoryInterface $courses)
 	{
 		parent::__construct();
 
 		$this->items = $items;
 		$this->hotels = $hotels;
 		$this->quotes = $quotes;
+		$this->courses = $courses;
 	}
 
 	public function index()
@@ -38,7 +42,8 @@ class QuoteController extends BaseController {
 
 		return View::make('pages.admin.quotes.edit')
 			->withQuote($quote)
-			->withHotels($quote->region->hotels->lists('name', 'id'));
+			->withHotels($quote->region->hotels->lists('name', 'id'))
+			->with('golfCourses', $quote->region->courses->lists('name', 'id'));
 	}
 
 	/**
