@@ -76,7 +76,7 @@ class QuoteRoutingServiceProvider extends ServiceProvider {
 	protected function adminRoutes()
 	{
 		$groupOptions = [
-			//'before'	=> 'auth',
+			'before'	=> 'auth',
 			'prefix'	=> 'admin',
 			'namespace' => 'Quote\Controllers\Admin'
 		];
