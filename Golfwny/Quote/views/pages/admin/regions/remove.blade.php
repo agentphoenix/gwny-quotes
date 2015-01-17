@@ -4,7 +4,7 @@
 	<div class="row">
 		<div class="col-md-6">
 			<div class="form-group">
-				{{ Form::button('Delete', ['type' => 'submit', 'class' => 'btn btn-lg btn-danger']) }}
+				{{ Form::button('Remove', ['type' => 'submit', 'class' => 'btn btn-lg btn-danger']) }}
 			</div>
 		</div>
 	</div>
