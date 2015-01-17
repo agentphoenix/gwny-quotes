@@ -30,6 +30,7 @@ if ( ! function_exists('modal'))
 		return View::make('partials.modal')
 			->with('modalId', (array_key_exists('id', $data)) ? $data['id'] : false)
 			->with('modalHeader', (array_key_exists('header', $data)) ? $data['header'] : false)
+			->with('modalIcon', (array_key_exists('icon', $data)) ? $data['icon'] : false)
 			->with('modalBody', (array_key_exists('body', $data)) ? $data['body'] : false)
 			->with('modalFooter', (array_key_exists('footer', $data)) ? $data['footer'] : false);
 	}

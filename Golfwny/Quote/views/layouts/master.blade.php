@@ -58,17 +58,17 @@
 
 			<div class="visible-xs">
 				<ul class="nav nav-list">
-					
+
 				</ul>
 			</div>
-			
+
 			<div class="row">
 				<div class="col-xs-12">
 					<section>
 						@if (Session::has('flash.message'))
 							@include('partials.flash')
 						@endif
-						
+
 						@yield('content')
 					</section>
 				</div>
@@ -78,6 +78,8 @@
 				<div class="pull-right">Check out <a href="/">other GolfWNY cities</a>!</div>
 				&copy; {{ date('Y') }} Golf Western NY<br>Follow <a href="http://twitter.com/GolfWesternNY" target="_blank">@GolfWesternNY</a>
 			</footer>
+
+			@yield('modals')
 
 			@if (App::environment() == 'production')
 				<!--[if lt IE 9]>
