@@ -17,7 +17,7 @@ class RegionController extends BaseController {
 	public function __construct(RegionRepositoryInterface $regions, Validator $validator)
 	{
 		parent::__construct();
-		
+
 		$this->regions = $regions;
 		$this->validator = $validator;
 	}
@@ -75,14 +75,8 @@ class RegionController extends BaseController {
 
 	public function remove($id)
 	{
-		// Get the region
-		$region = $this->regions->getById($id);
-
-		return partial('modal_content', [
-			'modalHeader'	=> "Remove Region",
-			'modalBody'		=> View::make('pages.admin.regions.remove')->withRegion($region),
-			'modalFooter'	=> false,
-		]);
+		return View::make('pages.admin.regions.remove')
+			->withRegion($this->regions->getById($id));
 	}
 
 	public function destroy($id)

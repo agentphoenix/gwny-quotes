@@ -20,7 +20,7 @@ class CourseController extends BaseController {
 			RegionRepositoryInterface $regions, Validator $validator)
 	{
 		parent::__construct();
-		
+
 		$this->courses = $courses;
 		$this->regions = $regions;
 		$this->validator = $validator;
@@ -81,14 +81,8 @@ class CourseController extends BaseController {
 
 	public function remove($id)
 	{
-		// Get the course
-		$course = $this->courses->getById($id);
-
-		return partial('modal_content', [
-			'modalHeader'	=> "Remove Course",
-			'modalBody'		=> View::make('pages.admin.courses.remove')->withCourse($course),
-			'modalFooter'	=> false,
-		]);
+		return View::make('pages.admin.courses.remove')
+			->withCourse($this->courses->getById($id));
 	}
 
 	public function destroy($id)

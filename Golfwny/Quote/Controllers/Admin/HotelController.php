@@ -16,11 +16,11 @@ class HotelController extends BaseController {
 	protected $regions;
 	protected $validator;
 
-	public function __construct(HotelRepositoryInterface $hotels, 
+	public function __construct(HotelRepositoryInterface $hotels,
 			RegionRepositoryInterface $regions, Validator $validator)
 	{
 		parent::__construct();
-		
+
 		$this->hotels = $hotels;
 		$this->regions = $regions;
 		$this->validator = $validator;
@@ -81,14 +81,8 @@ class HotelController extends BaseController {
 
 	public function remove($id)
 	{
-		// Get the hotel
-		$hotel = $this->hotels->getById($id);
-
-		return partial('modal_content', [
-			'modalHeader'	=> "Remove Hotel",
-			'modalBody'		=> View::make('pages.admin.hotels.remove')->withHotel($hotel),
-			'modalFooter'	=> false,
-		]);
+		return View::make('pages.admin.hotels.remove')
+			->withHotel($this->hotels->getById($id));
 	}
 
 	public function destroy($id)
