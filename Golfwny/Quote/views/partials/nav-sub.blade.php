@@ -27,7 +27,7 @@
 <a href="{{ route('admin.regions.index') }}" class="item">Regions</a>
 <a href="{{ route('admin.courses.index') }}" class="item">Courses</a>
 <a href="{{ route('admin.hotels.index') }}" class="item">Hotels</a>
-<a class="item">Users</a>
+<a href="{{ route('admin.users.index') }}" class="item">Users</a>
 
 <div class="header item">
 	<i class="bar chart icon"></i>

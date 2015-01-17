@@ -218,6 +218,7 @@ return array(
 		'QuoteRepositoryInterface'		=> 'Quote\Data\Interfaces\QuoteRepositoryInterface',
 		'QuoteItemRepositoryInterface'	=> 'Quote\Data\Interfaces\QuoteItemRepositoryInterface',
 		'RegionRepositoryInterface'		=> 'Quote\Data\Interfaces\RegionRepositoryInterface',
+		'UserRepositoryInterface'		=> 'Quote\Data\Interfaces\UserRepositoryInterface',
 
 		/**
 		 * Repositories
@@ -227,6 +228,7 @@ return array(
 		'QuoteRepository'		=> 'Quote\Data\Repositories\QuoteRepository',
 		'QuoteItemRepository'	=> 'Quote\Data\Repositories\QuoteItemRepository',
 		'RegionRepository'		=> 'Quote\Data\Repositories\RegionRepository',
+		'UserRepository'		=> 'Quote\Data\Repositories\UserRepository',
 
 		/**
 		 * Validators
@@ -234,6 +236,7 @@ return array(
 		'CourseValidator'		=> 'Quote\Data\Validators\CourseValidator',
 		'HotelValidator'		=> 'Quote\Data\Validators\HotelValidator',
 		'RegionValidator'		=> 'Quote\Data\Validators\RegionValidator',
+		'UserValidator'			=> 'Quote\Data\Validators\UserValidator',
 
 	),
 

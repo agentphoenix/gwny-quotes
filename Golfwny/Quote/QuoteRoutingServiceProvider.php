@@ -103,10 +103,15 @@ class QuoteRoutingServiceProvider extends ServiceProvider {
 				'as'	=> 'admin.courses.remove',
 				'uses'	=> 'CourseController@remove']);
 
+			Route::get('users/{id}/remove', [
+				'as'	=> 'admin.users.remove',
+				'uses'	=> 'UserController@remove']);
+
 			Route::resource('quote', 'QuoteController');
 			Route::resource('regions', 'RegionController');
 			Route::resource('hotels', 'HotelController');
 			Route::resource('courses', 'CourseController');
+			Route::resource('users', 'UserController');
 		});
 	}
 
