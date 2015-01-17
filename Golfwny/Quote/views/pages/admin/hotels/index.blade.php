@@ -26,11 +26,36 @@
 						<a href="{{ route('admin.hotels.edit', [$hotel->id]) }}" class="btn btn-default">Edit</a>
 					</div>
 					<div class="btn-group">
-						<a href="#" class="btn btn-danger">Delete</a>
+						<a href="#" class="btn btn-danger js-hotel-action" data-action="remove" data-hotel="{{ $hotel->id }}">Remove</a>
 					</div>
 				</div>
 			</div>
 		</div>
 	@endforeach
 	</div>
+@stop
+
+@section('modals')
+	{{ modal(['id' => 'removeHotel', 'header' => 'Remove Hotel']) }}
+@stop
+
+@section('scripts')
+	<script>
+		$('.js-hotel-action').on('click', function(e)
+		{
+			e.preventDefault();
+
+			if ($(this).data('action') == "remove")
+			{
+				$.ajax({
+					url: "{{ URL::to('admin/hotels/') }}/" + $(this).data('hotel') + "/remove",
+					success: function(data)
+					{
+						$('#removeHotel .content .description').html(data);
+						$('#removeHotel').modal('show');
+					}
+				});
+			}
+		});
+	</script>
 @stop
