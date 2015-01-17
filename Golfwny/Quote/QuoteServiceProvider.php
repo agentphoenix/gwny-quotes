@@ -16,14 +16,16 @@ class QuoteServiceProvider extends ServiceProvider {
 
 	public function register()
 	{
-		$this->setupMarkdown();
-		$this->setupBrowser();
-		$this->setupMacros();
-		$this->setupFlashNotifier();
+		//
 	}
 
 	public function boot()
 	{
+		$this->setupMarkdown();
+		$this->setupBrowser();
+		$this->setupMacros();
+		$this->setupFlashNotifier();
+
 		$this->browserCheck();
 		$this->setupBindings();
 		$this->setupEventListeners();
@@ -56,6 +58,7 @@ class QuoteServiceProvider extends ServiceProvider {
 		App::bind($a['QuoteRepositoryInterface'], $a['QuoteRepository']);
 		App::bind($a['QuoteItemRepositoryInterface'], $a['QuoteItemRepository']);
 		App::bind($a['RegionRepositoryInterface'], $a['RegionRepository']);
+		App::bind($a['UserRepositoryInterface'], $a['UserRepository']);
 
 		$quoteRepo = App::make('QuoteRepository');
 
@@ -84,6 +87,10 @@ class QuoteServiceProvider extends ServiceProvider {
 		Event::listen('course.created', 'Quote\Events\CourseEventHandler@onCreate');
 		Event::listen('course.deleted', 'Quote\Events\CourseEventHandler@onDelete');
 		Event::listen('course.updated', 'Quote\Events\CourseEventHandler@onUpdate');
+
+		Event::listen('user.created', 'Quote\Events\UserEventHandler@onCreate');
+		Event::listen('user.deleted', 'Quote\Events\UserEventHandler@onDelete');
+		Event::listen('user.updated', 'Quote\Events\UserEventHandler@onUpdate');
 	}
 
 	protected function browserCheck()
@@ -99,7 +106,7 @@ class QuoteServiceProvider extends ServiceProvider {
 				Browser::BROWSER_FIREFOX	=> 20,
 			);
 
-			if (array_key_exists($browser->getBrowser(), $supported) 
+			if (array_key_exists($browser->getBrowser(), $supported)
 					and $browser->getVersion() < $supported[$browser->getBrowser()])
 			{
 				header("Location: browser.php");
