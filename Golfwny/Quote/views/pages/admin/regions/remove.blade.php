@@ -1,4 +1,4 @@
-<p>Are you sure you want to delete the region <strong>{{ $region->present()->name }}</strong>?</p>
+<p>Are you sure you want to delete the region <strong>{{ $region->present()->name }}</strong>? This will remove the region and all courses and hotels for the region. Are you sure you want to continue?</p>
 
 {{ Form::open(['route' => ['admin.regions.destroy', $region->id], 'method' => 'delete']) }}
 	<div class="row">
