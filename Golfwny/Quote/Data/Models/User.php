@@ -2,21 +2,24 @@
 
 use Hash, Eloquent;
 use Laracasts\Presenter\PresentableTrait;
-use Illuminate\Auth\Reminders\RemindableTrait;
-use Illuminate\Auth\Reminders\RemindableInterface;
+use Illuminate\Auth\UserTrait,
+	Illuminate\Auth\UserInterface,
+	Illuminate\Auth\Reminders\RemindableTrait,
+	Illuminate\Auth\Reminders\RemindableInterface;
 use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
-class User extends Eloquent implements RemindableInterface {
+class User extends Eloquent implements UserInterface, RemindableInterface {
 
+	use UserTrait;
 	use RemindableTrait;
 	use PresentableTrait;
 	use SoftDeletingTrait;
 
 	protected $table = 'users';
 
-	protected $fillable = ['name', 'email', 'password'];
+	protected $fillable = ['name', 'email', 'password', 'remember_token'];
 
-	protected $hidden = ['password'];
+	protected $hidden = ['password', 'remember_token'];
 
 	protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
