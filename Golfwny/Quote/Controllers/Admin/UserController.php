@@ -30,7 +30,7 @@ class UserController extends BaseController {
 
     public function create()
     {
-        return View::make('pages.admin.regions.create');
+        return View::make('pages.admin.users.create');
     }
 
     public function store()
@@ -38,22 +38,22 @@ class UserController extends BaseController {
         // Validate
         $this->validator->validate(Input::all());
 
-        // Create the region
-        $region = $this->regions->create(Input::all());
+        // Create the user
+        $user = $this->users->create(Input::all());
 
         // Fire the event
-        Event::fire('region.created', [$region]);
+        Event::fire('user.created', [$user]);
 
         // Set the flash message
-        Flash::success('Region was successfully created.');
+        Flash::success('User was successfully created.');
 
-        return Redirect::route('admin.regions.index');
+        return Redirect::route('admin.users.index');
     }
 
     public function edit($id)
     {
-        return View::make('pages.admin.regions.edit')
-        ->withRegion($this->regions->getById($id));
+        return View::make('pages.admin.users.edit')
+            ->withUser($this->users->getById($id));
     }
 
     public function update($id)
@@ -61,36 +61,36 @@ class UserController extends BaseController {
         // Validate
         $this->validator->validate(Input::all());
 
-        // Update the region
-        $region = $this->regions->update($id, Input::all());
+        // Update the user
+        $user = $this->users->update($id, Input::all());
 
         // Fire the event
-        Event::fire('region.updated', [$region]);
+        Event::fire('user.updated', [$user]);
 
         // Set the flash message
-        Flash::success('Region was successfully updated.');
+        Flash::success('User was successfully updated.');
 
-        return Redirect::route('admin.regions.index');
+        return Redirect::route('admin.users.index');
     }
 
     public function remove($id)
     {
-        return View::make('pages.admin.regions.remove')
-        ->withRegion($this->regions->getById($id));
+        return View::make('pages.admin.users.remove')
+            ->withUser($this->users->getById($id));
     }
 
     public function destroy($id)
     {
-        // Delete the region
-        $region = $this->regions->delete($id);
+        // Delete the user
+        $user = $this->users->delete($id);
 
         // Fire the event
-        Event::fire('region.deleted', [$region]);
+        Event::fire('user.deleted', [$user]);
 
         // Set the flash message
-        Flash::success('Region was successfully removed.');
+        Flash::success('User was successfully removed.');
 
-        return Redirect::route('admin.regions.index');
+        return Redirect::route('admin.users.index');
     }
 
 }
