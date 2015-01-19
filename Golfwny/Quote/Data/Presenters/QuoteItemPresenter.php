@@ -42,14 +42,20 @@ class QuoteItemPresenter extends Presenter {
 		return $this->entity->confirmation;
 	}
 
-	public function arrival()
+	public function arrival($full = true)
 	{
-		return $this->entity->arrival->format('D M jS, Y');
+		if ($full)
+			return $this->entity->arrival->format('D M jS, Y');
+
+		return $this->entity->arrival->format('m/d/Y');
 	}
 
-	public function departure()
+	public function departure($full = true)
 	{
-		return $this->entity->departure->format('D M jS, Y');
+		if ($full)
+			return $this->entity->departure->format('D M jS, Y');
+
+		return $this->entity->departure->format('m/d/Y');
 	}
 
 	public function time()
