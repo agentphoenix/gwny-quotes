@@ -37,7 +37,7 @@ class QuoteCalculatorService {
 	protected function calculateHotel()
 	{
 		// Get the hotel we're using
-		$hotel = $this->quote->getHotel();
+		$hotel = $this->quote->getHotel()->hotel;
 
 		// How many rooms do we need?
 		$rooms = ceil($this->quote->people / 2);
@@ -50,6 +50,9 @@ class QuoteCalculatorService {
 
 		// Re-calculate the total
 		$total *= $nights;
+
+		// Finally, calculate the total with tax
+		$total *= (1 + $hotel->tax_rate);
 
 		return (float) $total;
 	}
