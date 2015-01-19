@@ -7,6 +7,7 @@ use View,
 	QuoteRepositoryInterface,
 	CourseRepositoryInterface,
 	QuoteItemRepositoryInterface;
+use Quote\Controllers\BaseController;
 use Quote\Services\QuoteCalculatorService;
 
 class QuoteController extends BaseController {
