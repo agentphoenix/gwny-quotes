@@ -38,6 +38,7 @@ class CreateItems extends Migration {
 			$table->integer('region_id')->unsigned();
 			$table->string('name');
 			$table->float('rate');
+			$table->float('tax_rate', 8, 4);
 			$table->boolean('default')->default((int) false);
 			$table->timestamps();
 			$table->softDeletes();
