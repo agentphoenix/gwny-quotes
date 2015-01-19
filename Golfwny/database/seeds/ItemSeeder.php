@@ -13,11 +13,11 @@ class ItemSeeder extends Seeder {
 
 		// Courses
 		$courses = [
-			['region_id' => 1, 'name' => "Ravenwood Golf Club", 'rate' => 75.00],
+			['region_id' => 1, 'name' => "Ravenwood Golf Club", 'rate' => 65.00],
 			['region_id' => 1, 'name' => "Mill Creek Golf Club", 'rate' => 49.00],
 			['region_id' => 1, 'name' => "Greystone Golf Club", 'rate' => 60.00],
-			['region_id' => 1, 'name' => "Blue Heron Hills Golf Club", 'rate' => 39.00],
-			['region_id' => 1, 'name' => "FarView Golf Club", 'rate' => 29.00],
+			['region_id' => 1, 'name' => "Wildwood Golf Club", 'rate' => 45.00],
+			['region_id' => 1, 'name' => "FarView Golf Club", 'rate' => 30.00],
 
 			['region_id' => 2, 'name' => "Harvest Hill Golf Club", 'rate' => 75.00],
 			['region_id' => 2, 'name' => "The Links at Ivy Ridge", 'rate' => 49.00],
@@ -29,13 +29,13 @@ class ItemSeeder extends Seeder {
 
 		// Hotels
 		$hotels = [
-			['region_id' => 1, 'name' => "Holiday Inn Hotel &amp; Suites", 'rate' => 129.00],
-			['region_id' => 1, 'name' => "Best Western Plus Victor Inn &amp; Suites", 'rate' => 85.00, 'default' => 1],
+			['region_id' => 1, 'name' => "Holiday Inn Hotel &amp; Suites", 'rate' => 119.00, 'tax_rate' => 14.00],
+			['region_id' => 1, 'name' => "Best Western Plus Victor Inn &amp; Suites", 'rate' => 84.99, 'tax_rate' => 11.00, 'default' => 1],
 
-			['region_id' => 2, 'name' => "Salvatore's Garden Palace Hotel", 'rate' => 129.00],
-			['region_id' => 2, 'name' => "Comfort Suites Downtown", 'rate' => 85.00, 'default' => 1],
+			['region_id' => 2, 'name' => "Salvatore's Garden Palace Hotel", 'rate' => 129.00, 'tax_rate' => 0.00],
+			['region_id' => 2, 'name' => "Comfort Suites Downtown", 'rate' => 85.00, 'tax_rate' => 0.00, 'default' => 1],
 
-			['region_id' => 3, 'name' => "Silver Lake Resort", 'rate' => 99.00, 'default' => 1],
+			['region_id' => 3, 'name' => "Silver Lake Resort", 'rate' => 99.00, 'tax_rate' => 0.00, 'default' => 1],
 		];
 
 		foreach ($regions as $region)
