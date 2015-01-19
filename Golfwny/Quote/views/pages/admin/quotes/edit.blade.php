@@ -35,24 +35,6 @@
 	<div class="row">
 		<div class="col-xs-6 col-md-3">
 			<div class="form-group">
-				<label class="control-label">Package Percentage</label>
-				<div class="row">
-					<div class="col-md-7">
-						<div class="input-group">
-							{{ Form::text('packagePercent', $quote->present()->percentPackage, ['class' => 'form-control js-updateField', 'data-id' => $quote->id, 'data-table' => 'quotes', 'data-field' => 'percent_package']) }}
-							<span class="input-group-addon"><strong>%</strong></span>
-						</div>
-					</div>
-				</div>
-
-				<div class="ui toggle checkbox">
-					{{ Form::checkbox('paid_total', null, $quote->paid_total, ['class' => 'js-toggleField', 'data-id' => $quote->id, 'data-table' => 'quotes', 'data-field' => 'paid_total']) }}
-					<label>Package Paid</label>
-				</div>
-			</div>
-		</div>
-		<div class="col-xs-6 col-md-3">
-			<div class="form-group">
 				<label class="control-label">Deposit Percentage</label>
 				<div class="row">
 					<div class="col-md-7">
@@ -66,6 +48,24 @@
 				<div class="ui toggle checkbox">
 					{{ Form::checkbox('paid_deposit', null, $quote->paid_deposit, ['class' => 'js-updateField', 'data-id' => $quote->id, 'data-table' => 'quotes', 'data-field' => 'paid_deposit']) }}
 					<label>Deposit Paid</label>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-6 col-md-3">
+			<div class="form-group">
+				<label class="control-label">Package Percentage</label>
+				<div class="row">
+					<div class="col-md-7">
+						<div class="input-group">
+							{{ Form::text('packagePercent', $quote->present()->percentPackage, ['class' => 'form-control js-updateField', 'data-id' => $quote->id, 'data-table' => 'quotes', 'data-field' => 'percent_package']) }}
+							<span class="input-group-addon"><strong>%</strong></span>
+						</div>
+					</div>
+				</div>
+
+				<div class="ui toggle checkbox">
+					{{ Form::checkbox('paid_total', null, $quote->paid_total, ['class' => 'js-toggleField', 'data-id' => $quote->id, 'data-table' => 'quotes', 'data-field' => 'paid_total']) }}
+					<label>Package Paid</label>
 				</div>
 			</div>
 		</div>
@@ -212,28 +212,25 @@
 					<div class="col-md-3">
 						<div class="form-group">
 							<label class="control-label">Arrival</label>
-							{{ Form::text('hotel[arrival]', $hotel->arrival, ['class' => 'form-control js-updateField', 'data-id' => $hotel->id, 'data-table' => 'quotes_items', 'data-field' => 'arrival']) }}
+							{{ Form::text('hotel[arrival]', $hotel->present()->arrival(false), ['class' => 'form-control js-datepicker', 'data-id' => $hotel->id, 'data-table' => 'quotes_items', 'data-field' => 'arrival', 'data-value' => $hotel->present()->arrival(false)]) }}
 						</div>
 					</div>
 					<div class="col-md-3">
 						<div class="form-group">
 							<label class="control-label">Departure</label>
-							{{ Form::text('hotel[departure]', $hotel->departure, ['class' => 'form-control js-updateField', 'data-id' => $hotel->id, 'data-table' => 'quotes_items', 'data-field' => 'departure']) }}
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-md-3">
-						<div class="form-group">
-							<label class="control-label">Confirmation Number</label>
-							{{ Form::text('hotel[confirmation]', $hotel->confirmation, ['class' => 'form-control js-updateField', 'data-id' => $hotel->id, 'data-table' => 'quotes_items', 'data-field' => 'confirmation']) }}
+							{{ Form::text('hotel[departure]', $hotel->present()->departure(false), ['class' => 'form-control js-datepicker', 'data-id' => $hotel->id, 'data-table' => 'quotes_items', 'data-field' => 'departure', 'data-value' => $hotel->present()->departure(false)]) }}
 						</div>
 					</div>
 					<div class="col-md-3">
 						<div class="form-group">
 							<label class="control-label">Check-In Time</label>
 							{{ Form::text('hotel[time]', $hotel->time, ['class' => 'form-control js-updateField', 'data-id' => $hotel->id, 'data-table' => 'quotes_items', 'data-field' => 'time']) }}
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="form-group">
+							<label class="control-label">Confirmation Number</label>
+							{{ Form::text('hotel[confirmation]', $hotel->confirmation, ['class' => 'form-control js-updateField', 'data-id' => $hotel->id, 'data-table' => 'quotes_items', 'data-field' => 'confirmation']) }}
 						</div>
 					</div>
 				</div>
@@ -385,6 +382,16 @@
 			{
 				$(this).val(newValue).trigger('change');
 			});
+		});
+
+		$('[name="arrival"]').on('change', function(e)
+		{
+			$('[name="hotel[arrival]"]').val($(this).val()).trigger('change');
+		});
+
+		$('[name="departure"]').on('change', function(e)
+		{
+			$('[name="hotel[departure]"]').val($(this).val()).trigger('change');
 		});
 
 		function updateField(object, quote)
