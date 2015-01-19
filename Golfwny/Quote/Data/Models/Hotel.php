@@ -11,7 +11,7 @@ class Hotel extends Eloquent {
 
 	protected $table = 'hotels';
 
-	protected $fillable = ['region_id', 'name', 'rate', 'default'];
+	protected $fillable = ['region_id', 'name', 'rate', 'tax_rate', 'default'];
 
 	protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
@@ -31,6 +31,19 @@ class Hotel extends Eloquent {
 	public function items()
 	{
 		return $this->hasMany('QuoteItem');
+	}
+
+	/*
+	|---------------------------------------------------------------------------
+	| Model Accessors/Mutators
+	|---------------------------------------------------------------------------
+	*/
+
+	public function setTaxRateAttribute($value)
+	{
+		$this->attributes['tax_rate'] = ( ! empty($value)) 
+			? $value * .01
+			: 0.00;
 	}
 
 }
