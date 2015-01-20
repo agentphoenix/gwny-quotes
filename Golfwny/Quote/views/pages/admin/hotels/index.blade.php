@@ -17,7 +17,10 @@
 	@foreach ($hotels as $hotel)
 		<div class="row">
 			<div class="col-md-9">
-				<p class="lead">{{ $hotel->present()->name }}</p>
+				<p class="lead">
+					{{ $hotel->present()->name }}
+					{{ $hotel->present()->defaultMarker }}
+				</p>
 				<p class="text-muted">{{ $hotel->present()->region }}</p>
 			</div>
 			<div class="col-md-3">
