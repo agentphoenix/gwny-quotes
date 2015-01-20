@@ -8,7 +8,6 @@ class ItemSeeder extends Seeder {
 		$regions = [
 			['name' => 'Rochester', 'slug' => ''],
 			['name' => 'Buffalo', 'slug' => ''],
-			['name' => 'Silver Lake Resort', 'slug' => ''],
 		];
 
 		// Courses
@@ -23,8 +22,6 @@ class ItemSeeder extends Seeder {
 			['region_id' => 2, 'name' => "The Links at Ivy Ridge", 'rate' => 49.00],
 			['region_id' => 2, 'name' => "Diamond Hawk Golf Club", 'rate' => 60.00],
 			['region_id' => 2, 'name' => "Rothland Golf Club", 'rate' => 39.00],
-
-			['region_id' => 3, 'name' => "Silver Lake Golf Club", 'rate' => 99.00],
 		];
 
 		// Hotels
@@ -34,8 +31,6 @@ class ItemSeeder extends Seeder {
 
 			['region_id' => 2, 'name' => "Salvatore's Garden Palace Hotel", 'rate' => 129.00, 'tax_rate' => 0.00],
 			['region_id' => 2, 'name' => "Comfort Suites Downtown", 'rate' => 85.00, 'tax_rate' => 0.00, 'default' => 1],
-
-			['region_id' => 3, 'name' => "Silver Lake Resort", 'rate' => 99.00, 'tax_rate' => 0.00, 'default' => 1],
 		];
 
 		foreach ($regions as $region)
