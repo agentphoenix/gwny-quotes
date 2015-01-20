@@ -46,4 +46,20 @@ class Hotel extends Eloquent {
 			: 0.00;
 	}
 
+	/*
+	|---------------------------------------------------------------------------
+	| Model Scopes
+	|---------------------------------------------------------------------------
+	*/
+
+	public function scopeDefault($query)
+	{
+		$query->where('default', (int) true);
+	}
+
+	public function scopeByRegion($query, $region)
+	{
+		$query->where('region_id', $region);
+	}
+
 }

@@ -38,6 +38,11 @@ class HotelRepository extends BaseRepository implements HotelRepositoryInterface
 		return false;
 	}
 
+	public function getDefault($region)
+	{
+		return $this->model->byRegion($region)->default()->get();
+	}
+
 	public function update($id, array $data)
 	{
 		// Get the hotel
