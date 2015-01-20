@@ -4,7 +4,7 @@ return [
 
 	'percent' => [
 
-		'package'	=> 12,
+		'package'	=> 12.275,
 		'deposit'	=> 25,
 
 	],
