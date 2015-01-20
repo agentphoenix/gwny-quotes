@@ -48,7 +48,10 @@
 			<div class="col-md-4">
 				<div class="form-group">
 					<label class="control-label">Default Hotel for This Region?</label>
-					{{ Form::text('default', null, ['class' => 'form-control']) }}
+					<div>
+						<label class="radio-inline text-sm">{{ Form::radio('default', (int) true) }} Yes</label>
+						<label class="radio-inline text-sm">{{ Form::radio('default', (int) false) }} No</label>
+					</div>
 				</div>
 			</div>
 		</div>
