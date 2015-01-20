@@ -29,12 +29,11 @@
 <a href="{{ route('admin.hotels.index') }}" class="item">Hotels</a>
 <a href="{{ route('admin.users.index') }}" class="item">Users</a>
 
-<div class="header item">
-	<i class="bar chart icon"></i>
-	Reports
-</div>
+<div class="header item"><i class="bar chart icon"></i>Reports</div>
 <a class="item">Revenue</a>
 <a class="item">Course</a>
 <a class="item">Hotel</a>
 
 <a class="header item"><i class="announcement icon"></i>Survey Results</a>
+
+<a href="{{ route('logout') }}" class="header item"><i class="sign out icon"></i>Log Out</a>
