@@ -159,11 +159,14 @@ class HomeController extends BaseController {
 		$calculator = new QuoteCalculatorService($quote);
 
 		// Update the quote
-		$this->quotes->update($quote->id, [
+		$quote = $this->quotes->update($quote->id, [
 			'status'	=> Status::SUBMITTED,
 			'total'		=> $calculator->getTotal(),
 			'deposit'	=> $calculator->getDeposit(),
 		]);
+
+		// Fire the event
+		Event::fire('quote.created', [$quote]);
 
 		return Redirect::route('thank-you');
 	}
