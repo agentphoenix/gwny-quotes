@@ -25,7 +25,11 @@ class QuoteItemRepository extends BaseRepository implements QuoteItemRepositoryI
 
 		if ($item)
 		{
-			return $item->fill($data)->save();
+			$updatedItem = $item->fill($data);
+
+			$updatedItem->save();
+
+			return $updatedItem;
 		}
 
 		return false;
