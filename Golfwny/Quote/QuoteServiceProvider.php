@@ -91,6 +91,12 @@ class QuoteServiceProvider extends ServiceProvider {
 		Event::listen('user.created', 'Quote\Events\UserEventHandler@onCreate');
 		Event::listen('user.deleted', 'Quote\Events\UserEventHandler@onDelete');
 		Event::listen('user.updated', 'Quote\Events\UserEventHandler@onUpdate');
+
+		Event::listen('quote.created', 'Quote\Events\QuoteEventHandler@onCreate');
+		Event::listen('quote.deleted', 'Quote\Events\QuoteEventHandler@onDelete');
+		Event::listen('quote.updated', 'Quote\Events\QuoteEventHandler@onUpdate');
+		Event::listen('quote.calculated', 'Quote\Events\QuoteEventHandler@onCalculate');
+		Event::listen('quote.status', 'Quote\Events\QuoteEventHandler@onStatusChange');
 	}
 
 	protected function browserCheck()

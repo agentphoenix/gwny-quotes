@@ -81,15 +81,29 @@ class QuoteRoutingServiceProvider extends ServiceProvider {
 			'namespace' => 'Quote\Controllers\Admin'
 		];
 
+		Route::post('admin/quotes/change-status', [
+			'as'	=> 'admin.quotes.changeStatus',
+			'uses'	=> 'Quote\Controllers\Admin\QuoteController@changeStatus']);
+
 		Route::group($groupOptions, function()
 		{
 			Route::get('/', [
 				'as'	=> 'admin',
 				'uses'	=> 'AdminController@index']);
 
-			Route::get('quote/get/hotel/{id}', 'QuoteController@getHotel');
-			Route::get('quote/get/course/{id}', 'QuoteController@getCourse');
-			Route::get('quote/recalculate/{id}', 'QuoteController@recalculatePrice');
+			Route::get('quotes/get/hotel/{id}', 'QuoteController@getHotel');
+			Route::get('quotes/get/course/{id}', 'QuoteController@getCourse');
+			Route::get('quotes/recalculate/{id}', 'QuoteController@recalculatePrice');
+			
+			Route::get('quotes/accepted', [
+				'as'	=> 'admin.quotes.accepted',
+				'uses'	=> 'QuoteController@accepted']);
+			Route::get('quotes/rejected', [
+				'as'	=> 'admin.quotes.rejected',
+				'uses'	=> 'QuoteController@rejected']);
+			Route::get('quotes/submitted', [
+				'as'	=> 'admin.quotes.submitted',
+				'uses'	=> 'QuoteController@submitted']);
 
 			Route::get('regions/{id}/remove', [
 				'as'	=> 'admin.regions.remove',
@@ -107,7 +121,7 @@ class QuoteRoutingServiceProvider extends ServiceProvider {
 				'as'	=> 'admin.users.remove',
 				'uses'	=> 'UserController@remove']);
 
-			Route::resource('quote', 'QuoteController');
+			Route::resource('quotes', 'QuoteController');
 			Route::resource('regions', 'RegionController');
 			Route::resource('hotels', 'HotelController');
 			Route::resource('courses', 'CourseController');
