@@ -1,6 +1,6 @@
 <?php namespace Quote\Data\Presenters;
 
-use Markdown;
+use Status, Markdown;
 use Laracasts\Presenter\Presenter;
 
 class QuotePresenter extends Presenter {
@@ -18,6 +18,30 @@ class QuotePresenter extends Presenter {
 	public function status()
 	{
 		return $this->entity->status;
+	}
+
+	public function statusAsLabel()
+	{
+		switch ($this->status())
+		{
+			case Status::SUBMITTED:
+				$class = 'blue';
+			break;
+
+			case Status::ESTIMATE:
+				$class = 'yellow';
+			break;
+
+			case Status::REJECTED:
+				$class = 'red';
+			break;
+
+			case Status::ACCEPTED:
+				$class = 'green';
+			break;
+		}
+
+		return label($class, Status::toString($this->status()));
 	}
 
 	public function name()
@@ -105,22 +129,22 @@ class QuotePresenter extends Presenter {
 
 	public function percentPackage()
 	{
-		return round($this->entity->percent_package, 4) * 100;
+		return round($this->entity->percent_package, 5) * 100;
 	}
 
 	public function percentPackageRaw()
 	{
-		return round($this->entity->percent_package, 4);
+		return round($this->entity->percent_package, 5);
 	}
 
 	public function percentDeposit()
 	{
-		return round($this->entity->percent_deposit, 4) * 100;
+		return round($this->entity->percent_deposit, 5) * 100;
 	}
 
 	public function percentDepositRaw()
 	{
-		return round($this->entity->percent_deposit, 4);
+		return round($this->entity->percent_deposit, 5);
 	}
 
 }
