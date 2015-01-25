@@ -72,7 +72,7 @@
 								</div>
 							</div>
 
-							<div class="col-sm-8 col-md-10">
+							<div class="col-md-10">
 								<section>
 									@if (Session::has('flash.message'))
 										@include('partials.flash')
