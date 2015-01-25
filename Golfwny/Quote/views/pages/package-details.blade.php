@@ -7,6 +7,10 @@
 @section('content')
 	<h1>Package Details</h1>
 
+	@if ($quote->status == Status::SUBMITTED)
+		{{ alert('yellow', "We've received your quote request and are reviewing it. We'll be sending you an estimate soon.", "wait", "Under Review") }}
+	@endif
+
 	@if ($quote->status == Status::ACCEPTED)
 		{{ alert('green', "You've accepted the package! We'll be sending you the contract soon.", "thumbs up", "Congratulations!") }}
 	@endif
@@ -17,18 +21,26 @@
 
 	{{ View::make('pages.package-details-partial')->withQuote($quote) }}
 
-	@if ($quote->status == Status::ESTIMATE)
-		{{ Form::open() }}
-			{{ Form::hidden('code', $quote->code) }}
-
-			<div class="btn-toolbar">
-				<div class="btn-group">
-					{{ Form::button('Accept', ['type' => 'submit', 'name' => 'accept', 'class' => 'btn btn-primary btn-lg']) }}
-				</div>
-				<div class="btn-group">
-					{{ Form::button('Reject', ['type' => 'submit', 'name' => 'reject', 'class' => 'btn btn-danger btn-lg']) }}
-				</div>
+	@if ($quote->status == Status::SUBMITTED)
+		<div class="btn-toolbar">
+			<div class="btn-group">
+				<a class="btn btn-lg btn-danger js-changeStatus" data-status="withdrawn" data-quote="{{ $quote->id }}">Withdraw</a>
 			</div>
-		{{ Form::close() }}
+		</div>
 	@endif
+
+	@if ($quote->status == Status::ESTIMATE)
+		<div class="btn-toolbar">
+			<div class="btn-group">
+				<a class="btn btn-lg btn-primary js-changeStatus" data-status="accepted" data-quote="{{ $quote->id }}">Accept</a>
+			</div>
+			<div class="btn-group">
+				<a class="btn btn-lg btn-danger js-changeStatus" data-status="rejected" data-quote="{{ $quote->id }}">Reject</a>
+			</div>
+		</div>
+	@endif
+@stop
+
+@section('scripts')
+	{{ partial('js-changeStatus') }}
 @stop

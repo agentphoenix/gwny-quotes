@@ -37,7 +37,14 @@
 	{{ $view }}
 @stop
 
+@section('styles')
+	{{ HTML::style('css/datepicker.css') }}
+@stop
+
 @section('scripts')
+	{{ HTML::script('js/picker.js') }}
+	{{ HTML::script('js/picker.date.js') }}
+	{{ HTML::script('js/moment.min.js') }}
 	<script>
 		$('.js-addCourse-action').on('click', function(e)
 		{
@@ -58,6 +65,22 @@
 			{
 				$(this).remove();
 			});
+		});
+
+		$('.js-datepicker-arrival').pickadate({
+			format: "mm/dd/yyyy",
+			onSet: function(context)
+			{
+				var date = moment(this.$node.context.value, "MM/DD/YYYY");
+			}
+		});
+
+		$('.js-datepicker-departure').pickadate({
+			format: "mm/dd/yyyy",
+			onSet: function(context)
+			{
+				var date = moment(this.$node.context.value, "MM/DD/YYYY");
+			}
 		});
 	</script>
 @stop

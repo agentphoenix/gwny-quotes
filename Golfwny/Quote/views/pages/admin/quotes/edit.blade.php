@@ -69,6 +69,24 @@
 				</div>
 			</div>
 		</div>
+		<div class="col-xs-12 col-md-6">
+			<div class="btn-toolbar">
+				@if ($quote->status == Status::SUBMITTED)
+					<div class="btn-group">
+						<a class="btn btn-primary js-changeStatus" data-status="estimate" data-quote="{{ $quote->id }}">Send Estimate</a>
+					</div>
+					<div class="btn-group">
+						<a class="btn btn-danger js-changeStatus" data-status="withdrawn" data-quote="{{ $quote->id }}">Withdraw Quote</a>
+					</div>
+				@endif
+
+				@if ($quote->status == Status::ACCEPTED)
+					<div class="btn-group">
+						<a class="btn btn-primary js-changeStatus" data-status="booked" data-quote="{{ $quote->id }}">Send Contract</a>
+					</div>
+				@endif
+			</div>
+		</div>
 	</div>
 
 	<div class="ui divider"></div>
@@ -82,7 +100,7 @@
 
 	<div class="tab-content">
 		<div id="submitter" class="active tab-pane">
-			{{ Form::model($quote, ['route' => ['admin.quote.update', $quote->id], 'method' => 'put']) }}
+			{{ Form::model($quote, ['route' => ['admin.quotes.update', $quote->id], 'method' => 'put']) }}
 				<h2>Submitter Info</h2>
 
 				<div class="row">
@@ -118,7 +136,7 @@
 		</div>
 
 		<div id="package" class="tab-pane">
-			{{ Form::model($quote, ['route' => ['admin.quote.update', $quote->id], 'method' => 'put']) }}
+			{{ Form::model($quote, ['route' => ['admin.quotes.update', $quote->id], 'method' => 'put']) }}
 				<h2>Package Details</h2>
 
 				<div class="row">
@@ -180,7 +198,7 @@
 		</div>
 
 		<div id="hotel" class="tab-pane">
-			{{ Form::model($quote, ['route' => ['admin.quote.update', $quote->id], 'method' => 'put']) }}
+			{{ Form::model($quote, ['route' => ['admin.quotes.update', $quote->id], 'method' => 'put']) }}
 				<h2>Hotel Details</h2>
 				<?php $hotel = $quote->getHotel();?>
 
@@ -238,7 +256,7 @@
 		</div>
 
 		<div id="golf" class="tab-pane">
-			{{ Form::model($quote, ['route' => ['admin.quote.update', $quote->id], 'method' => 'put']) }}
+			{{ Form::model($quote, ['route' => ['admin.quotes.update', $quote->id], 'method' => 'put']) }}
 				<?php $courses = $quote->getCourses();?>
 				<h2>Golf Details</h2>
 
@@ -307,8 +325,11 @@
 @stop
 
 @section('scripts')
-	{{ HTML::script('js/materialize.min.js') }}
+	{{ HTML::script('js/picker.js') }}
+	{{ HTML::script('js/picker.date.js') }}
+	{{ HTML::script('js/picker.time.js') }}
 	{{ HTML::script('js/moment.min.js') }}
+	{{ partial('js-changeStatus') }}
 	<script>
 		$('.ui.checkbox').checkbox({
 			fireOnInit: false,
@@ -361,7 +382,7 @@
 		{
 			$.ajax({
 				type: "GET",
-				url: "{{ URL::to('admin/quote/get/hotel') }}/" + $(this).val(),
+				url: "{{ URL::to('admin/quotes/get/hotel') }}/" + $(this).val(),
 				dataType: "json",
 				success: function(data)
 				{
@@ -398,7 +419,7 @@
 		{
 			$.ajax({
 				type: "PUT",
-				url: "{{ URL::to('admin/quote') }}/" + object.id,
+				url: "{{ URL::to('admin/quotes') }}/" + object.id,
 				data: {
 					"_token": "{{ csrf_token() }}",
 					"table": object.table,
@@ -417,7 +438,7 @@
 		{
 			$.ajax({
 				type: "GET",
-				url: "{{ URL::to('admin/quote/recalculate') }}/{{ $quote->id }}",
+				url: "{{ URL::to('admin/quotes/recalculate') }}/{{ $quote->id }}",
 				dataType: "json",
 				success: function(data)
 				{

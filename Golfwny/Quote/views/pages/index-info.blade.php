@@ -52,7 +52,7 @@
 				<div class="col-sm-6 col-md-4">
 					<div class="form-group">
 						<label class="control-label">Arrival Date</label>
-						{{ Form::text('arrival', false, ['class' => 'form-control']) }}
+						{{ Form::text('arrival', false, ['class' => 'form-control js-datepicker-arrival']) }}
 					</div>
 				</div>
 			</div>
@@ -60,7 +60,7 @@
 				<div class="col-sm-6 col-md-4">
 					<div class="form-group">
 						<label class="control-label">Departure Date</label>
-						{{ Form::text('departure', false, ['class' => 'form-control']) }}
+						{{ Form::text('departure', false, ['class' => 'form-control js-datepicker-departure', 'data-start-date' => '']) }}
 					</div>
 				</div>
 			</div>

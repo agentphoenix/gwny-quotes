@@ -8,6 +8,33 @@ class StatusService {
 	const ACCEPTED		= 4;
 	const REJECTED		= 5;
 	const BOOKED		= 6;
+	const WITHDRAWN		= 7;
+
+	public static function toCode($value)
+	{
+		switch ($value)
+		{
+			case 'accepted':
+				return static::ACCEPTED;
+			break;
+
+			case 'estimate':
+				return static::ESTIMATE;
+			break;
+
+			case 'rejected':
+				return static::REJECTED;
+			break;
+
+			case 'submitted':
+				return static::SUBMITTED;
+			break;
+
+			case 'withdrawn':
+				return static::WITHDRAWN;
+			break;
+		}
+	}
 
 	public static function toString($value)
 	{
@@ -26,15 +53,19 @@ class StatusService {
 			break;
 
 			case static::ACCEPTED:
-				return "Estimate accepted";
+				return "Estimate Accepted";
 			break;
 
 			case static::REJECTED:
-				return "Estimate rejected";
+				return "Estimate Rejected";
 			break;
 
 			case static::BOOKED:
 				return "Booked";
+			break;
+
+			case static::WITHDRAWN:
+				return "Withdrawn";
 			break;
 		}
 	}
