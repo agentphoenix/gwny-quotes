@@ -76,11 +76,11 @@
 						<a class="btn btn-primary js-changeStatus" data-status="estimate" data-quote="{{ $quote->id }}">Send Estimate</a>
 					</div>
 					<div class="btn-group">
-						<a class="btn btn-danger js-changeStatus" data-status="withdrawn" data-quote="{{ $quote->id }}">Withdraw Quote</a>
+						<a class="btn btn-danger js-changeStatus" data-status="closed" data-quote="{{ $quote->id }}">Close Quote</a>
 					</div>
 				@endif
 
-				@if ($quote->status == Status::ACCEPTED)
+				@if ($quote->status == Status::ESTIMATE_ACCEPTED)
 					<div class="btn-group">
 						<a class="btn btn-primary js-changeStatus" data-status="booked" data-quote="{{ $quote->id }}">Send Contract</a>
 					</div>

@@ -29,14 +29,17 @@ class QuotePresenter extends Presenter {
 			break;
 
 			case Status::ESTIMATE:
+			case Status::CONTRACT:
 				$class = 'yellow';
 			break;
 
-			case Status::REJECTED:
+			case Status::ESTIMATE_REJECTED:
+			case Status::CONTRACT_REJECTED:
 				$class = 'red';
 			break;
 
-			case Status::ACCEPTED:
+			case Status::ESTIMATE_ACCEPTED:
+			case Status::CONTRACT_ACCEPTED:
 				$class = 'green';
 			break;
 		}

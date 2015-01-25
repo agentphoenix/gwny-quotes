@@ -69,8 +69,8 @@ class QuoteServiceProvider extends ServiceProvider {
 		if (Schema::hasTable('quotes'))
 		{
 			View::share('_countSubmitted', $quoteRepo->countBy('status', Status::SUBMITTED));
-			View::share('_countAccepted', $quoteRepo->countBy('status', Status::ACCEPTED));
-			View::share('_countRejected', $quoteRepo->countBy('status', Status::REJECTED));
+			View::share('_countAccepted', $quoteRepo->countBy('status', Status::ESTIMATE_ACCEPTED));
+			View::share('_countRejected', $quoteRepo->countBy('status', Status::ESTIMATE_REJECTED));
 		}
 	}
 
