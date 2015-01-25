@@ -2,6 +2,7 @@
 
 use Date,
 	Quote,
+	Status,
 	QuoteRepositoryInterface,
 	CourseRepositoryInterface,
 	QuoteItemRepositoryInterface;
@@ -71,6 +72,11 @@ class QuoteRepository extends BaseRepository implements QuoteRepositoryInterface
 	public function getByCode($code)
 	{
 		return $this->getFirstBy('code', $code);
+	}
+
+	public function getByStatus($status)
+	{
+		return $this->getManyBy('status', Status::toCode($status), ['items']);
 	}
 
 	public function update($id, array $data)

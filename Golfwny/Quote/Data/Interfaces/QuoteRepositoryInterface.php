@@ -8,6 +8,7 @@ interface QuoteRepositoryInterface extends BaseRepositoryInterface {
 	public function createHotelQuote(Quote $quote);
 	public function createGolfQuote(Quote $quote, array $data);
 	public function getByCode($code);
+	public function getByStatus($status);
 	public function update($id, array $data);
 	
 }

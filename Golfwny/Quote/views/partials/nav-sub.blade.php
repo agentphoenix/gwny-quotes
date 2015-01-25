@@ -3,25 +3,25 @@
 <a href="http://golfwny.com" class="item visible-xs visible-sm">Back to GolfWNY</a>
 
 <div class="header item"><i class="dollar icon"></i>Quotes</div>
-<a class="item">
-	Submitted
+<a href="{{ route('admin.quotes.submitted') }}" class="item">
+	Awaiting Review
 	@if ($_countSubmitted > 0)
-		<div class="ui green label">{{ $_countSubmitted }}</div>
+		<div class="ui blue label">{{ $_countSubmitted }}</div>
 	@endif
 </a>
-<a class="item">
+<a href="{{ route('admin.quotes.accepted') }}" class="item">
 	Accepted
 	@if ($_countAccepted > 0)
 		<div class="ui green label">{{ $_countAccepted }}</div>
 	@endif
 </a>
-<a class="item">
+<a href="{{ route('admin.quotes.rejected') }}" class="item">
 	Rejected
 	@if ($_countRejected > 0)
 		<div class="ui red label">{{ $_countRejected }}</div>
 	@endif
 </a>
-<a href="{{ route('admin.quote.index') }}" class="item">All Quotes</a>
+<a href="{{ route('admin.quotes.index') }}" class="item">All Quotes</a>
 
 <div class="header item"><i class="align left icon"></i>Content</div>
 <a href="{{ route('admin.regions.index') }}" class="item">Regions</a>

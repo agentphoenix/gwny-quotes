@@ -1,7 +1,9 @@
 <?php namespace Quote\Controllers\Admin;
 
 use View,
+	Event,
 	Input,
+	Status,
 	Redirect,
 	HotelRepositoryInterface,
 	QuoteRepositoryInterface,
@@ -33,7 +35,29 @@ class QuoteController extends BaseController {
 	public function index()
 	{
 		return View::make('pages.admin.quotes.all')
+			->withHeader("All Quotes")
 			->withQuotes($this->quotes->all());
+	}
+
+	public function submitted()
+	{
+		return View::make('pages.admin.quotes.all')
+			->withHeader("Quotes Awaiting Review")
+			->withQuotes($this->quotes->getByStatus('submitted'));
+	}
+
+	public function accepted()
+	{
+		return View::make('pages.admin.quotes.all')
+			->withHeader("Accepted Quotes")
+			->withQuotes($this->quotes->getByStatus('accepted'));
+	}
+
+	public function rejected()
+	{
+		return View::make('pages.admin.quotes.all')
+			->withHeader("Rejected Quotes")
+			->withQuotes($this->quotes->getByStatus('rejected'));
 	}
 
 	public function edit($id)
@@ -47,12 +71,6 @@ class QuoteController extends BaseController {
 			->with('golfCourses', $quote->region->courses->lists('name', 'id'));
 	}
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 	public function update($id)
 	{
 		// Get the data
@@ -60,20 +78,21 @@ class QuoteController extends BaseController {
 
 		// Update the quote
 		if ($data['table'] == 'quotes')
-			$this->quotes->update($data['id'], [$data['field'] => $data['value']]);
+		{
+			$quote = $this->quotes->update($data['id'], [$data['field'] => $data['value']]);
+		}
 		else
-			$this->items->update($data['id'], [$data['field'] => $data['value']]);
+		{
+			$item = $this->items->update($data['id'], [$data['field'] => $data['value']]);
+			$quote = $item->quote;
+		}
+
+		Event::fire('quote.updated', [$quote]);
 	}
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 	public function destroy($id)
 	{
-		//
+		Event::fire('quote.deleted', []);
 	}
 
 	public function getHotel($id)
@@ -98,11 +117,22 @@ class QuoteController extends BaseController {
 			'deposit'	=> $calculator->getDeposit(),
 		]);
 
+		Event::fire('quote.calculated', [$newQuote]);
+
 		return json_encode([
 			'price'		=> $newQuote->present()->price,
 			'deposit'	=> $newQuote->present()->deposit,
 			'pricePerPerson' => $newQuote->present()->pricePerPerson,
 		]);
+	}
+
+	public function changeStatus()
+	{
+		$quote = $this->quotes->update(Input::get('id'), [
+			'status' => Status::toCode(Input::get('status'))
+		]);
+
+		Event::fire('quote.status', [$quote]);
 	}
 
 }
