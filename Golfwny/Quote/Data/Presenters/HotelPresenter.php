@@ -28,4 +28,14 @@ class HotelPresenter extends Presenter {
 		return $this->entity->region->present()->name;
 	}
 
+	public function taxRate()
+	{
+		return round($this->entity->tax_rate, 5) * 100;
+	}
+
+	public function taxRateRaw()
+	{
+		return round($this->entity->tax_rate, 5);
+	}
+
 }
