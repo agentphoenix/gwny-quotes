@@ -33,6 +33,10 @@ class CreateQuotes extends Migration {
 			$table->boolean('paid_total')->default((int) false);
 			$table->text('comments')->nullable();
 			$table->text('notes')->nullable();
+			$table->timestamp('estimate_accepted')->nullable();
+			$table->timestamp('estimate_rejected')->nullable();
+			$table->timestamp('contract_accepted')->nullable();
+			$table->timestamp('contract_rejected')->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 		});

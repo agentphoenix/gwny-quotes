@@ -14,10 +14,12 @@ class Quote extends Eloquent {
 	protected $fillable = ['region_id', 'code', 'status', 'name', 'email',
 		'phone', 'city', 'people', 'arrival', 'departure', 'deposit', 'total',
 		'paid_deposit', 'paid_total', 'notes', 'comments', 'percent_package',
-		'percent_deposit'];
+		'percent_deposit', 'estimate_accepted', 'estimate_rejected',
+		'contract_accepted', 'contract_rejected'];
 
 	protected $dates = ['created_at', 'updated_at', 'deleted_at', 'arrival',
-		'departure'];
+		'departure', 'estimate_accepted', 'estimate_rejected', 'contract_accepted',
+		'contract_rejected'];
 
 	protected $presenter = 'Quote\Data\Presenters\QuotePresenter';
 
