@@ -35,6 +35,14 @@
 		{{ alert('red', "This package request has been closed by Golf Western NY. Please contact us if you have any questions.", "warning sign", "We're Sorry!") }}
 	@endif
 
+	@if ($quote->status == Status::ESTIMATE_ACCEPTED)
+		<p><strong class="text-success">Estimate Accepted:</strong> {{ $quote->present()->estimateAccepted }}</p>
+	@endif
+	
+	@if ($quote->status == Status::ESTIMATE_REJECTED)
+		<p><strong class="text-danger">Estimate Rejected:</strong> {{ $quote->present()->estimateRejected }}</p>
+	@endif
+
 	{{ View::make('pages.package-details-partial')->withQuote($quote) }}
 
 	@if ($quote->status >= Status::BOOKED)
