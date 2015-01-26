@@ -1,7 +1,9 @@
 <?php namespace Quote\Controllers\Admin;
 
-use View,
+use Date,
+	View,
 	Event,
+	Flash,
 	Input,
 	Status,
 	Redirect,
@@ -128,9 +130,40 @@ class QuoteController extends BaseController {
 
 	public function changeStatus()
 	{
-		$quote = $this->quotes->update(Input::get('id'), [
-			'status' => Status::toCode(Input::get('status'))
-		]);
+		// Grab the status
+		$status = Status::toCode(Input::get('status'));
+
+		$updateData['status'] = $status;
+
+		if ($status == Status::ESTIMATE_ACCEPTED)
+		{
+			$updateData['estimate_accepted'] = Date::now();
+			$updateData['estimate_rejected'] = null;
+		}
+
+		if ($status == Status::ESTIMATE_REJECTED)
+		{
+			$updateData['estimate_rejected'] = Date::now();
+			$updateData['estimate_accepted'] = null;
+		}
+
+		if ($status == Status::CONTRACT_ACCEPTED)
+		{
+			$updateData['contract_accepted'] = Date::now();
+			$updateData['contract_rejected'] = null;
+		}
+
+		if ($status == Status::CONTRACT_REJECTED)
+		{
+			$updateData['contract_rejected'] = Date::now();
+			$updateData['contract_accepted'] = null;
+		}
+
+		// Update the quote
+		$quote = $this->quotes->update(Input::get('id'), $updateData);
+
+		// Set the flash message
+		Flash::success("Status changed.");
 
 		Event::fire('quote.status', [$quote]);
 	}
