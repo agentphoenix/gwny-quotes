@@ -21,6 +21,10 @@ class StatusService {
 				return static::ESTIMATE_ACCEPTED;
 			break;
 
+			case 'booked':
+				return static::BOOKED;
+			break;
+
 			case 'contract-accepted':
 				return static::CONTRACT_ACCEPTED;
 			break;
@@ -77,6 +81,14 @@ class StatusService {
 
 			case static::BOOKED:
 				return "Booked";
+			break;
+
+			case static::CONTRACT_ACCEPTED:
+				return "Contract Accepted";
+			break;
+
+			case static::CONTRACT_REJECTED:
+				return "Contract Rejected";
 			break;
 
 			case static::WITHDRAWN:
