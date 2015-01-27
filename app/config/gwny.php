@@ -3,14 +3,15 @@
 return [
 
 	'dates' => [
-		'date' => "l M jS, Y",
-		'dateNoDay' => "M jS, Y",
+		'date' => "l F jS, Y",
+		'dateNoDay' => "F jS, Y",
 		'dateFormal' => 'Y-m-d',
+		'dateFormalSlashes' => 'm/d/Y',
 		'day' => array(
 			'long' => "l",
 			'short' => "D",
 		),
-		'full' => "l M jS, Y, g:ia",
+		'full' => "l F jS, Y, g:ia",
 		'time' => "g:ia",
 	],
 
