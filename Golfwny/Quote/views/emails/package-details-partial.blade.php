@@ -11,19 +11,6 @@
 <p>{{ $quote->present()->code }}</p>
 
 @if ($quote->status >= Status::ESTIMATE)
-	<h2>Total Cost <small>Includes all taxes, gratuity not included</small></h2>
-
-	<p><strong>Cost per Person</strong></p>
-	<p>{{ $quote->present()->pricePerPerson }}</p>
-
-	<p><strong>Package Total</strong></p>
-	<p>{{ $quote->present()->price }}</p>
-
-	<p><strong>Deposit Due</strong></p>
-	<p>{{ $quote->present()->deposit }}</p>
-@endif
-
-@if ($quote->status == Status::BOOKED)
 	<h2>Hotel Information</h2>
 	<?php $item = $quote->getHotel();?>
 
@@ -72,3 +59,16 @@
 		</tr>
 	@endforeach
 </table>
+
+@if ($quote->status >= Status::ESTIMATE)
+	<h2>Total Cost <small>Includes all taxes, gratuity not included. All prices in US Dollars.</small></h2>
+
+	<p><strong>Cost per Person</strong></p>
+	<p>{{ $quote->present()->pricePerPerson }}</p>
+
+	<p><strong>Package Total</strong></p>
+	<p>{{ $quote->present()->price }}</p>
+
+	<p><strong>Deposit Due</strong></p>
+	<p>{{ $quote->present()->deposit }}</p>
+@endif

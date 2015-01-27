@@ -30,38 +30,6 @@
 </div>
 
 @if ($quote->status >= Status::ESTIMATE)
-	<h2>Total Cost <small>Includes all taxes, gratuity not included</small></h2>
-
-	<div class="data-table data-table-striped data-table-bordered">
-		<div class="row">
-			<div class="col-sm-4">
-				<p><strong>Cost per Person</strong></p>
-			</div>
-			<div class="col-sm-4">
-				<p><strong>Package Total</strong></p>
-			</div>
-			<div class="col-sm-4">
-				<p><strong>Deposit Due</strong></p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-4">
-				<p>{{ $quote->present()->pricePerPerson }}</p>
-			</div>
-			<div class="col-sm-4">
-				<p>{{ $quote->present()->price }}</p>
-			</div>
-			<div class="col-sm-4">
-				<p>{{ $quote->present()->deposit }}</p>
-			</div>
-		</div>
-	</div>
-
-	<!--<p class="price"><strong>{{ $quote->present()->pricePerPerson }}</strong> per person</p>
-	<p class="price-sm"><strong>Package Total:</strong> $1,400</p>-->
-@endif
-
-@if ($quote->status == Status::BOOKED)
 	<h2>Hotel Information</h2>
 	<?php $item = $quote->getHotel();?>
 
@@ -143,3 +111,32 @@
 		</div>
 	@endforeach
 </div>
+
+@if ($quote->status >= Status::ESTIMATE)
+	<h2>Total Cost <small>Includes all taxes, gratuity not included. All prices in US Dollars.</small></h2>
+
+	<div class="data-table data-table-striped data-table-bordered">
+		<div class="row">
+			<div class="col-sm-4">
+				<p><strong>Cost per Person</strong></p>
+			</div>
+			<div class="col-sm-4">
+				<p><strong>Package Total</strong></p>
+			</div>
+			<div class="col-sm-4">
+				<p><strong>Deposit Due</strong></p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-4">
+				<p>{{ $quote->present()->pricePerPerson }}</p>
+			</div>
+			<div class="col-sm-4">
+				<p>{{ $quote->present()->price }}</p>
+			</div>
+			<div class="col-sm-4">
+				<p>{{ $quote->present()->deposit }}</p>
+			</div>
+		</div>
+	</div>
+@endif

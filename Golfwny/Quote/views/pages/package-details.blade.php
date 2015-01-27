@@ -54,25 +54,19 @@
 	<div class="btn-toolbar">
 		@if ($quote->status == Status::ESTIMATE)
 			<div class="btn-group">
-				<a class="btn btn-lg btn-primary js-changeStatus" data-status="accepted" data-quote="{{ $quote->id }}">Accept</a>
+				<a class="btn btn-lg btn-primary js-changeStatus" data-status="accepted" data-quote="{{ $quote->id }}">Accept Estimate</a>
 			</div>
 			<div class="btn-group">
-				<a class="btn btn-lg btn-danger js-changeStatus" data-status="rejected" data-quote="{{ $quote->id }}">Reject</a>
+				<a class="btn btn-lg btn-danger js-changeStatus" data-status="rejected" data-quote="{{ $quote->id }}">Reject Estimate</a>
 			</div>
 		@endif
 
 		@if ($quote->status == Status::BOOKED)
 			<div class="btn-group">
-				<a class="btn btn-lg btn-primary js-changeStatus" data-status="contract-accepted" data-quote="{{ $quote->id }}">Accept</a>
+				<a class="btn btn-lg btn-primary js-changeStatus" data-status="contract-accepted" data-quote="{{ $quote->id }}">Accept Contract</a>
 			</div>
 			<div class="btn-group">
-				<a class="btn btn-lg btn-danger js-changeStatus" data-status="contract-rejected" data-quote="{{ $quote->id }}">Reject</a>
-			</div>
-		@endif
-
-		@if ($quote->status != Status::ESTIMATE_REJECTED and $quote->status != Status::CONTRACT_REJECTED and $quote->status < Status::WITHDRAWN)
-			<div class="btn-group">
-				<a class="btn btn-lg btn-danger js-changeStatus" data-status="withdrawn" data-quote="{{ $quote->id }}">Withdraw</a>
+				<a class="btn btn-lg btn-danger js-changeStatus" data-status="contract-rejected" data-quote="{{ $quote->id }}">Reject Contract</a>
 			</div>
 		@endif
 	</div>
