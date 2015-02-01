@@ -1,5 +1,7 @@
 <h2>Golf</h2>
 
+<p>If you want to play more than 18 holes in one day, select the 36 holes option. If you want to play 36 holes over multiple days, please enter 2 rows for the course(s) you want to play more than 18 holes at.</p>
+
 {{ Form::open(['route' => ['storeCourses', $location]]) }}
 	<div class="data-table data-table-striped data-table-bordered" id="coursesTable">
 		<div class="row">

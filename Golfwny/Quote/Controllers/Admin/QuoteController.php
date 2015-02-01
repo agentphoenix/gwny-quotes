@@ -139,24 +139,28 @@ class QuoteController extends BaseController {
 		{
 			$updateData['estimate_accepted'] = Date::now();
 			$updateData['estimate_rejected'] = null;
+			$updateData['estimate_initials'] = Input::get('initials');
 		}
 
 		if ($status == Status::ESTIMATE_REJECTED)
 		{
 			$updateData['estimate_rejected'] = Date::now();
 			$updateData['estimate_accepted'] = null;
+			$updateData['estimate_initials'] = Input::get('initials');
 		}
 
 		if ($status == Status::CONTRACT_ACCEPTED)
 		{
 			$updateData['contract_accepted'] = Date::now();
 			$updateData['contract_rejected'] = null;
+			$updateData['contract_initials'] = Input::get('initials');
 		}
 
 		if ($status == Status::CONTRACT_REJECTED)
 		{
 			$updateData['contract_rejected'] = Date::now();
 			$updateData['contract_accepted'] = null;
+			$updateData['contract_initials'] = Input::get('initials');
 		}
 
 		// Update the quote

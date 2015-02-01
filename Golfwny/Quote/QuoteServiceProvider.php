@@ -58,6 +58,7 @@ class QuoteServiceProvider extends ServiceProvider {
 		App::bind($a['QuoteRepositoryInterface'], $a['QuoteRepository']);
 		App::bind($a['QuoteItemRepositoryInterface'], $a['QuoteItemRepository']);
 		App::bind($a['RegionRepositoryInterface'], $a['RegionRepository']);
+		App::bind($a['SurveyRepositoryInterface'], $a['SurveyRepository']);
 		App::bind($a['UserRepositoryInterface'], $a['UserRepository']);
 
 		$quoteRepo = App::make('QuoteRepository');

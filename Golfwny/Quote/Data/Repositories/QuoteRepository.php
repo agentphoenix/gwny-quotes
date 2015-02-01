@@ -21,6 +21,11 @@ class QuoteRepository extends BaseRepository implements QuoteRepositoryInterface
 		$this->courses = $courses;
 	}
 
+	public function all()
+	{
+		return $this->model->orderBy('arrival', 'desc')->get();
+	}
+
 	public function create(array $data)
 	{
 		if (array_key_exists('arrival', $data))

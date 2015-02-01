@@ -15,7 +15,8 @@ class Quote extends Eloquent {
 		'phone', 'city', 'people', 'arrival', 'departure', 'deposit', 'total',
 		'paid_deposit', 'paid_total', 'notes', 'comments', 'percent_package',
 		'percent_deposit', 'estimate_accepted', 'estimate_rejected',
-		'contract_accepted', 'contract_rejected'];
+		'estimate_initials', 'contract_accepted', 'contract_rejected',
+		'contract_initials'];
 
 	protected $dates = ['created_at', 'updated_at', 'deleted_at', 'arrival',
 		'departure', 'estimate_accepted', 'estimate_rejected', 'contract_accepted',
@@ -37,6 +38,11 @@ class Quote extends Eloquent {
 	public function items()
 	{
 		return $this->hasMany('QuoteItem', 'quote_id');
+	}
+
+	public function surveys()
+	{
+		return $this->hasMany('Survey', 'quote_id');
 	}
 
 	/*

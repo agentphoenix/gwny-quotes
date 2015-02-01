@@ -446,16 +446,16 @@
         },
         {
             "name": "league/commonmark",
-            "version": "0.6.0",
+            "version": "0.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/commonmark.git",
-                "reference": "c352207aab15706a1ca9c25e5bd30c847899a0c9"
+                "reference": "ad1b89403026158529620e0f6096be0eae96817c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/c352207aab15706a1ca9c25e5bd30c847899a0c9",
-                "reference": "c352207aab15706a1ca9c25e5bd30c847899a0c9",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/ad1b89403026158529620e0f6096be0eae96817c",
+                "reference": "ad1b89403026158529620e0f6096be0eae96817c",
                 "shasum": ""
             },
             "require": {
@@ -467,7 +467,7 @@
             },
             "require-dev": {
                 "erusev/parsedown": "~1.0",
-                "jgm/commonmark": "0.15",
+                "jgm/commonmark": "0.17",
                 "michelf/php-markdown": "~1.4",
                 "phpunit/phpunit": "~4.3"
             },
@@ -501,7 +501,7 @@
                 "markdown",
                 "parser"
             ],
-            "time": "2015-01-09 19:27:30"
+            "time": "2015-01-25 16:08:20"
         },
         {
             "name": "monolog/monolog",
@@ -1791,20 +1791,20 @@
     "packages-dev": [
         {
             "name": "barryvdh/laravel-debugbar",
-            "version": "v1.8.5",
+            "version": "v1.8.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-debugbar.git",
-                "reference": "548e12d45760ee66192029f4b642d2f4e3d64118"
+                "reference": "1d39c5130fb7ebc9135d5a31467bcc870789acf9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/548e12d45760ee66192029f4b642d2f4e3d64118",
-                "reference": "548e12d45760ee66192029f4b642d2f4e3d64118",
+                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/1d39c5130fb7ebc9135d5a31467bcc870789acf9",
+                "reference": "1d39c5130fb7ebc9135d5a31467bcc870789acf9",
                 "shasum": ""
             },
             "require": {
-                "laravel/framework": "4.*|5.0.*",
+                "illuminate/support": "4.*|5.0.*",
                 "maximebf/debugbar": "~1.10.2",
                 "php": ">=5.3.0",
                 "symfony/finder": "~2.3"
@@ -1841,7 +1841,7 @@
                 "profiler",
                 "webprofiler"
             ],
-            "time": "2014-12-24 08:00:07"
+            "time": "2015-01-30 08:40:23"
         },
         {
             "name": "fzaninotto/faker",
@@ -1893,16 +1893,16 @@
         },
         {
             "name": "maximebf/debugbar",
-            "version": "v1.10.2",
+            "version": "v1.10.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/maximebf/php-debugbar.git",
-                "reference": "4971283c1fa8da051e97d1fa62e053d49259f7ef"
+                "reference": "060fbaf6a4e2d328dcdb31cc606d2f2ed145104b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/4971283c1fa8da051e97d1fa62e053d49259f7ef",
-                "reference": "4971283c1fa8da051e97d1fa62e053d49259f7ef",
+                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/060fbaf6a4e2d328dcdb31cc606d2f2ed145104b",
+                "reference": "060fbaf6a4e2d328dcdb31cc606d2f2ed145104b",
                 "shasum": ""
             },
             "require": {
@@ -1945,7 +1945,7 @@
             "keywords": [
                 "debug"
             ],
-            "time": "2014-12-17 08:39:39"
+            "time": "2015-01-30 08:24:55"
         },
         {
             "name": "raveren/kint",

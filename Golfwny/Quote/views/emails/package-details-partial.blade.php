@@ -40,11 +40,11 @@
 		<td width="30%"><p><strong>Course</strong></p></td>
 		<td width="25%"><p><strong>Number of Players</strong></p></td>
 		<td width="25%"><p><strong>Number of Holes</strong></p></td>
-		<td width="20%"><p><strong>Tee Time Preference</strong></p></td>
+		<td width="20%"><p><strong>Tee Time</strong></p></td>
 	</tr>
 	@foreach ($quote->getCourses() as $item)
-		<tr>
-			<td>
+		<tr height="35">
+			<td valign="middle">
 				<p>{{ $item->present()->course }}</p>
 				@if ( ! empty($item->confirmation))
 					<p><em>Confirmation Number: <strong>{{ $item->present()->confirmation }}</strong></em></p>
@@ -53,15 +53,16 @@
 					<p><em>Tee Time: <strong>{{ $item->present()->time }}</strong></em></p>
 				@endif
 			</td>
-			<td><p>{{ $item->present()->people }}</p></td>
-			<td><p>{{ $item->present()->holes }}</p></td>
-			<td><p>{{ $item->present()->timePreference }}</p></td>
+			<td valign="middle"><p>{{ $item->present()->people }}</p></td>
+			<td valign="middle"><p>{{ $item->present()->holes }}</p></td>
+			<td valign="middle"><p>{{ $item->present()->timePreference }}</p></td>
 		</tr>
 	@endforeach
 </table>
 
 @if ($quote->status >= Status::ESTIMATE)
-	<h2>Total Cost <small>Includes all taxes, gratuity not included. All prices in US Dollars.</small></h2>
+	<h2>Total Cost</h2>
+	<h5>Includes all taxes, gratuity not included. All prices in US Dollars.</h5>
 
 	<p><strong>Cost per Person</strong></p>
 	<p>{{ $quote->present()->pricePerPerson }}</p>

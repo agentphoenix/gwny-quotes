@@ -25,12 +25,12 @@ class QuotePresenter extends Presenter {
 
 	public function contractAccepted()
 	{
-		return $this->entity->contract_accepted->format(config('gwny.dates.full'));
+		return $this->entity->contract_accepted->format(config('gwny.dates.full'))." by ".$this->entity->contract_initials;
 	}
 
 	public function contractRejected()
 	{
-		return $this->entity->contract_rejected->format(config('gwny.dates.full'));
+		return $this->entity->contract_rejected->format(config('gwny.dates.full'))." by ".$this->entity->contract_initials;
 	}
 
 	public function dates()
@@ -73,12 +73,12 @@ class QuotePresenter extends Presenter {
 
 	public function estimateAccepted()
 	{
-		return $this->entity->estimate_accepted->format(config('gwny.dates.full'));
+		return $this->entity->estimate_accepted->format(config('gwny.dates.full'))." by ".$this->entity->estimate_initials;
 	}
 
 	public function estimateRejected()
 	{
-		return $this->entity->estimate_rejected->format(config('gwny.dates.full'));
+		return $this->entity->estimate_rejected->format(config('gwny.dates.full'))." by ".$this->entity->estimate_initials;
 	}
 
 	public function firstName()

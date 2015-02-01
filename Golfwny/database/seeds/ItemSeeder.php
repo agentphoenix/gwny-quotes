@@ -27,7 +27,7 @@ class ItemSeeder extends Seeder {
 		// Hotels
 		$hotels = [
 			['region_id' => 1, 'name' => "Holiday Inn Hotel &amp; Suites", 'rate' => 119.00, 'tax_rate' => 14.00],
-			['region_id' => 1, 'name' => "Best Western Plus Victor Inn &amp; Suites", 'rate' => 84.99, 'tax_rate' => 11.00, 'default' => 1],
+			['region_id' => 1, 'name' => "Best Western Plus Victor Inn &amp; Suites", 'rate' => 85.00, 'tax_rate' => 11.00, 'default' => 1],
 
 			['region_id' => 2, 'name' => "Salvatore's Garden Palace Hotel", 'rate' => 129.00, 'tax_rate' => 0.00],
 			['region_id' => 2, 'name' => "Comfort Suites Downtown", 'rate' => 85.00, 'tax_rate' => 0.00, 'default' => 1],

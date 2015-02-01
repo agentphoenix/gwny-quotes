@@ -28,9 +28,6 @@
 						<div class="btn-group">
 							<a href="{{ route('admin.quotes.edit', [$quote->id]) }}" class="btn btn-default">Manage</a>
 						</div>
-						<div class="btn-group">
-							<a href="#" class="btn btn-danger">Delete</a>
-						</div>
 					</div>
 				</div>
 			</div>

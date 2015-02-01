@@ -208,6 +208,7 @@ return array(
 		'Quote'		=> 'Quote\Data\Models\Quote',
 		'QuoteItem'	=> 'Quote\Data\Models\QuoteItem',
 		'Region'	=> 'Quote\Data\Models\Region',
+		'Survey'	=> 'Quote\Data\Models\Survey',
 		'User'		=> 'Quote\Data\Models\User',
 
 		/**
@@ -218,6 +219,7 @@ return array(
 		'QuoteRepositoryInterface'		=> 'Quote\Data\Interfaces\QuoteRepositoryInterface',
 		'QuoteItemRepositoryInterface'	=> 'Quote\Data\Interfaces\QuoteItemRepositoryInterface',
 		'RegionRepositoryInterface'		=> 'Quote\Data\Interfaces\RegionRepositoryInterface',
+		'SurveyRepositoryInterface'		=> 'Quote\Data\Interfaces\SurveyRepositoryInterface',
 		'UserRepositoryInterface'		=> 'Quote\Data\Interfaces\UserRepositoryInterface',
 
 		/**
@@ -228,6 +230,7 @@ return array(
 		'QuoteRepository'		=> 'Quote\Data\Repositories\QuoteRepository',
 		'QuoteItemRepository'	=> 'Quote\Data\Repositories\QuoteItemRepository',
 		'RegionRepository'		=> 'Quote\Data\Repositories\RegionRepository',
+		'SurveyRepository'		=> 'Quote\Data\Repositories\SurveyRepository',
 		'UserRepository'		=> 'Quote\Data\Repositories\UserRepository',
 
 		/**
@@ -236,6 +239,7 @@ return array(
 		'CourseValidator'		=> 'Quote\Data\Validators\CourseValidator',
 		'HotelValidator'		=> 'Quote\Data\Validators\HotelValidator',
 		'RegionValidator'		=> 'Quote\Data\Validators\RegionValidator',
+		'SurveyValidator'		=> 'Quote\Data\Validators\SurveyValidator',
 		'UserValidator'			=> 'Quote\Data\Validators\UserValidator',
 
 	),

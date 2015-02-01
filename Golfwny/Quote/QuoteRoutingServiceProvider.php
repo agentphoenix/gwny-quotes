@@ -53,6 +53,10 @@ class QuoteRoutingServiceProvider extends ServiceProvider {
 				'as'	=> 'package',
 				'uses'	=> 'HomeController@packageDetails']);
 
+			Route::get('survey/{code}', [
+				'as'	=> 'survey',
+				'uses'	=> 'HomeController@survey']);
+
 			Route::get('thank-you', [
 				'as'	=> 'thank-you',
 				'uses'	=> 'HomeController@thankYou']);

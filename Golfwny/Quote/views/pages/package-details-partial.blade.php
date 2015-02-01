@@ -35,21 +35,21 @@
 
 	<div class="data-table data-table-striped data-table-bordered">
 		<div class="row">
-			<div class="col-sm-6 col-md-5">
+			<div class="col-sm-6 col-md-4">
 				<p><strong>Hotel</strong></p>
 			</div>
-			<div class="col-sm-6 col-md-3">
+			<div class="col-sm-6 col-md-2">
 				<p><strong>Number of People</strong></p>
 			</div>
-			<div class="col-sm-6 col-md-2">
+			<div class="col-sm-6 col-md-3">
 				<p><strong>Arrival Date</strong></p>
 			</div>
-			<div class="col-sm-6 col-md-2">
+			<div class="col-sm-6 col-md-3">
 				<p><strong>Departure Date</strong></p>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-sm-6 col-md-5">
+			<div class="col-sm-6 col-md-4">
 				<p>{{ $item->present()->hotel }}</p>
 				@if ( ! empty($item->confirmation))
 					<p><em>Confirmation Number: <strong>{{ $item->present()->confirmation }}</strong></em></p>
@@ -58,13 +58,13 @@
 					<p><em>Check-In Time: <strong>{{ $item->present()->time }}</strong></em></p>
 				@endif
 			</div>
-			<div class="col-sm-6 col-md-3">
+			<div class="col-sm-6 col-md-2">
 				<p>{{ $item->present()->people }}</p>
 			</div>
-			<div class="col-sm-6 col-md-2">
+			<div class="col-sm-6 col-md-3">
 				<p>{{ $item->present()->arrival }}</p>
 			</div>
-			<div class="col-sm-6 col-md-2">
+			<div class="col-sm-6 col-md-3">
 				<p>{{ $item->present()->departure }}</p>
 			</div>
 		</div>

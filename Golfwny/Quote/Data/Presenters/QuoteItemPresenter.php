@@ -60,7 +60,8 @@ class QuoteItemPresenter extends Presenter {
 
 	public function time()
 	{
-		return $this->entity->time->format(config('gwny.dates.full'));
+		if ($this->entity->time)
+			return $this->entity->time->format(config('gwny.dates.full'));
 	}
 
 	public function timePreference()

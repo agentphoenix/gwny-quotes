@@ -14,7 +14,7 @@ class CreateQuotes extends Migration {
 	{
 		Schema::create('quotes', function(Blueprint $table)
 		{
-			$table->increments('id');
+			$table->bigIncrements('id');
 			$table->integer('region_id');
 			$table->string('code', 12);
 			$table->integer('status')->default(1);
@@ -35,8 +35,10 @@ class CreateQuotes extends Migration {
 			$table->text('notes')->nullable();
 			$table->timestamp('estimate_accepted')->nullable();
 			$table->timestamp('estimate_rejected')->nullable();
+			$table->string('estimate_initials', 50)->nullable();
 			$table->timestamp('contract_accepted')->nullable();
 			$table->timestamp('contract_rejected')->nullable();
+			$table->string('contract_initials', 50)->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 		});
@@ -44,7 +46,7 @@ class CreateQuotes extends Migration {
 		Schema::create('quotes_items', function(Blueprint $table)
 		{
 			$table->bigIncrements('id');
-			$table->integer('quote_id')->unsigned();
+			$table->bigInteger('quote_id')->unsigned();
 			$table->integer('hotel_id')->unsigned()->nullable();
 			$table->integer('course_id')->unsigned()->nullable();
 			$table->integer('people');

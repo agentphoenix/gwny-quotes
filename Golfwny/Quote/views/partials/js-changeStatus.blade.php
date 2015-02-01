@@ -9,7 +9,8 @@
 			data: {
 				"_token": "{{ csrf_token() }}",
 				"status": $(this).data('status'),
-				"id": $(this).data('quote')
+				"id": $(this).data('quote'),
+				"initials": $('[name="initials"]').val()
 			},
 			success: function(data)
 			{

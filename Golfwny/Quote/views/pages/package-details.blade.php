@@ -51,25 +51,39 @@
 		<div class="ui divider"></div>
 	@endif
 
-	<div class="btn-toolbar">
-		@if ($quote->status == Status::ESTIMATE)
-			<div class="btn-group">
-				<a class="btn btn-lg btn-primary js-changeStatus" data-status="accepted" data-quote="{{ $quote->id }}">Accept Estimate</a>
+	@if ($quote->status == Status::ESTIMATE)
+		<div class="form-group">
+			<div class="col-md-3">
+				<div class="input-group">
+					<span class="input-group-addon"><strong>Initials</strong></span>
+					{{ Form::text('initials', false, ['class' => 'input-lg form-control']) }}
+				</div>
 			</div>
-			<div class="btn-group">
-				<a class="btn btn-lg btn-danger js-changeStatus" data-status="rejected" data-quote="{{ $quote->id }}">Reject Estimate</a>
+			<div class="col-md-3">
+				<a class="btn btn-lg btn-block btn-primary js-changeStatus" data-status="accepted" data-quote="{{ $quote->id }}">Accept Estimate</a>
 			</div>
-		@endif
+			<div class="col-md-3">
+				<a class="btn btn-lg btn-block btn-danger js-changeStatus" data-status="rejected" data-quote="{{ $quote->id }}">Reject Estimate</a>
+			</div>
+		</div>
+	@endif
 
-		@if ($quote->status == Status::BOOKED)
-			<div class="btn-group">
-				<a class="btn btn-lg btn-primary js-changeStatus" data-status="contract-accepted" data-quote="{{ $quote->id }}">Accept Contract</a>
+	@if ($quote->status == Status::BOOKED)
+		<div class="form-group">
+			<div class="col-md-3">
+				<div class="input-group">
+					<span class="input-group-addon"><strong>Initials</strong></span>
+					{{ Form::text('initials', false, ['class' => 'input-lg form-control']) }}
+				</div>
 			</div>
-			<div class="btn-group">
-				<a class="btn btn-lg btn-danger js-changeStatus" data-status="contract-rejected" data-quote="{{ $quote->id }}">Reject Contract</a>
+			<div class="col-md-3">
+				<a class="btn btn-lg btn-block btn-primary js-changeStatus" data-status="contract-accepted" data-quote="{{ $quote->id }}">Accept Contract</a>
 			</div>
-		@endif
-	</div>
+			<div class="col-md-3">
+				<a class="btn btn-lg btn-block btn-danger js-changeStatus" data-status="contract-rejected" data-quote="{{ $quote->id }}">Reject Contract</a>
+			</div>
+		</div>
+	@endif
 @stop
 
 @section('scripts')
