@@ -26,6 +26,17 @@ class QuoteRepository extends BaseRepository implements QuoteRepositoryInterface
 		return $this->model->orderBy('arrival', 'desc')->get();
 	}
 
+	public function countActive()
+	{
+		return $this->model->whereIn('status', [
+			Status::SUBMITTED,
+			Status::ESTIMATE,
+			Status::ESTIMATE_ACCEPTED,
+			Status::BOOKED,
+			Status::CONTRACT_ACCEPTED,
+		])->count();
+	}
+
 	public function create(array $data)
 	{
 		if (array_key_exists('arrival', $data))
@@ -51,6 +62,7 @@ class QuoteRepository extends BaseRepository implements QuoteRepositoryInterface
 			'rate'		=> $hotel->rate,
 			'arrival'	=> $quote->arrival,
 			'departure'	=> $quote->departure,
+			'time'		=> "11:00 AM",
 		]);
 	}
 
@@ -74,6 +86,17 @@ class QuoteRepository extends BaseRepository implements QuoteRepositoryInterface
 		}
 	}
 
+	public function getActive()
+	{
+		return $this->make(['items'])->whereIn('status', [
+			Status::SUBMITTED,
+			Status::ESTIMATE,
+			Status::ESTIMATE_ACCEPTED,
+			Status::BOOKED,
+			Status::CONTRACT_ACCEPTED,
+		])->orderBy('arrival', 'desc')->get();
+	}
+
 	public function getByCode($code)
 	{
 		return $this->getFirstBy('code', $code);
@@ -81,7 +104,10 @@ class QuoteRepository extends BaseRepository implements QuoteRepositoryInterface
 
 	public function getByStatus($status)
 	{
-		return $this->getManyBy('status', Status::toCode($status), ['items']);
+		return $this->make(['items'])
+			->where('status', Status::toCode($status))
+			->orderBy('arrival', 'desc')
+			->get();
 	}
 
 	public function update($id, array $data)

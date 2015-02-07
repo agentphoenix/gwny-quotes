@@ -3,10 +3,16 @@
 <a href="http://golfwny.com" class="item visible-xs visible-sm">Back to GolfWNY</a>
 
 <div class="header item"><i class="dollar icon"></i>Quotes</div>
+<a href="{{ route('admin.quotes.active') }}" class="item">
+	Active
+	@if ($_countActive > 0)
+		<div class="ui green label">{{ $_countActive }}</div>
+	@endif
+</a>
 <a href="{{ route('admin.quotes.submitted') }}" class="item">
 	Awaiting Review
 	@if ($_countSubmitted > 0)
-		<div class="ui blue label">{{ $_countSubmitted }}</div>
+		<div class="ui green label">{{ $_countSubmitted }}</div>
 	@endif
 </a>
 <a href="{{ route('admin.quotes.accepted') }}" class="item">

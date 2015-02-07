@@ -1,5 +1,7 @@
 <?php namespace Quote\Data\Repositories;
 
+use stdClass;
+
 abstract class BaseRepository {
 
 	public function all()
@@ -39,7 +41,7 @@ abstract class BaseRepository {
 
 		// Fill in the result set
 		$result->totalItems = $this->model->count();
-		$result->items = $modal->all();
+		$result->items = $model->all();
 
 		return $result;
 	}

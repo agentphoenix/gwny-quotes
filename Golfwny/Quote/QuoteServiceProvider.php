@@ -50,28 +50,29 @@ class QuoteServiceProvider extends ServiceProvider {
 	protected function setupBindings()
 	{
 		// Get the aliases from the app config
-		$a = Config::get('app.aliases');
+		$a = $this->app['config']->get('app.aliases');
 
 		// Bind the repositories to any calls to their interfaces
-		App::bind($a['CourseRepositoryInterface'], $a['CourseRepository']);
-		App::bind($a['HotelRepositoryInterface'], $a['HotelRepository']);
-		App::bind($a['QuoteRepositoryInterface'], $a['QuoteRepository']);
-		App::bind($a['QuoteItemRepositoryInterface'], $a['QuoteItemRepository']);
-		App::bind($a['RegionRepositoryInterface'], $a['RegionRepository']);
-		App::bind($a['SurveyRepositoryInterface'], $a['SurveyRepository']);
-		App::bind($a['UserRepositoryInterface'], $a['UserRepository']);
+		$this->app->bind($a['CourseRepositoryInterface'], $a['CourseRepository']);
+		$this->app->bind($a['HotelRepositoryInterface'], $a['HotelRepository']);
+		$this->app->bind($a['QuoteRepositoryInterface'], $a['QuoteRepository']);
+		$this->app->bind($a['QuoteItemRepositoryInterface'], $a['QuoteItemRepository']);
+		$this->app->bind($a['RegionRepositoryInterface'], $a['RegionRepository']);
+		$this->app->bind($a['SurveyRepositoryInterface'], $a['SurveyRepository']);
+		$this->app->bind($a['UserRepositoryInterface'], $a['UserRepository']);
 
-		$quoteRepo = App::make('QuoteRepository');
+		$quoteRepo = $this->app->make('QuoteRepository');
 
 		// Make sure we some variables available on all views
 		View::share('_currentUser', Auth::user());
-		View::share('_icons', Config::get('icons'));
+		View::share('_icons', $this->app['config']->get('icons'));
 
 		if (Schema::hasTable('quotes'))
 		{
 			View::share('_countSubmitted', $quoteRepo->countBy('status', Status::SUBMITTED));
 			View::share('_countAccepted', $quoteRepo->countBy('status', Status::ESTIMATE_ACCEPTED));
 			View::share('_countRejected', $quoteRepo->countBy('status', Status::ESTIMATE_REJECTED));
+			View::share('_countActive', $quoteRepo->countActive());
 		}
 	}
 

@@ -58,10 +58,14 @@ class QuoteItemPresenter extends Presenter {
 		return $this->entity->departure->format(config('gwny.dates.dateFormalSlashes'));
 	}
 
-	public function time()
+	public function time($full = true)
 	{
-		if ($this->entity->time)
-			return $this->entity->time->format(config('gwny.dates.full'));
+		return $this->entity->time;
+	}
+
+	public function time2($full = true)
+	{
+		return $this->entity->time2;
 	}
 
 	public function timePreference()

@@ -75,16 +75,20 @@
 					<div class="btn-group">
 						<a class="btn btn-primary js-changeStatus" data-status="estimate" data-quote="{{ $quote->id }}">Send Estimate</a>
 					</div>
-					<div class="btn-group">
-						<a class="btn btn-danger js-changeStatus" data-status="closed" data-quote="{{ $quote->id }}">Close Quote</a>
-					</div>
 				@endif
 
-				@if ($quote->status == Status::ESTIMATE_ACCEPTED)
+				@if ($quote->status >= Status::ESTIMATE_ACCEPTED and $quote->status <= Status::WITHDRAWN)
+					<div class="btn-group">
+						<a class="btn btn-primary js-changeStatus" data-status="estimate" data-quote="{{ $quote->id }}">Re-Send Estimate</a>
+					</div>
 					<div class="btn-group">
 						<a class="btn btn-primary js-changeStatus" data-status="booked" data-quote="{{ $quote->id }}">Send Contract</a>
 					</div>
 				@endif
+
+				<div class="btn-group">
+					<a class="btn btn-danger js-changeStatus" data-status="closed" data-quote="{{ $quote->id }}">Close Quote</a>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -242,7 +246,7 @@
 					<div class="col-md-3">
 						<div class="form-group">
 							<label class="control-label">Check-In Time</label>
-							{{ Form::text('hotel[time]', $hotel->time, ['class' => 'form-control js-updateField', 'data-id' => $hotel->id, 'data-table' => 'quotes_items', 'data-field' => 'time']) }}
+							{{ Form::text('hotel[time]', $hotel->present()->time(false), ['class' => 'form-control js-updateField js-timepicker', 'data-id' => $hotel->id, 'data-table' => 'quotes_items', 'data-field' => 'time', 'data-value' => $hotel->present()->time(false)]) }}
 						</div>
 					</div>
 					<div class="col-md-3">
@@ -260,61 +264,73 @@
 				<?php $courses = $quote->getCourses();?>
 				<h2>Golf Details</h2>
 
+				<div id="coursesTable">
 				@foreach ($courses as $item)
-					<div class="row">
-						<div class="col-md-4">
-							<div class="form-group">
-								<label class="control-label">Course</label>
-								{{ Form::select('golf[course]', $golfCourses, $item->course_id, ['class' => 'form-control js-updateField', 'data-id' => $item->id, 'data-table' => 'quotes_items', 'data-field' => 'course_id']) }}
+					<div class="course-row">
+						<div class="row" id="row-{{ $item->id }}">
+							<div class="col-md-4">
+								<div class="form-group">
+									<label class="control-label">Course</label>
+									{{ Form::select('golf[course]', $golfCourses, $item->course_id, ['class' => 'form-control js-updateField js-updateCourse', 'data-id' => $item->id, 'data-table' => 'quotes_items', 'data-field' => 'course_id']) }}
+								</div>
 							</div>
-						</div>
-						<div class="col-md-2">
-							<div class="form-group">
-								<label class="control-label">Rate</label>
-								<div class="input-group">
-									<span class="input-group-addon"><strong>$</strong></span>
-									{{ Form::text('golf[rate]', $item->rate, ['class' => 'form-control js-updateField', 'data-id' => $item->id, 'data-table' => 'quotes_items', 'data-field' => 'rate']) }}
+							<div class="col-md-2">
+								<div class="form-group">
+									<label class="control-label">Rate</label>
+									<div class="input-group">
+										<span class="input-group-addon"><strong>$</strong></span>
+										{{ Form::text('golf[rate]', $item->rate, ['class' => 'form-control js-updateField', 'data-id' => $item->id, 'data-table' => 'quotes_items', 'data-field' => 'rate']) }}
+									</div>
+								</div>
+							</div>
+							<div class="col-md-2">
+								<div class="form-group">
+									<label class="control-label">Replay Rate</label>
+									<div class="input-group">
+										<span class="input-group-addon"><strong>$</strong></span>
+										{{ Form::text('golf[replay]', $item->replay_rate, ['class' => 'form-control js-updateField', 'data-id' => $item->id, 'data-table' => 'quotes_items', 'data-field' => 'replay_rate']) }}
+									</div>
+								</div>
+							</div>
+							<div class="col-md-2">
+								<div class="form-group">
+									<label class="control-label">No. of Players</label>
+									{{ Form::text('golf[people]', $item->people, ['class' => 'form-control js-updateField', 'data-id' => $item->id, 'data-table' => 'quotes_items', 'data-field' => 'people']) }}
+								</div>
+							</div>
+							<div class="col-md-2" id="numHoles">
+								<div class="form-group">
+									<label class="control-label">No. of Holes</label>
+									{{ Form::select('golf[holes]', [18 => '18 holes', 36 => '36 holes'], $item->holes, ['class' => 'form-control js-updateField', 'data-id' => $item->id, 'data-table' => 'quotes_items', 'data-field' => 'holes']) }}
 								</div>
 							</div>
 						</div>
-						<div class="col-md-2">
-							<div class="form-group">
-								<label class="control-label">Replay Rate</label>
-								<div class="input-group">
-									<span class="input-group-addon"><strong>$</strong></span>
-									{{ Form::text('golf[replay]', $item->replay_rate, ['class' => 'form-control js-updateField', 'data-id' => $item->id, 'data-table' => 'quotes_items', 'data-field' => 'replay_rate']) }}
+						<div class="row">
+							<div class="col-md-4">
+								<div class="form-group">
+									<label class="control-label">Confirmation Number</label>
+									{{ Form::text('golf[confirmation]', $item->confirmation, ['class' => 'form-control js-updateField', 'data-id' => $item->id, 'data-table' => 'quotes_items', 'data-field' => 'confirmation']) }}
+								</div>
+							</div>
+							<div class="col-md-2">
+								<div class="form-group">
+									<label class="control-label">Tee Time</label>
+									{{ Form::text('golf[time]', $item->present()->time, ['class' => 'form-control js-updateField', 'data-id' => $item->id, 'data-table' => 'quotes_items', 'data-field' => 'time']) }}
+								</div>
+							</div>
+							<div class="col-md-2 hide" id="teeTime2">
+								<div class="form-group">
+									<label class="control-label">2nd Tee Time</label>
+									{{ Form::text('golf[time2]', $item->present()->time2, ['class' => 'form-control js-updateField', 'data-id' => $item->id, 'data-table' => 'quotes_items', 'data-field' => 'time2']) }}
 								</div>
 							</div>
 						</div>
-						<div class="col-md-2">
-							<div class="form-group">
-								<label class="control-label">No. of Players</label>
-								{{ Form::text('golf[people]', $item->people, ['class' => 'form-control js-updateField', 'data-id' => $item->id, 'data-table' => 'quotes_items', 'data-field' => 'people']) }}
-							</div>
-						</div>
-						<div class="col-md-2">
-							<div class="form-group">
-								<label class="control-label">No. of Holes</label>
-								{{ Form::select('golf[holes]', [18 => '18 holes', 36 => '36 holes'], $item->holes, ['class' => 'form-control js-updateField', 'data-id' => $item->id, 'data-table' => 'quotes_items', 'data-field' => 'holes']) }}
-							</div>
-						</div>
+						<div class="ui divider"></div>
 					</div>
-					<div class="row">
-						<div class="col-md-4">
-							<div class="form-group">
-								<label class="control-label">Confirmation Number</label>
-								{{ Form::text('golf[confirmation]', $item->confirmation, ['class' => 'form-control js-updateField', 'data-id' => $item->id, 'data-table' => 'quotes_items', 'data-field' => 'confirmation']) }}
-							</div>
-						</div>
-						<div class="col-md-2">
-							<div class="form-group">
-								<label class="control-label">Tee Time</label>
-								{{ Form::text('golf[time]', $item->time, ['class' => 'form-control js-updateField', 'data-id' => $item->id, 'data-table' => 'quotes_items', 'data-field' => 'time']) }}
-							</div>
-						</div>
-					</div>
-					<div class="ui divider"></div>
 				@endforeach
+				</div>
+
+				<p><a class="btn btn-default js-addCourse">Add Another Course</a></p>
 			{{ Form::close() }}
 		</div>
 	</div>
@@ -368,6 +384,24 @@
 			}
 		});
 
+		$('.js-timepicker').pickatime({
+			format: 'h:i A',
+			min: [6, 0],
+			max: [22, 0],
+			container: 'section',
+			onSet: function(context)
+			{
+				var date = moment(this.$node.context.value, "h:mm A");
+
+				updateField({
+					table: this.$node.context.dataset.table,
+					field: this.$node.context.dataset.field,
+					id: this.$node.context.dataset.id,
+					value: date.format('h:mm A')
+				});
+			}
+		});
+
 		$('.js-updateField').on('change', function(e)
 		{
 			updateField({
@@ -387,6 +421,24 @@
 				success: function(data)
 				{
 					$('[name="hotel[rate]"]').val(data.rate).trigger('change');
+				}
+			});
+		});
+
+		$('.js-updateCourse').on('change', function(e)
+		{
+			var $course = $(this).parents();
+			var $rate = $course.next('div').children('.form-group').children('.input-group').find('.form-control');
+			var $replay = $course.next('div').next('div').children('.form-group').children('.input-group').find('.form-control');
+
+			$.ajax({
+				type: "GET",
+				url: "{{ URL::to('admin/quotes/get/course') }}/" + $(this).val(),
+				dataType: "json",
+				success: function(data)
+				{
+					$rate.val(data.rate).trigger('change');
+					$replay.val(data.replay_rate).trigger('change');
 				}
 			});
 		});
@@ -413,6 +465,53 @@
 		$('[name="departure"]').on('change', function(e)
 		{
 			$('[name="hotel[departure]"]').val($(this).val()).trigger('change');
+		});
+
+		$('[name="golf[time2]"]').each(function()
+		{
+			var $holes = $(this).parents().prev('.row')
+				.children('#numHoles').children('.form-group')
+				.children().next('select').find(':selected').val();
+
+			if ($holes == 36)
+				$(this).parents().removeClass('hide');
+		});
+
+		$('[name="golf[holes]"]').on('change', function(e)
+		{
+			var $time = $(this).parents().next('.row').children('#teeTime2');
+			var $item = $time.children('.form-group').children().next('.form-control');
+
+			if ($(this).val() == 18)
+			{
+				$time.addClass('hide');
+				$item.val("").trigger('change');
+			}
+			else
+			{
+				$time.removeClass('hide');
+				$item.val("").trigger('change');
+			}
+		});
+
+		$('.js-addCourse').on('click', function(e)
+		{
+			e.preventDefault();
+
+			$.ajax({
+				type: "POST",
+				url: "{{ URL::to('admin/quotes/add-course') }}",
+				data: {
+					"_token": "{{ csrf_token() }}",
+					"quote": "{{ $quote->code }}"
+				},
+				success: function(data)
+				{
+					recalculateCost();
+
+					window.location.reload();
+				}
+			});
 		});
 
 		function updateField(object, quote)

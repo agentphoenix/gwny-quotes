@@ -8,6 +8,10 @@
 	<h1>{{ $header }}</h1>
 
 	@if ($quotes->count() > 0)
+		@if (method_exists($quotes, 'links'))
+			{{ $quotes->links() }}
+		@endif
+
 		<div class="data-table data-table-striped data-table-bordered">
 		@foreach ($quotes as $quote)
 			<div class="row">
@@ -33,6 +37,10 @@
 			</div>
 		@endforeach
 		</div>
+
+		@if (method_exists($quotes, 'links'))
+			{{ $quotes->links() }}
+		@endif
 	@else
 		{{ alert('warning', "No quotes found.") }}
 	@endif

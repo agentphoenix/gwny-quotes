@@ -12,11 +12,11 @@ class QuoteItem extends Eloquent {
 	protected $table = 'quotes_items';
 
 	protected $fillable = ['quote_id', 'hotel_id', 'course_id', 'people', 'rate',
-		'confirmation', 'arrival', 'departure', 'time', 'time_preference', 'holes',
-		'replay_rate'];
+		'confirmation', 'arrival', 'departure', 'time', 'time2', 'time_preference',
+		'holes', 'replay_rate'];
 
 	protected $dates = ['created_at', 'updated_at', 'deleted_at', 'arrival',
-		'departure', 'time'];
+		'departure'];
 
 	protected $presenter = 'Quote\Data\Presenters\QuoteItemPresenter';
 

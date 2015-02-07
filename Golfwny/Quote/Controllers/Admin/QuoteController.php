@@ -7,6 +7,7 @@ use Date,
 	Input,
 	Status,
 	Redirect,
+	Paginator,
 	HotelRepositoryInterface,
 	QuoteRepositoryInterface,
 	CourseRepositoryInterface,
@@ -36,9 +37,15 @@ class QuoteController extends BaseController {
 
 	public function index()
 	{
+		// Find all the mods
+		$data = $this->quotes->getByPage(Input::get('page', 1), 25, ['items']);
+
+		// Build the paginator
+		$paginator = Paginator::make($data->items, $data->totalItems, 15);
+
 		return View::make('pages.admin.quotes.all')
 			->withHeader("All Quotes")
-			->withQuotes($this->quotes->all());
+			->withQuotes($paginator);
 	}
 
 	public function submitted()
@@ -46,6 +53,13 @@ class QuoteController extends BaseController {
 		return View::make('pages.admin.quotes.all')
 			->withHeader("Quotes Awaiting Review")
 			->withQuotes($this->quotes->getByStatus('submitted'));
+	}
+
+	public function active()
+	{
+		return View::make('pages.admin.quotes.all')
+			->withHeader("Active Quotes")
+			->withQuotes($this->quotes->getActive());
 	}
 
 	public function accepted()
@@ -95,6 +109,14 @@ class QuoteController extends BaseController {
 	public function destroy($id)
 	{
 		Event::fire('quote.deleted', []);
+	}
+
+	public function getCourse($id)
+	{
+		// Get the course
+		$course = $this->courses->getById($id);
+
+		return json_encode($course->toArray());
 	}
 
 	public function getHotel($id)
@@ -167,9 +189,28 @@ class QuoteController extends BaseController {
 		$quote = $this->quotes->update(Input::get('id'), $updateData);
 
 		// Set the flash message
-		Flash::success("Status changed.");
+		Flash::success("Quote has been updated!");
 
 		Event::fire('quote.status', [$quote]);
+	}
+
+	public function addCourse()
+	{
+		// Get the quote
+		$quote = $this->quotes->getByCode(Input::get('quote'));
+
+		// Get the last course in the quote
+		$lastCourse = $quote->getCourses()->last();
+
+		$this->items->create([
+			'quote_id'			=> $quote->id,
+			'course_id'			=> $lastCourse->course_id,
+			'people'			=> $lastCourse->people,
+			'holes'				=> $lastCourse->holes,
+			'time_preference'	=> $lastCourse->time_preference,
+			'rate'				=> $lastCourse->rate,
+			'replay_rate'		=> $lastCourse->replay_rate,
+		]);
 	}
 
 }

@@ -57,7 +57,8 @@ class CreateQuotes extends Migration {
 			$table->string('confirmation')->nullable();
 			$table->date('arrival')->nullable();
 			$table->date('departure')->nullable();
-			$table->timestamp('time')->nullable();
+			$table->string('time')->nullable();
+			$table->string('time2')->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 		});

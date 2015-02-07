@@ -48,7 +48,7 @@ class LoginController extends BaseController {
 				// Set a flash message
 				Flash::success("You've successfully logged in!");
 
-				return Redirect::route('admin');
+				return Redirect::route('admin.quotes.active');
 			}
 
 			// Set a flash message
