@@ -39,6 +39,7 @@ class CreateQuotes extends Migration {
 			$table->timestamp('contract_accepted')->nullable();
 			$table->timestamp('contract_rejected')->nullable();
 			$table->string('contract_initials', 50)->nullable();
+			$table->string('square_receipt_number')->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 		});

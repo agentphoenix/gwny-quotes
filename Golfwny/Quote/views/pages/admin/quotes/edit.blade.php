@@ -69,7 +69,13 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-xs-12 col-md-6">
+		<div class="col-xs-12 col-md-3">
+			<div class="form-group">
+				<label class="control-label">Square Receipt Number</label>
+				{{ Form::text('receiptNumber', $quote->present()->receiptNumber, ['class' => 'form-control js-updateField', 'data-id' => $quote->id, 'data-table' => 'quotes', 'data-field' => 'square_receipt_number']) }}
+			</div>
+		</div>
+		<div class="col-xs-12">
 			<div class="btn-toolbar">
 				@if ($quote->status == Status::SUBMITTED)
 					<div class="btn-group">
@@ -86,9 +92,11 @@
 					</div>
 				@endif
 
-				<div class="btn-group">
-					<a class="btn btn-danger js-changeStatus" data-status="closed" data-quote="{{ $quote->id }}">Close Quote</a>
-				</div>
+				@if ($quote->status < Status::COMPLETED)
+					<div class="btn-group">
+						<a class="btn btn-danger js-changeStatus" data-status="closed" data-quote="{{ $quote->id }}">Close Quote</a>
+					</div>
+				@endif
 			</div>
 		</div>
 	</div>

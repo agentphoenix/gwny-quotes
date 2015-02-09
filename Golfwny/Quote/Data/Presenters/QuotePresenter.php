@@ -198,6 +198,11 @@ class QuotePresenter extends Presenter {
 		return '$'.number_format(round($this->entity->total / $this->entity->people, 2), 2);
 	}
 
+	public function receiptNumber()
+	{
+		return $this->entity->square_receipt_number;
+	}
+
 	public function region()
 	{
 		return $this->entity->region->present()->name;
@@ -244,6 +249,11 @@ class QuotePresenter extends Presenter {
 			case Status::ESTIMATE_ACCEPTED:
 			case Status::CONTRACT_ACCEPTED:
 				$class = 'green';
+			break;
+
+			case Status::COMPLETED:
+			case Status::CLOSED:
+				$class = 'black';
 			break;
 		}
 

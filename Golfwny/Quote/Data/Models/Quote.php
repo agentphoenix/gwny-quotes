@@ -16,7 +16,7 @@ class Quote extends Eloquent {
 		'paid_deposit', 'paid_total', 'notes', 'comments', 'percent_package',
 		'percent_deposit', 'estimate_accepted', 'estimate_rejected',
 		'estimate_initials', 'contract_accepted', 'contract_rejected',
-		'contract_initials'];
+		'contract_initials', 'square_receipt_number'];
 
 	protected $dates = ['created_at', 'updated_at', 'deleted_at', 'arrival',
 		'departure', 'estimate_accepted', 'estimate_rejected', 'contract_accepted',
