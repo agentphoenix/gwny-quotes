@@ -60,6 +60,7 @@ class QuoteServiceProvider extends ServiceProvider {
 		$this->app->bind($a['RegionRepositoryInterface'], $a['RegionRepository']);
 		$this->app->bind($a['SurveyRepositoryInterface'], $a['SurveyRepository']);
 		$this->app->bind($a['UserRepositoryInterface'], $a['UserRepository']);
+		$this->app->bind($a['ReportRepositoryInterface'], $a['ReportRepository']);
 
 		$quoteRepo = $this->app->make('QuoteRepository');
 

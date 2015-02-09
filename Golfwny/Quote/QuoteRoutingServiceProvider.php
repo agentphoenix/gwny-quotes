@@ -134,6 +134,16 @@ class QuoteRoutingServiceProvider extends ServiceProvider {
 			Route::resource('hotels', 'HotelController');
 			Route::resource('courses', 'CourseController');
 			Route::resource('users', 'UserController');
+
+			Route::get('reports/revenue/{year?}', [
+				'as'	=> 'admin.reports.revenue',
+				'uses'	=> 'ReportsController@revenue']);
+			Route::get('reports/courses/{year?}', [
+				'as'	=> 'admin.reports.courses',
+				'uses'	=> 'ReportsController@courses']);
+			Route::get('reports/hotels/{year?}', [
+				'as'	=> 'admin.reports.hotels',
+				'uses'	=> 'ReportsController@hotels']);
 		});
 	}
 

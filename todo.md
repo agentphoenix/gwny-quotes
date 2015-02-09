@@ -2,9 +2,6 @@
 - Cron job
 - Survey
 - Survey results
-- Revenue report
-- Course report
-- Hotel report
 - Contract work
 - How to handle the contract when the dates are "immediate"
 - Validate initials

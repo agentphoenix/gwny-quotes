@@ -36,9 +36,9 @@
 <a href="{{ route('admin.users.index') }}" class="item">Users</a>
 
 <div class="header item"><i class="bar chart icon"></i>Reports</div>
-<a class="item">Revenue</a>
-<a class="item">Course</a>
-<a class="item">Hotel</a>
+<a href="{{ route('admin.reports.revenue') }}" class="item">Revenue</a>
+<a href="{{ route('admin.reports.courses') }}" class="item">Courses</a>
+<a href="{{ route('admin.reports.hotels') }}" class="item">Hotels</a>
 
 <a class="header item"><i class="announcement icon"></i>Survey Results</a>
 

@@ -219,6 +219,7 @@ return array(
 		'QuoteRepositoryInterface'		=> 'Quote\Data\Interfaces\QuoteRepositoryInterface',
 		'QuoteItemRepositoryInterface'	=> 'Quote\Data\Interfaces\QuoteItemRepositoryInterface',
 		'RegionRepositoryInterface'		=> 'Quote\Data\Interfaces\RegionRepositoryInterface',
+		'ReportRepositoryInterface'		=> 'Quote\Data\Interfaces\ReportRepositoryInterface',
 		'SurveyRepositoryInterface'		=> 'Quote\Data\Interfaces\SurveyRepositoryInterface',
 		'UserRepositoryInterface'		=> 'Quote\Data\Interfaces\UserRepositoryInterface',
 
@@ -230,6 +231,7 @@ return array(
 		'QuoteRepository'		=> 'Quote\Data\Repositories\QuoteRepository',
 		'QuoteItemRepository'	=> 'Quote\Data\Repositories\QuoteItemRepository',
 		'RegionRepository'		=> 'Quote\Data\Repositories\RegionRepository',
+		'ReportRepository'		=> 'Quote\Data\Repositories\ReportRepository',
 		'SurveyRepository'		=> 'Quote\Data\Repositories\SurveyRepository',
 		'UserRepository'		=> 'Quote\Data\Repositories\UserRepository',
 
