@@ -12,6 +12,7 @@ class StatusService {
 	const CONTRACT_REJECTED		= 8;
 	const WITHDRAWN				= 9;
 	const CLOSED				= 10;
+	const COMPLETED				= 11;
 
 	public static function toCode($value)
 	{
@@ -51,6 +52,10 @@ class StatusService {
 
 			case 'withdrawn':
 				return static::WITHDRAWN;
+			break;
+
+			case 'completed':
+				return static::COMPLETED;
 			break;
 		}
 	}
@@ -93,6 +98,10 @@ class StatusService {
 
 			case static::WITHDRAWN:
 				return "Withdrawn";
+			break;
+
+			case static::COMPLETED:
+				return "Completed";
 			break;
 		}
 	}
