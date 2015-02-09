@@ -36,17 +36,20 @@ class QuoteCalculatorService {
 
 	protected function calculateHotel()
 	{
+		// Get the hotel item
+		$item = $this->quote->getHotel();
+
 		// Get the hotel we're using
-		$hotel = $this->quote->getHotel()->hotel;
+		$hotel = $item->hotel;
 
 		// How many rooms do we need?
-		$rooms = ceil($this->quote->people / 2);
+		$rooms = ceil($item->people / 2);
 
 		// Calculate the cost for 1 night
-		$total = $rooms * $hotel->rate;
+		$total = $rooms * $item->rate;
 
 		// Figure out how many nights it is
-		$nights = $this->quote->arrival->diffInDays($this->quote->departure);
+		$nights = $item->arrival->diffInDays($item->departure);
 
 		// Re-calculate the total
 		$total *= $nights;
