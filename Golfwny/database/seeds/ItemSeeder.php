@@ -12,11 +12,11 @@ class ItemSeeder extends Seeder {
 
 		// Courses
 		$courses = [
-			['region_id' => 1, 'name' => "Ravenwood Golf Club", 'rate' => 65.00],
-			['region_id' => 1, 'name' => "Mill Creek Golf Club", 'rate' => 49.00],
-			['region_id' => 1, 'name' => "Greystone Golf Club", 'rate' => 60.00],
-			['region_id' => 1, 'name' => "Wildwood Golf Club", 'rate' => 45.00],
-			['region_id' => 1, 'name' => "FarView Golf Club", 'rate' => 30.00],
+			['region_id' => 1, 'name' => "Ravenwood Golf Club", 'rate' => 65.00, 'replay_rate' => 35.00],
+			['region_id' => 1, 'name' => "Mill Creek Golf Club", 'rate' => 49.00, 'replay_rate' => 25.00],
+			['region_id' => 1, 'name' => "Greystone Golf Club", 'rate' => 60.00, 'replay_rate' => 25.00],
+			['region_id' => 1, 'name' => "Wildwood Golf Club", 'rate' => 45.00, 'replay_rate' => 20.00],
+			['region_id' => 1, 'name' => "FarView Golf Club", 'rate' => 30.00, 'replay_rate' => 15.00],
 
 			['region_id' => 2, 'name' => "Harvest Hill Golf Club", 'rate' => 75.00],
 			['region_id' => 2, 'name' => "The Links at Ivy Ridge", 'rate' => 49.00],
