@@ -20,19 +20,19 @@
 			<div class="ui statistic">
 				<div class="value" id="displayPrice">${{ number_format(round($revenue['total'], 2), 2) }}</div>
 				<div class="label">Total Revenue</div>
-			</div>
+			</div><br>
 		</div>
 		<div class="col-xs-12">
 			<div class="ui statistic">
 				<div class="value" id="displayPrice">${{ number_format(round($revenue['costs'], 2), 2) }}</div>
 				<div class="label">Total Operating Costs</div>
-			</div>
+			</div><br>
 		</div>
 		<div class="col-xs-12">
 			<div class="ui statistic">
 				<div class="value" id="displayPrice">${{ number_format(round($revenue['square'], 2), 2) }}</div>
 				<div class="label">Total Square Costs</div>
-			</div>
+			</div><br>
 		</div>
 		<div class="col-xs-12">
 			<div class="ui statistic">
