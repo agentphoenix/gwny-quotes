@@ -87,6 +87,9 @@
 					<div class="btn-group">
 						<a class="btn btn-primary js-changeStatus" data-status="estimate" data-quote="{{ $quote->id }}">Re-Send Estimate</a>
 					</div>
+				@endif
+
+				@if ($quote->status == Status::ESTIMATE_ACCEPTED)
 					<div class="btn-group">
 						<a class="btn btn-primary js-changeStatus" data-status="booked" data-quote="{{ $quote->id }}">Send Contract</a>
 					</div>
@@ -318,6 +321,12 @@
 								<div class="form-group">
 									<label class="control-label">Confirmation Number</label>
 									{{ Form::text('golf[confirmation]', $item->confirmation, ['class' => 'form-control js-updateField', 'data-id' => $item->id, 'data-table' => 'quotes_items', 'data-field' => 'confirmation']) }}
+								</div>
+							</div>
+							<div class="col-md-2">
+								<div class="form-group">
+									<label class="control-label">Date</label>
+									{{ Form::text('golf[arrival]', $item->present()->arrival(false), ['class' => 'form-control js-datepicker', 'data-id' => $item->id, 'data-table' => 'quotes_items', 'data-field' => 'arrival', 'data-value' => $item->present()->arrival(false)]) }}
 								</div>
 							</div>
 							<div class="col-md-2">
