@@ -194,10 +194,4 @@ class HomeController extends BaseController {
 		return View::make('pages.thank-you');
 	}
 
-	public function survey($code)
-	{
-		return View::make('pages.survey')
-			->withQuote($this->quotes->getByCode($code));
-	}
-
 }

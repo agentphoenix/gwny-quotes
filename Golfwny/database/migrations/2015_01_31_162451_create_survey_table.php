@@ -16,6 +16,13 @@ class CreateSurveyTable extends Migration {
 		{
 			$table->bigIncrements('id');
 			$table->bigInteger('quote_id')->unsigned();
+			$table->integer('hotel_rating');
+			$table->text('hotel_comments')->nullable();
+			$table->text('golf_comments')->nullable();
+			$table->integer('overall_rating');
+			$table->text('overall_comments')->nullable();
+			$table->boolean('recommend');
+			$table->boolean('use_comments');
 			$table->timestamps();
 		});
 	}

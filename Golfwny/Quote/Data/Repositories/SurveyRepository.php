@@ -16,10 +16,5 @@ class SurveyRepository extends BaseRepository implements SurveyRepositoryInterfa
 	{
 		return $this->model->create($data);
 	}
-
-	public function findBySlug($slug)
-	{
-		return $this->getFirstBy('slug', $slug);
-	}
 	
 }

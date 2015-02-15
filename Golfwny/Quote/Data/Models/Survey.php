@@ -9,9 +9,11 @@ class Survey extends Eloquent {
 
 	protected $table = 'surveys';
 
-	protected $fillable = [];
+	protected $fillable = ['quote_id', 'hotel_rating', 'hotel_comments',
+		'golf_comments', 'overall_rating', 'overall_comments', 'recommend',
+		'use_comments'];
 
-	protected $dates = ['created_at', 'updated_at', 'deleted_at'];
+	protected $dates = ['created_at', 'updated_at'];
 
 	protected $presenter = 'Quote\Data\Presenters\SurveyPresenter';
 
