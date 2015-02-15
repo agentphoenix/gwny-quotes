@@ -1,27 +1,23 @@
 <h2>Contract</h2>
 
-@if ($quote->status == Status::CONTRACT_ACCEPTED)
-	<p><strong class="text-success">Contract Accepted:</strong> {{ $quote->present()->contractAccepted }}</p>
-@endif
-
-@if ($quote->status == Status::CONTRACT_REJECTED)
-	<p><strong class="text-danger">Contract Rejected:</strong> {{ $quote->present()->contractRejected }}</p>
-@endif
-
 <p>Dear {{ $quote->present()->firstName }},</p>
 
-<p>Thank you for booking your golf package with Golf WNY. Below, you will find all the information about your golf package as well as the Package Contract outlining the details. Please note the cancellation fees and the time frames to be monitored. <u>After careful review, please initial each page and sign the last page of the enclosed contract and return to the address above.</u></p>
+<p>Thank you for booking your golf package with Golf WNY. Below, you will find all the information about your golf package as well as the Package Contract outlining the details. Please note the cancellation fees and the time frames to be monitored. After careful review, please initial and electronically accept the contract at the bottom of this page.</p>
 
 <p>Payments are as follows:</p>
 
 <ul>
-	<li>A <strong>{{ $quote->present()->deposit }}</strong> deposit is due {{ $quote->present()->depositDue }}.</li>
-	<li>The remaining <strong>{{ $quote->present()->remaining }}</strong> is due {{ $quote->present()->remainingDue }}.</li>
+	@if ($quote->present()->daysToPackage() <= 30)
+		<li>Because your package will occur within 30 days of today, the entire package cost of <strong>{{ $quote->present()->price }}</strong> is due immediately.</li>
+	@else
+		<li>A <strong>{{ $quote->present()->deposit }}</strong> deposit is due {{ $quote->present()->depositDue }}.</li>
+		<li>The remaining <strong>{{ $quote->present()->remaining }}</strong> is due {{ $quote->present()->remainingDue }}.</li>
+	@endif
 </ul>
 
 <p>Should you have any questions or concerns regarding the details of your contract, do not hesitate to call directly at 585-281-8942.</p>
 
-<p><u>Once you have signed and initialed the contract and returned it, we will return a signed copy to you for your records.</u></p>
+<p>You will be able to review this contract at any time by checking on the status of your package from this page.</p>
 
 <p>The Golf WNY staff is looking forward to working with you and making your experience in {{ $quote->present()->region }} an enjoyable success.</p>
 
@@ -37,7 +33,11 @@
 
 <ul>
 	@foreach ($quote->getCourses() as $item)
-		<li>{{ $item->present()->holes }} for {{ $item->present()->people }} at {{ $item->present()->course }}, {{ $item->present()->time }}</li>
+		@if ($item->holes == 18)
+			<li>{{ $item->present()->holes }} for {{ $item->present()->people }} at {{ $item->present()->course }} on {{ $item->present()->arrival }} at {{ $item->present()->time }}</li>
+		@else
+			<li>{{ $item->present()->holes }} for {{ $item->present()->people }} at {{ $item->present()->course }} on {{ $item->present()->arrival }} at {{ $item->present()->time }} and {{ $item->present()->time2 }}</li>
+		@endif
 	@endforeach
 </ul>
 
@@ -47,15 +47,25 @@
 
 <h4>CANCELLATION</h4>
 
-<p>In the event of cancellation by {{ $quote->present()->name }}, Golf WNY is entitled to liquidated damages as follows:</p>
-
-<p>If Stay-n-Play Package is cancelled inside of 45 days of arrival date, 100% of deposits are non-refundable.</p>
+@if ($quote->present()->daysToPackage <= 30)
+	<p>In the event of cancellation by {{ $quote->present()->name }}, Golf WNY is entitled to liquidated damages equal to {{ $quote->present()->percentDeposit }}% of the total cost of the Stay-N-Play package ({{ $quote->present()->deposit }}). Funds paid to Golf WNY above the deposit amount will be returned to {{ $quote->present()->name }} within 30 days of cancellation.</p>
+@else
+	<p>In the event of cancellation by {{ $quote->present()->name }} inside of 45 days of the arrival date, Golf WNY is entitled to liquidated damages equal to {{ $quote->present()->percentDeposit }}% of the total cost of the Stay-N-Play package ({{ $quote->present()->deposit }}). Funds paid to Golf WNY above the deposit amount will be returned to {{ $quote->present()->name }} within 30 days of cancellation.</p>
+@endif
 
 <p>Please make your payment to Golf WNY if paying by check.</p>
 
 <h3>Agreement</h3>
 
-<p>This agreement shall be effective between the {{ $quote->present()->name }} and Golf WNY. <u>Acceptance is due no later than {{ $quote->present()->depositDue }}</u> otherwise space will no longer be held, and the terms of this agreement may be voided or renegotiated. No other person has the authority, expressed or implied, to accept such agreement or modification on behalf of the Golf WNY.</p>
+<p>This agreement shall be effective between the {{ $quote->present()->name }} and Golf WNY.
+
+@if ($quote->present()->daysToPackage <= 30)
+	Acceptance is due immediately,
+@else
+	Acceptance is due no later than {{ $quote->present()->depositDue }},
+@endif
+
+otherwise space will no longer be held and the terms of this agreement may be voided or renegotiated. No other person has the authority, expressed or implied, to accept such agreement or modification on behalf of Golf WNY.</p>
 
 <h4>ADDITIONAL TERMS AND CONDITIONS</h4>
 
@@ -89,13 +99,13 @@
 
 <p>The persons signing the agreement on behalf of Golf WNY and {{ $quote->present()->name }} each warrant that they are authorized to make agreements and to bind their principals to this agreement.</p>
 
-<p>This contract shall be deemed accepted only after it has been <u>signed</u> by {{ $quote->present()->name }} and <u>thereafter signed by a representative of Golf WNY</u>.</p>
+<p>This contract shall be deemed accepted only after it has been initialed and electronically accepted by {{ $quote->present()->name }}.</p>
 
 <p>We look forward to working with you.</p>
 
-<p>I have read these terms and conditions and agree that they are included as a part of the <u>attached contract</u>.</p>
+<p><strong>I have read these terms and conditions and agree that they are included as a part of the contract.</strong></p>
 
-<p><u>By {{ $quote->present()->name }} authorized representative:</u></p>
+<!--<p><u>By {{ $quote->present()->name }} authorized representative:</u></p>
 
 <p><u>____________________________________ Date:_________</u></p>
 
@@ -106,4 +116,4 @@
 <p><u>____________________________________ Date:_________</u></p>
 
 <p><u>Eric LaBarr<br>
-Golf WNY Founder</u></p>
+Golf WNY Founder</u></p>-->

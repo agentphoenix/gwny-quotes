@@ -95,6 +95,9 @@
 				@if ( ! empty($item->confirmation))
 					<p><em>Confirmation Number: <strong>{{ $item->present()->confirmation }}</strong></em></p>
 				@endif
+				@if ( ! empty($item->arrival))
+					<p><em>Date: <strong>{{ $item->present()->arrival() }}</strong></em></p>
+				@endif
 				@if ( ! empty($item->time))
 					<p><em>Tee Time: <strong>{{ $item->present()->time }}</strong></em></p>
 				@endif

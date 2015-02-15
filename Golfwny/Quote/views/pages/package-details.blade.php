@@ -43,6 +43,14 @@
 		<p><strong class="text-danger">Estimate Rejected:</strong> {{ $quote->present()->estimateRejected }}</p>
 	@endif
 
+	@if ($quote->status == Status::CONTRACT_ACCEPTED)
+		<p><strong class="text-success">Contract Accepted:</strong> {{ $quote->present()->contractAccepted }}</p>
+	@endif
+
+	@if ($quote->status == Status::CONTRACT_REJECTED)
+		<p><strong class="text-danger">Contract Rejected:</strong> {{ $quote->present()->contractRejected }}</p>
+	@endif
+
 	{{ View::make('pages.package-details-partial')->withQuote($quote) }}
 
 	@if ($quote->status >= Status::BOOKED)
@@ -87,5 +95,32 @@
 @stop
 
 @section('scripts')
-	{{ partial('js-changeStatus') }}
+	<script>
+		$('.js-changeStatus').on('click', function(e)
+		{
+			e.preventDefault();
+
+			if ($('[name="initials"]').val() == "")
+			{
+				alert("You must enter your initials to accept or reject the quote!");
+			}
+			else
+			{
+				$.ajax({
+					type: "POST",
+					url: "{{ route('admin.quotes.changeStatus') }}",
+					data: {
+						"_token": "{{ csrf_token() }}",
+						"status": $(this).data('status'),
+						"id": $(this).data('quote'),
+						"initials": $('[name="initials"]').val()
+					},
+					success: function(data)
+					{
+						window.location.reload();
+					}
+				});
+			}
+		});
+	</script>
 @stop
