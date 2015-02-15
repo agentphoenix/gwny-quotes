@@ -43,6 +43,11 @@ class QuotePresenter extends Presenter {
 		return $this->entity->getCourses()->count();
 	}
 
+	public function daysToPackage()
+	{
+		return $this->entity->arrival->diffInDays(Date::now()->startOfDay());
+	}
+
 	public function departure($full = true)
 	{
 		if ($full)
@@ -215,7 +220,7 @@ class QuotePresenter extends Presenter {
 
 	public function remainingDue()
 	{
-		if ($this->entity->arrival->diffInDays(Date::now()) < 30)
+		if ($this->entity->arrival->diffInDays(Date::now()) <= 30)
 		{
 			return "immediately";
 		}
