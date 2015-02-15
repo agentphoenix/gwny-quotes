@@ -44,10 +44,15 @@ class QuoteItemPresenter extends Presenter {
 
 	public function arrival($full = true)
 	{
-		if ($full)
-			return $this->entity->arrival->format(config('gwny.dates.date'));
+		if ($this->entity->arrival)
+		{
+			if ($full)
+				return $this->entity->arrival->format(config('gwny.dates.date'));
 
-		return $this->entity->arrival->format(config('gwny.dates.dateFormalSlashes'));
+			return $this->entity->arrival->format(config('gwny.dates.dateFormalSlashes'));
+		}
+
+		return false;
 	}
 
 	public function departure($full = true)
