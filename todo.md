@@ -1,4 +1,3 @@
 - Cron job
-- Validate survey submission
 - Survey results
 - Email content

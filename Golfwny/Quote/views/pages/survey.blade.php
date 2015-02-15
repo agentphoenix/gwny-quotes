@@ -15,7 +15,7 @@
 		<label class="control-label">How would you rate your stay at the {{ $quote->present()->hotel }}?</label>
 		<div class="row">
 			<div class="col-md-6">
-				<div class="form-group">
+				<div class="form-group{{ ($errors->has('hotel_rating')) ? ' has-error' : '' }}">
 					<p class="help-block">1 - Not Good / 5 - Great</p>
 					<div>
 						<label class="radio-inline">{{ Form::radio('hotel_rating', 1, false) }} 1</label>
@@ -24,6 +24,7 @@
 						<label class="radio-inline">{{ Form::radio('hotel_rating', 4, false) }} 4</label>
 						<label class="radio-inline">{{ Form::radio('hotel_rating', 5, false) }} 5</label>
 					</div>
+					{{ $errors->first('hotel_rating', '<p class="help-block">:message</p>') }}
 				</div>
 			</div>
 		</div>
@@ -54,7 +55,7 @@
 		<label class="control-label">Overall how would you rate your Stay-N-Play Package experience?</label>
 		<div class="row">
 			<div class="col-md-6">
-				<div class="form-group">
+				<div class="form-group{{ ($errors->has('overall_rating')) ? ' has-error' : '' }}">
 					<p class="help-block">1 - Not Good / 5 - Great</p>
 					<div>
 						<label class="radio-inline">{{ Form::radio('overall_rating', 1, false) }} 1</label>
@@ -63,6 +64,7 @@
 						<label class="radio-inline">{{ Form::radio('overall_rating', 4, false) }} 4</label>
 						<label class="radio-inline">{{ Form::radio('overall_rating', 5, false) }} 5</label>
 					</div>
+					{{ $errors->first('overall_rating', '<p class="help-block">:message</p>') }}
 				</div>
 			</div>
 		</div>
@@ -79,11 +81,12 @@
 		<label class="control-label">Would you recommend Golf WNY to friends or family?</label>
 		<div class="row">
 			<div class="col-md-6">
-				<div class="form-group">
+				<div class="form-group{{ ($errors->has('recommend')) ? ' has-error' : '' }}">
 					<div>
-						<label class="radio-inline">{{ Form::radio('recommend', true, false) }} Yes</label>
-						<label class="radio-inline">{{ Form::radio('recommend', false, false) }} No</label>
+						<label class="radio-inline">{{ Form::radio('recommend', 1, false) }} Yes</label>
+						<label class="radio-inline">{{ Form::radio('recommend', 0, false) }} No</label>
 					</div>
+					{{ $errors->first('recommend', '<p class="help-block">:message</p>') }}
 				</div>
 			</div>
 		</div>
@@ -91,11 +94,12 @@
 		<label class="control-label">Can we use your comments on our website?</label>
 		<div class="row">
 			<div class="col-md-6">
-				<div class="form-group">
+				<div class="form-group{{ ($errors->has('use_comments')) ? ' has-error' : '' }}">
 					<div>
-						<label class="radio-inline">{{ Form::radio('use_comments', true, false) }} Yes</label>
-						<label class="radio-inline">{{ Form::radio('use_comments', false, false) }} No</label>
+						<label class="radio-inline">{{ Form::radio('use_comments', 1, false) }} Yes</label>
+						<label class="radio-inline">{{ Form::radio('use_comments', 0, false) }} No</label>
 					</div>
+					{{ $errors->first('use_comments', '<p class="help-block">:message</p>') }}
 				</div>
 			</div>
 		</div>
