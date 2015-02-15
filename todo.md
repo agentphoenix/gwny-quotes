@@ -1,7 +1,4 @@
-- Comments when rejecting the estimate or contract
 - Cron job
-- Survey
+- Validate survey submission
 - Survey results
-- Contract work
-- How to handle the contract when the dates are "immediate"
-- Validate initials
+- Email content
