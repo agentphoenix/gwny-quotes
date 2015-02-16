@@ -1,5 +1,5 @@
  /*
- * # Semantic UI - 1.6.4
+ * # Semantic UI - 1.8.1
  * https://github.com/Semantic-Org/Semantic-UI
  * http://www.semantic-ui.com/
  *

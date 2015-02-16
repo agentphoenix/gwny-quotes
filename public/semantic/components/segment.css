@@ -1,5 +1,5 @@
  /*
- * # Semantic UI - 1.6.4
+ * # Semantic UI - 1.8.1
  * https://github.com/Semantic-Org/Semantic-UI
  * http://www.semantic-ui.com/
  *
@@ -300,10 +300,12 @@
   z-index: 101;
 }
 @-webkit-keyframes segment-spin {
+
   from {
     -webkit-transform: rotate(0deg);
             transform: rotate(0deg);
   }
+
   to {
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg);
@@ -335,12 +337,6 @@
   background-color: transparent;
   box-shadow: none;
   border-radius: 0px;
-}
-.ui.basic.segment:first-child {
-  padding-top: 0em;
-}
-.ui.basic.segment:last-child {
-  padding-bottom: 0em;
 }
 
 /*-------------------
