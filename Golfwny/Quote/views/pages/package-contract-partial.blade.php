@@ -47,13 +47,15 @@
 
 <h4>CANCELLATION</h4>
 
+<p>In the event of cancellation by {{ $quote->present()->name }}, Golf WNY is entitled to liquidated damages as follows:</p>
+
 @if ($quote->present()->daysToPackage <= 30)
-	<p>In the event of cancellation by {{ $quote->present()->name }}, Golf WNY is entitled to liquidated damages equal to {{ $quote->present()->percentDeposit }}% of the total cost of the Stay-N-Play package ({{ $quote->present()->deposit }}). Funds paid to Golf WNY above the deposit amount will be returned to {{ $quote->present()->name }} within 30 days of cancellation.</p>
+	<p>This Stay-N-Play Package is non-refundable. Golf WNY is not responsible for inclement weather.</p>
 @else
-	<p>In the event of cancellation by {{ $quote->present()->name }} inside of 45 days of the arrival date, Golf WNY is entitled to liquidated damages equal to {{ $quote->present()->percentDeposit }}% of the total cost of the Stay-N-Play package ({{ $quote->present()->deposit }}). Funds paid to Golf WNY above the deposit amount will be returned to {{ $quote->present()->name }} within 30 days of cancellation.</p>
+	<p>This Stay-N-Play Package is refundable up to 30 days of arrival with all funds being returned. Any package cancelled inside of 30 days of arrival is non-refundable. Golf WNY is not responsible for inclement weather.</p>
 @endif
 
-<p>Please make your payment to Golf WNY if paying by check.</p>
+<p>Please follow the email link sent to make payment via credit card.</p>
 
 <h3>Agreement</h3>
 
