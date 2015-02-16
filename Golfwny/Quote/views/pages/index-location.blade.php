@@ -1,48 +1,46 @@
-<p>&nbsp;</p>
-
-<div class="ui three cards">
-	<div class="card">
-		<div class="image">
-			{{ HTML::image('img/rochester.jpg') }}
-		</div>
-		<div class="content">
-			<a class="header">Rochester</a>
-		</div>
-		<div class="extra content">
-			<div class="right floated">
-				<a href="{{ route('home', ['rochester', 'info']) }}" class="ui icon green button">Get Started <i class="angle double right icon"></i></a>
+<div class="ui stackable three column grid">
+	<div class="column">
+		<div class="ui fluid card">
+			<div class="image">
+				{{ HTML::image('img/rochester.jpg') }}
 			</div>
-			<a href="http://golfwny.com/rochester/courses" target="_blank" class="ui icon button"><i class="info icon"></i> About</a>
+			<div class="content">
+				<a class="header">Rochester</a>
+			</div>
+			<div class="extra content">
+				<a href="http://golfwny.com/rochester/courses" target="_blank" class="ui button">About</a>
+				<a href="{{ route('home', ['rochester', 'info']) }}" class="ui green button">Get Started</a>
+			</div>
 		</div>
 	</div>
 
-	<div class="card">
-		<div class="image">
-			{{ HTML::image('img/buffalo.jpg') }}
-		</div>
-		<div class="content">
-			<a class="header">Buffalo</a>
-		</div>
-		<div class="extra content">
-			<div class="right floated">
-				<a href="{{ route('home', ['buffalo', 'info']) }}" class="ui icon green button">Get Started <i class="angle double right icon"></i></a>
+	<div class="column">
+		<div class="ui fluid card">
+			<div class="image">
+				{{ HTML::image('img/buffalo.jpg') }}
 			</div>
-			<a href="http://golfwny.com/buffalo/courses" target="_blank" class="ui icon button"><i class="info icon"></i> About</a>
+			<div class="content">
+				<a class="header">Buffalo</a>
+			</div>
+			<div class="extra content">
+				<a href="http://golfwny.com/buffalo/courses" target="_blank" class="ui button">About</a>
+				<a href="{{ route('home', ['buffalo', 'info']) }}" class="ui green button">Get Started</a>
+			</div>
 		</div>
 	</div>
 
-	<div class="card">
-		<div class="image">
-			{{ HTML::image('img/silverlake.jpg') }}
-		</div>
-		<div class="content">
-			<a class="header">Silver Lake</a>
-		</div>
-		<div class="extra content">
-			<div class="right floated">
-				<a href="http://golfwny.com/rochester/book-package" target="_blank" class="ui icon green button">Get Started <i class="angle double right icon"></i></a>
+	<div class="column">
+		<div class="ui fluid card">
+			<div class="image">
+				{{ HTML::image('img/silverlake.jpg') }}
 			</div>
-			<a href="http://golfwny.com/rochester/course/silver-lake-country-club" target="_blank" class="ui icon button"><i class="info icon"></i> About</a>
+			<div class="content">
+				<a class="header">Silver Lake</a>
+			</div>
+			<div class="extra content">
+				<a href="http://golfwny.com/rochester/course/silver-lake-country-club" target="_blank" class="ui button">About</a>
+				<a href="http://golfwny.com/rochester/book-package" target="_blank" class="ui green button">Get Started</a>
+			</div>
 		</div>
 	</div>
 </div>

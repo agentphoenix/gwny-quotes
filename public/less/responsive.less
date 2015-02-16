@@ -1,70 +1,128 @@
 @import "mixins.less";
 @import "variables.less";
 
-/* lg */
-@media (min-width: 1200px) {}
+/* widescreen */
+@media (min-width: 1920px) {}
 
-/* md */
-@media (min-width: 769px) and (max-width: 979px) {
-	body {
-		padding: 0;
+/* large monitor */
+@media (min-width: 1400px) and (max-width: 1919px) {}
 
-		background: @color-bg;
-		font-size: 16px;
-	}
+/* computer */
+@media (min-width: 992px) and (max-width: 1399px) {}
 
-	.ui.statistic>.value {
-		font-size: 3rem;
-	}
-}
- 
-/* sm */
-@media (max-width: 768px) {
+/* tablet */
+@media (min-width: 768px) and (max-width: 991px) {
 	html {
 		overflow-x: hidden;
-        -webkit-overflow-scrolling: touch;
-	}
-	
-	body {
-		background: @color-bg;
-		font-size: 16px;
-	}
-}
- 
-/* xs */
-@media (max-width: 480px) {
-	body {
-		background: @color-bg;
+		-webkit-overflow-scrolling: touch;
 	}
 
-	header {
-		height: 64px;
-		line-height: 64px;
+	.ui.header {
+		h1 {
+			text-align: center;
+		}
 
-		.overlay {
-			background: none;
+		nav {
+			float: none;
+			margin: 0;
 
-			h1 {
-				margin: 0;
-				padding: 0;
-				line-height: 64px;
+			ul {
+				li {
+					float: none;
+					width: 33%;
+					padding: 0;
+					display: inline-block;
 
-				text-align: center;
-				font-size: 48px;
-			}
-
-			.sidebar-toggle {
-				display: block;
+					text-align: center;
+				}
 			}
 		}
 	}
 
-	nav.nav-main {
-		display: none;
-		margin: 0;
+	.ui.card {
+		margin-bottom: @spacing !important;
 	}
-	
-	.lead {
-		font-size: 22px;
+
+	.ui.steps {
+		width: 85%;
+		margin: 0 auto @spacing auto;
+
+		.step {
+			display: block;
+			width: 100% !important;
+			padding: .9285em 1.5em;
+
+			&:after {
+				visibility: hidden;
+			}
+
+			&:first-child {
+				.border-radius(@border-radius, @border-radius, 0, 0);
+			}
+
+			&:last-child {
+				.border-radius(0, 0, @border-radius, @border-radius);
+			}
+		}
+	}
+}
+
+/* mobile */
+@media (max-width: 767px) {
+	html {
+		overflow-x: hidden;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.ui.header {
+		h1 {
+			text-align: center;
+		}
+
+		nav {
+			float: none;
+			margin: 0;
+
+			ul {
+				li {
+					float: none;
+					display: block;
+					width: 100%;
+					margin: @spacing-sm 0;
+					padding: 0;
+
+					text-align: center;
+
+					a {
+						font-size: 1.75em;
+					}
+				}
+			}
+		}
+	}
+
+	section h1 {
+		text-align: center;
+	}
+
+	.ui.card {
+		margin-bottom: @spacing !important;
+	}
+
+	.ui.steps {
+		width: 100%;
+		margin: 0 auto @spacing auto;
+
+		.step {
+			width: 100% !important;
+
+			&:first-child {
+				.border-radius(@border-radius, @border-radius, 0, 0);
+			}
+
+			&:last-child {
+				.border-radius(0, 0, @border-radius, @border-radius);
+			}
+		}
 	}
 }

@@ -13,8 +13,6 @@
 		<link href="//fonts.googleapis.com/css?family=Lato:300,400,400italic,700,900italic" rel="stylesheet">
 
 		@if (App::environment() == 'production')
-			<link href="//fonts.googleapis.com/css?family=Gruppo" rel="stylesheet">
-			<link href="//fonts.googleapis.com/css?family=Lato:300,400,400italic,700,900italic" rel="stylesheet">
 			<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
 		@else
 			<link href="//localhost/global/bootstrap/3.3/css/bootstrap.min.css" rel="stylesheet">
@@ -41,24 +39,22 @@
 			</div>
 		</header>
 
-		<div class="tagline visible-xs">
-			<div class="logo"></div>
-			<h1>Bring Your Game to Us</h1>
-			<h3>Experience everything Western NY has to offer</h3>
-		</div>
-
 		<div class="container">
-			<nav class="nav-main">
-				<ul>
-					<li><a href="{{ route('home') }}">Create a New Quote</a></li>
-					<li><a href="{{ route('checkStatus') }}">Check the Status of a Quote</a></li>
-					<li><a href="http://golfwny.com">Back to GolfWNY</a></li>
-				</ul>
-			</nav>
+			<div class="hidden-xs">
+				<nav class="nav-main">
+					<ul>
+						<li><a href="{{ route('home') }}">Create a New Quote</a></li>
+						<li><a href="{{ route('checkStatus') }}">Check the Status of a Quote</a></li>
+						<li><a href="http://golfwny.com">Back to GolfWNY</a></li>
+					</ul>
+				</nav>
+			</div>
 
 			<div class="visible-xs">
 				<ul class="nav nav-list">
-
+					<li><a href="{{ route('home') }}">Create aNew Quote</a></li>
+					<li><a href="{{ route('checkStatus') }}">Check the Status of a Quote</a></li>
+					<li><a href="http://golfwny.com">Back to GolfWNY</a></li>
 				</ul>
 			</div>
 

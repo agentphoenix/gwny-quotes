@@ -52,7 +52,7 @@ header {
 }
 
 nav {
-	position: relative;
+	/*position: relative;
 	margin: -21px auto 15px auto;
 	
 	.gradient(#fafafa, #dadada);
@@ -104,7 +104,7 @@ nav {
 				}
 			}
 		}
-	}
+	}*/
 }
 
 .tagline {
@@ -161,12 +161,65 @@ section {
 	}
 }
 
-footer {
-	margin-top: 30px;
-	padding: 8px 2px;
-	
-	color: #888;
-	font-size: @font-size;
+.ui.header {
+	margin-bottom: @spacing;
+
+	nav {
+		float: right;
+		margin: 17px 0 0 0;
+
+		ul {
+			margin: 0;
+			padding: 0;
+
+			list-style: none;
+
+			li {
+				margin: 0;
+				padding: 0 0 0 @spacing-lg;
+				float: left;
+
+				a {
+					color: rgba(255, 255, 255, .65);
+					font-size: 1.5em;
+					font-family: @font-primary;
+					font-weight: bold;
+					font-style: italic;
+
+					&:hover {
+						color: @color-white;
+						text-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+					}
+				}
+			}
+		}
+	}
+}
+.ui.inverted.green.segment {
+	background-color: @color-green !important;
+	border-bottom: 1px solid rgba(0, 0, 0, .15);
+
+	h1 {
+		font-family: @font-headings;
+		font-weight: bold;
+		color: @color-white;
+		text-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+		letter-spacing: .75px;
+		font-size: 4rem;
+	}
+}
+.ui.inverted.green.header {
+	color: @color-green !important;
+}
+
+.ui.footer {
+	margin-top: @spacing-lg;
+
+	p {
+		line-height: 1.5;
+
+		color: @color-gray-light;
+	}
 }
 
 a {
@@ -366,17 +419,28 @@ label {
 	font-size: 20px;
 }
 
-.ui.steps .step .title {
-	font-family: @font-primary;
-}
-.ui.steps .step.active .title {
-	color: @color-red;
-}
-.ui.steps .step:first-child {
-	.border-radius(50px, 0, 0, 50px);
-}
-.ui.steps .step:last-child {
-	.border-radius(0, 50px, 50px, 0);
+.ui.steps {
+	margin-bottom: @spacing-lg;
+
+	.step {
+		.title {
+			font-family: @font-primary;
+		}
+
+		&.active {
+			.title {
+				color: @color-red;
+			}
+		}
+
+		&:first-child {
+			.border-radius(50px, 0, 0, 50px);
+		}
+
+		&:last-child {
+			.border-radius(0, 50px, 50px, 0);
+		}
+	}
 }
 .ui.ordered.steps .step.completed:before, .ui.steps .step.completed>.icon:before {
 	color: @color-green;
