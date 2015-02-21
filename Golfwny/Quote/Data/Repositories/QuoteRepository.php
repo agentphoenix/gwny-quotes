@@ -39,11 +39,11 @@ class QuoteRepository extends BaseRepository implements QuoteRepositoryInterface
 
 	public function create(array $data)
 	{
-		if (array_key_exists('arrival', $data))
-			$data['arrival'] = Date::createFromFormat('m/d/Y', $data['arrival']);
+		if (array_key_exists('arrival_submit', $data))
+			$data['arrival'] = Date::createFromFormat('m/d/Y', $data['arrival_submit']);
 
-		if (array_key_exists('departure', $data))
-			$data['departure'] = Date::createFromFormat('m/d/Y', $data['departure']);
+		if (array_key_exists('departure_submit', $data))
+			$data['departure'] = Date::createFromFormat('m/d/Y', $data['departure_submit']);
 
 		return $this->model->create($data);
 	}
