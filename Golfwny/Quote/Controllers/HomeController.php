@@ -7,6 +7,7 @@ use View,
 	Status,
 	Session,
 	Redirect,
+	QuoteInfoValidator,
 	QuoteRepositoryInterface,
 	RegionRepositoryInterface;
 use Quote\Services\QuoteCalculatorService;
@@ -112,6 +113,7 @@ class HomeController extends BaseController {
 	public function storeInfo($location)
 	{
 		// Validate
+		$validator = (new QuoteInfoValidator(app('validator')))->validate(Input::all());
 
 		// Build the input
 		$input = Input::all() + [

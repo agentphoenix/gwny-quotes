@@ -240,6 +240,7 @@ return array(
 		 */
 		'CourseValidator'		=> 'Quote\Data\Validators\CourseValidator',
 		'HotelValidator'		=> 'Quote\Data\Validators\HotelValidator',
+		'QuoteInfoValidator'	=> 'Quote\Data\Validators\QuoteInfoValidator',
 		'RegionValidator'		=> 'Quote\Data\Validators\RegionValidator',
 		'SurveyValidator'		=> 'Quote\Data\Validators\SurveyValidator',
 		'UserValidator'			=> 'Quote\Data\Validators\UserValidator',
