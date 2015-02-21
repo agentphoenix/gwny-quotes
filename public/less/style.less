@@ -13,6 +13,19 @@ body {
 	background: @color-bg;
 }
 
+.pusher {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	overflow: visible;
+
+	> .full.height {
+		flex-grow: 1;
+		flex-shrink: 1;
+		flex-basis: 0%;
+	}
+}
+
 header {
 	position: relative;
 	height: 100px;
@@ -531,4 +544,26 @@ i.red.icon {
 
 u {
 	background-color: yellow;
+}
+
+.ui.form {
+	.field {
+		&>label {
+			font-size: @font-size;
+		}
+	}
+
+	input[type=text],
+	input[type=email],
+	input[type=password],
+	textarea {
+		border-color: #ccc;
+
+		.rounded(@border-radius);
+	}
+
+	textarea {
+		height: auto;
+		min-height: 0px;
+	}
 }

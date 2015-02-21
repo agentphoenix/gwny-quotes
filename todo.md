@@ -3,3 +3,4 @@
 - Email content
 - Phone layout
 - Tablet layout
+- Validate quote creation
