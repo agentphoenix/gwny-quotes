@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.main')
 
 @section('title')
     Log In
@@ -34,4 +34,8 @@
             {{ Form::close() }}
         </div>
     </div>
+@stop
+
+@section('scripts')
+    {{ partial('js-footerFix') }}
 @stop
