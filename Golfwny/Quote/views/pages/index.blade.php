@@ -7,44 +7,20 @@
 @section('content')
 	<h1>Create Your Golf Package</h1>
 
-	<div class="ui four steps">
-		<div class="{{ $stepLocationStatus }} step">
-			<i class="marker icon"></i>
-			<div class="content">
-				<div class="title">Location</div>
-			</div>
-		</div>
-		<div class="{{ $stepInfoStatus }} step">
-			<i class="info icon"></i>
-			<div class="content">
-				<div class="title">Basic Info</div>
-			</div>
-		</div>
-		<div class="{{ $stepCoursesStatus }} step">
-			<i class="flag icon"></i>
-			<div class="content">
-				<div class="title">Courses</div>
-			</div>
-		</div>
-		<div class="{{ $stepConfirmStatus }} step">
-			<i class="send icon"></i>
-			<div class="content">
-				<div class="title">Confirmation</div>
-			</div>
-		</div>
-	</div>
-
 	{{ $view }}
 @stop
 
 @section('styles')
 	{{ HTML::style('css/datepicker.css') }}
+	{{ HTML::style('css/bootcards-desktop-lite.min.css') }}
 @stop
 
 @section('scripts')
 	{{ HTML::script('js/picker.js') }}
 	{{ HTML::script('js/picker.date.js') }}
 	{{ HTML::script('js/moment.min.js') }}
+	{{ HTML::script('js/bootcards.min.js') }}
+	{{ partial('js-footerFix') }}
 	<script>
 		$('.js-addCourse-action').on('click', function(e)
 		{
@@ -68,18 +44,20 @@
 		});
 
 		$('.js-datepicker-arrival').pickadate({
-			format: "mm/dd/yyyy",
-			onSet: function(context)
-			{
-				var date = moment(this.$node.context.value, "MM/DD/YYYY");
-			}
+			format: "dddd, mmmm d, yyyy",
+			formatSubmit: "mm/dd/yyyy"
 		});
 
 		$('.js-datepicker-departure').pickadate({
-			format: "mm/dd/yyyy",
-			onSet: function(context)
+			format: "dddd, mmmm d, yyyy",
+			formatSubmit: "mm/dd/yyyy",
+			onOpen: function()
 			{
-				var date = moment(this.$node.context.value, "MM/DD/YYYY");
+				// Build the new minimum date
+				var minDate = moment($('[name="arrival_submit"]').val(), "MM/DD/YYYY").add(1, 'day');
+
+				// Set the new minimum date
+				this.set('min', minDate.toArray());
 			}
 		});
 	</script>

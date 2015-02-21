@@ -1,45 +1,57 @@
-<div class="ui stackable three column grid">
-	<div class="column">
-		<div class="ui fluid card">
-			<div class="image">
-				{{ HTML::image('img/rochester.jpg') }}
+<div class="row">
+	<div class="col-md-4">
+		<div class="panel panel-default bootcards-media">
+			<div class="panel-heading">
+				<h3 class="panel-title">Rochester, NY</h3>
 			</div>
-			<div class="content">
-				<a class="header">Rochester</a>
-			</div>
-			<div class="extra content">
-				<a href="http://golfwny.com/rochester/courses" target="_blank" class="ui button">About</a>
-				<a href="{{ route('home', ['rochester', 'info']) }}" class="ui green button">Get Started</a>
-			</div>
-		</div>
-	</div>
-
-	<div class="column">
-		<div class="ui fluid card">
-			<div class="image">
-				{{ HTML::image('img/buffalo.jpg') }}
-			</div>
-			<div class="content">
-				<a class="header">Buffalo</a>
-			</div>
-			<div class="extra content">
-				<a href="http://golfwny.com/buffalo/courses" target="_blank" class="ui button">About</a>
-				<a href="{{ route('home', ['buffalo', 'info']) }}" class="ui green button">Get Started</a>
+			{{ HTML::image('img/rochester.jpg', null, ['class' => 'img-responsive']) }}
+			<div class="panel-footer">
+				<div class="row">
+					<div class="col-xs-6">
+						<a href="http://golfwny.com/rochester/courses" target="_blank" class="btn btn-default btn-block">More Info</a>
+					</div>
+					<div class="col-xs-6">
+						<a href="{{ route('home', ['rochester', 'info']) }}" class="btn btn-primary btn-block">Get Started</a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 
-	<div class="column">
-		<div class="ui fluid card">
-			<div class="image">
-				{{ HTML::image('img/silverlake.jpg') }}
+	<div class="col-md-4">
+		<div class="panel panel-default bootcards-media">
+			<div class="panel-heading">
+				<h3 class="panel-title">Buffalo, NY</h3>
 			</div>
-			<div class="content">
-				<a class="header">Silver Lake</a>
+			{{ HTML::image('img/buffalo.jpg', null, ['class' => 'img-responsive']) }}
+			<div class="panel-footer">
+				<div class="row">
+					<div class="col-xs-6">
+						<a href="http://golfwny.com/buffalo/courses" target="_blank" class="btn btn-default btn-block">More Info</a>
+					</div>
+					<div class="col-xs-6">
+						<a href="{{ route('home', ['buffalo', 'info']) }}" class="btn btn-primary btn-block">Get Started</a>
+					</div>
+				</div>
 			</div>
-			<div class="extra content">
-				<a href="http://golfwny.com/rochester/course/silver-lake-country-club" target="_blank" class="ui button">About</a>
-				<a href="http://golfwny.com/rochester/book-package" target="_blank" class="ui green button">Get Started</a>
+		</div>
+	</div>
+
+	<div class="col-md-4">
+		<div class="panel panel-default bootcards-media">
+			<div class="panel-heading">
+				<h3 class="panel-title">Silver Lake Resort</h3>
+			</div>
+			{{ HTML::image('img/silverlake.jpg', null, ['class' => 'img-responsive']) }}
+			<div class="panel-footer">
+				<div class="row">
+					<div class="col-xs-6">
+						<a href="http://golfwny.com/rochester/course/silver-lake-country-club" target="_blank" class="btn btn-default btn-block">More Info</a>
+					</div>
+					<div class="col-xs-6">
+						<a href="http://golfwny.com/rochester/book-package" target="_blank" class="btn btn-primary btn-block">Get Started</a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
