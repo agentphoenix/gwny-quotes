@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.main')
 
 @section('title')
 	Package Details
@@ -8,19 +8,19 @@
 	<h1>Package Details</h1>
 
 	@if ($quote->status == Status::SUBMITTED)
-		{{ alert('yellow', "We've received your quote request and are reviewing it. We'll be sending you an estimate soon.", "wait", "Under Review") }}
+		{{ alert('warning', "We've received your quote request and are reviewing it. We'll be sending you an estimate soon.", "wait", "Under Review") }}
 	@endif
 
 	@if ($quote->status == Status::ESTIMATE_ACCEPTED)
-		{{ alert('green', "You've accepted the package! We'll be sending you the contract soon.", "thumbs up", "Congratulations!") }}
+		{{ alert('success', "You've accepted the package! We'll be sending you the contract soon.", "thumbs up", "Congratulations!") }}
 	@endif
 
 	@if ($quote->status == Status::CONTRACT_ACCEPTED)
-		{{ alert('green', "You've accepted the package contract! We'll be sending you the final details of your package soon.", "thumbs up", "Congratulations!") }}
+		{{ alert('success', "You've accepted the package contract! We'll be sending you the final details of your package soon.", "thumbs up", "Congratulations!") }}
 	@endif
 
 	@if ($quote->status == Status::ESTIMATE_REJECTED)
-		{{ alert('red', "You've rejected the package we put together. Please let us know if there's anything we can do to help change your mind.", "warning sign", "We're Sorry!") }}
+		{{ alert('danger', "You've rejected the package we put together. Please let us know if there's anything we can do to help change your mind.", "warning sign", "We're Sorry!") }}
 	@endif
 
 	@if ($quote->status == Status::CONTRACT_REJECTED)

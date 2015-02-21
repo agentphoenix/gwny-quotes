@@ -7,7 +7,7 @@
 			<p><strong>Departure Date</strong></p>
 		</div>
 		<div class="col-sm-3">
-			<p><strong>Number of People</strong></p>
+			<p><strong>People</strong></p>
 		</div>
 		<div class="col-sm-3">
 			<p><strong>Package ID</strong></p>
@@ -39,7 +39,7 @@
 				<p><strong>Hotel</strong></p>
 			</div>
 			<div class="col-sm-6 col-md-2">
-				<p><strong>Number of People</strong></p>
+				<p><strong>People</strong></p>
 			</div>
 			<div class="col-sm-6 col-md-3">
 				<p><strong>Arrival Date</strong></p>
@@ -75,22 +75,22 @@
 
 <div class="data-table data-table-striped data-table-bordered">
 	<div class="row">
-		<div class="col-sm-6 col-md-4">
+		<div class="col-sm-6 col-md-5">
 			<p><strong>Course</strong></p>
 		</div>
-		<div class="col-sm-6 col-md-3">
-			<p><strong>Number of Players</strong></p>
-		</div>
-		<div class="col-sm-6 col-md-3">
-			<p><strong>Number of Holes</strong></p>
+		<div class="col-sm-6 col-md-2">
+			<p><strong>Players</strong></p>
 		</div>
 		<div class="col-sm-6 col-md-2">
+			<p><strong>Holes</strong></p>
+		</div>
+		<div class="col-sm-6 col-md-3">
 			<p><strong>Tee Time Preference</strong></p>
 		</div>
 	</div>
 	@foreach ($quote->getCourses() as $item)
 		<div class="row">
-			<div class="col-sm-6 col-md-4">
+			<div class="col-sm-6 col-md-5">
 				<p>{{ $item->present()->course }}</p>
 				@if ( ! empty($item->confirmation))
 					<p><em>Confirmation Number: <strong>{{ $item->present()->confirmation }}</strong></em></p>
@@ -105,13 +105,13 @@
 					<p><em>2nd Tee Time: <strong>{{ $item->present()->time2 }}</strong></em></p>
 				@endif
 			</div>
-			<div class="col-sm-6 col-md-3">
+			<div class="col-sm-6 col-md-2">
 				<p>{{ $item->present()->people }}</p>
 			</div>
-			<div class="col-sm-6 col-md-3">
+			<div class="col-sm-6 col-md-2">
 				<p>{{ $item->present()->holes }}</p>
 			</div>
-			<div class="col-sm-6 col-md-2">
+			<div class="col-sm-6 col-md-3">
 				<p>{{ $item->present()->timePreference }}</p>
 			</div>
 		</div>
