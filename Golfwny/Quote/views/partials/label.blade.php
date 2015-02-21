@@ -1,1 +1,1 @@
-<span class="ui {{ (isset($class)) ? ' '.$class : '' }} label">{{ $content }}</span>
+<span class="label{{ (isset($class)) ? ' label-'.$class : '' }}">{{ $content }}</span>

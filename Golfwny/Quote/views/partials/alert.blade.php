@@ -1,11 +1,6 @@
-<div class="ui icon {{ $type }} message">
-	@if ($icon)
-		<i class="{{ $icon }} icon"></i>
+<div class="alert alert-{{ $type }}">
+	@if ($header)
+		<h4>{{ $header }}</h4>
 	@endif
-	<div class="content">
-		@if ($header)
-			<div class="header">{{ $header }}</div>
-		@endif
-		<p>{{ $content }}</p>
-	</div>
+	<p>{{ $content }}</p>
 </div>
