@@ -53,7 +53,7 @@
 
 	{{ View::make('pages.package-details-partial')->withQuote($quote) }}
 
-	@if ($quote->status >= Status::BOOKED)
+	@if ($quote->status >= Status::CONTRACT)
 		{{ View::make('pages.package-contract-partial')->withQuote($quote) }}
 
 		<div class="ui divider"></div>
@@ -76,7 +76,7 @@
 		</div>
 	@endif
 
-	@if ($quote->status == Status::BOOKED)
+	@if ($quote->status == Status::CONTRACT)
 		<div class="form-group">
 			<div class="col-md-3">
 				<div class="input-group">

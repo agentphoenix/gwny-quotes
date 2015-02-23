@@ -54,7 +54,7 @@ class QuoteEventHandler {
 			$this->customerEmail->rejectedEstimate($quote);
 		}
 
-		if ($quote->status == Status::BOOKED)
+		if ($quote->status == Status::CONTRACT)
 		{
 			$this->customerEmail->packageContract($quote);
 		}

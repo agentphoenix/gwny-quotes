@@ -91,7 +91,7 @@
 
 				@if ($quote->status == Status::ESTIMATE_ACCEPTED)
 					<div class="btn-group">
-						<a class="btn btn-primary js-changeStatus" data-status="booked" data-quote="{{ $quote->id }}">Send Contract</a>
+						<a class="btn btn-primary js-changeStatus" data-status="contract" data-quote="{{ $quote->id }}">Send Contract</a>
 					</div>
 				@endif
 

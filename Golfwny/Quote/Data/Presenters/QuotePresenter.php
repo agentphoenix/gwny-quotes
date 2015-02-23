@@ -68,7 +68,7 @@ class QuotePresenter extends Presenter {
 			return "immediately";
 		}
 		
-		return $this->entity->estimate_accepted->addDays(7)->format(config('gwny.dates.dateNoDay'));
+		return $this->entity->contract_accepted->addDays(7)->format(config('gwny.dates.dateNoDay'));
 	}
 
 	public function email()
@@ -242,7 +242,7 @@ class QuotePresenter extends Presenter {
 			break;
 
 			case Status::ESTIMATE:
-			case Status::BOOKED:
+			case Status::CONTRACT:
 				$class = 'yellow';
 			break;
 
