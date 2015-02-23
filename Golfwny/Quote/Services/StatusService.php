@@ -7,7 +7,7 @@ class StatusService {
 	const ESTIMATE				= 3;
 	const ESTIMATE_ACCEPTED		= 4;
 	const ESTIMATE_REJECTED		= 5;
-	const BOOKED				= 6;
+	const CONTRACT				= 6;
 	const CONTRACT_ACCEPTED		= 7;
 	const CONTRACT_REJECTED		= 8;
 	const WITHDRAWN				= 9;
@@ -22,8 +22,8 @@ class StatusService {
 				return static::ESTIMATE_ACCEPTED;
 			break;
 
-			case 'booked':
-				return static::BOOKED;
+			case 'contract':
+				return static::CONTRACT;
 			break;
 
 			case 'contract-accepted':
@@ -84,8 +84,8 @@ class StatusService {
 				return "Estimate Rejected";
 			break;
 
-			case static::BOOKED:
-				return "Booked";
+			case static::CONTRACT:
+				return "Contract Sent";
 			break;
 
 			case static::CONTRACT_ACCEPTED:

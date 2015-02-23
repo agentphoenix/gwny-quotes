@@ -93,6 +93,30 @@ class CustomerMailer extends BaseMailer {
 		return $this->send('customer.estimate', $data);
 	}
 
+	public function sendEstimateReminder(Quote $quote)
+	{
+		$data = [
+			'subject' => "Package Estimate Reminder",
+			'quote' => View::make('emails.package-details-partial')->withQuote($quote),
+			'code' => $quote->present()->code,
+			'to' => $quote->email,
+		];
+
+		return $this->send('customer.estimate-reminder', $data);
+	}
+
+	public function sendContractReminder(Quote $quote)
+	{
+		$data = [
+			'subject' => "Package Contract Reminder",
+			'quote' => View::make('emails.package-details-partial')->withQuote($quote),
+			'code' => $quote->present()->code,
+			'to' => $quote->email,
+		];
+
+		return $this->send('customer.contract-reminder', $data);
+	}
+
 	public function submitted(Quote $quote)
 	{
 		$data = [

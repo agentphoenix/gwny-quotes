@@ -8,6 +8,8 @@ use App,
 	Config,
 	Schema,
 	Status;
+use Quote\Mailers\AdminMailer,
+	Quote\Mailers\CustomerMailer;
 use Ikimea\Browser\Browser;
 use Illuminate\Support\ServiceProvider;
 use League\CommonMark\CommonMarkConverter as MarkdownParser;
@@ -16,7 +18,15 @@ class QuoteServiceProvider extends ServiceProvider {
 
 	public function register()
 	{
-		//
+		$this->app['AdminMailer'] = $this->app->share(function($app)
+		{
+			return new AdminMailer($app['mailer']);
+		});
+
+		$this->app['CustomerMailer'] = $this->app->share(function($app)
+		{
+			return new CustomerMailer($app['mailer']);
+		});
 	}
 
 	public function boot()

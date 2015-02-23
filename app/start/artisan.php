@@ -11,3 +11,4 @@
 |
 */
 
+Artisan::add(new Quote\Commands\SendEmailsCommand(app('QuoteRepository'), app('CustomerMailer')));
