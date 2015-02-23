@@ -20,6 +20,8 @@ class QuoteItem extends Eloquent {
 
 	protected $presenter = 'Quote\Data\Presenters\QuoteItemPresenter';
 
+	protected $touches = ['quote'];
+
 	/*
 	|---------------------------------------------------------------------------
 	| Relationships
