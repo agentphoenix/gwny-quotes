@@ -4,7 +4,9 @@ return [
 
 	'dates' => [
 		'date' => "l F jS, Y",
+		'dateShort' => "D M jS, Y",
 		'dateNoDay' => "F jS, Y",
+		'dateNoDayShort' => "M jS, Y",
 		'dateFormal' => 'Y-m-d',
 		'dateFormalSlashes' => 'm/d/Y',
 		'day' => array(
