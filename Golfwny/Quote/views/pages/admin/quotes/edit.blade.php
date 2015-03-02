@@ -100,6 +100,12 @@
 						<a class="btn btn-danger js-changeStatus" data-status="closed" data-quote="{{ $quote->id }}">Close Quote</a>
 					</div>
 				@endif
+
+				@if ($quote->surveys->count() > 0)
+					<div class="btn-group">
+						<a href="{{ route('admin.quotes.survey-results', [$quote->code]) }}" class="btn btn-info">Survey Results</a>
+					</div>
+				@endif
 			</div>
 		</div>
 	</div>
