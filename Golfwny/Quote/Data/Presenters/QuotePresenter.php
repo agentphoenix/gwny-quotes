@@ -8,7 +8,7 @@ class QuotePresenter extends Presenter {
 	public function arrival($full = true)
 	{
 		if ($full)
-			return $this->entity->arrival->format(config('gwny.dates.date'));
+			return $this->entity->arrival->format(config('gwny.dates.dateShort'));
 
 		return $this->entity->arrival->format(config('gwny.dates.dateFormalSlashes'));
 	}
@@ -51,7 +51,7 @@ class QuotePresenter extends Presenter {
 	public function departure($full = true)
 	{
 		if ($full)
-			return $this->entity->departure->format(config('gwny.dates.date'));
+			return $this->entity->departure->format(config('gwny.dates.dateShort'));
 
 		return $this->entity->departure->format(config('gwny.dates.dateFormalSlashes'));
 	}
@@ -203,6 +203,34 @@ class QuotePresenter extends Presenter {
 		return '$'.number_format(round($this->entity->total / $this->entity->people, 2), 2);
 	}
 
+	public function ratingHotel()
+	{
+		$rating = 0.00;
+
+		$allSurveys = $this->entity->surveys;
+
+		foreach ($allSurveys as $survey)
+		{
+			$rating += $survey->hotel_rating;
+		}
+
+		return round($rating / $allSurveys->count(), 2);
+	}
+
+	public function ratingOverall()
+	{
+		$rating = 0.00;
+
+		$allSurveys = $this->entity->surveys;
+
+		foreach ($allSurveys as $survey)
+		{
+			$rating += $survey->overall_rating;
+		}
+
+		return round($rating / $allSurveys->count(), 2);
+	}
+
 	public function receiptNumber()
 	{
 		return $this->entity->square_receipt_number;
@@ -258,6 +286,7 @@ class QuotePresenter extends Presenter {
 
 			case Status::COMPLETED:
 			case Status::CLOSED:
+			default:
 				$class = 'default';
 			break;
 		}

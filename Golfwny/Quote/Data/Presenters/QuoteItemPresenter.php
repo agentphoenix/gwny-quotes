@@ -47,7 +47,7 @@ class QuoteItemPresenter extends Presenter {
 		if ($this->entity->arrival)
 		{
 			if ($full)
-				return $this->entity->arrival->format(config('gwny.dates.date'));
+				return $this->entity->arrival->format(config('gwny.dates.dateShort'));
 
 			return $this->entity->arrival->format(config('gwny.dates.dateFormalSlashes'));
 		}
@@ -58,7 +58,7 @@ class QuoteItemPresenter extends Presenter {
 	public function departure($full = true)
 	{
 		if ($full)
-			return $this->entity->departure->format(config('gwny.dates.date'));
+			return $this->entity->departure->format(config('gwny.dates.dateShort'));
 
 		return $this->entity->departure->format(config('gwny.dates.dateFormalSlashes'));
 	}

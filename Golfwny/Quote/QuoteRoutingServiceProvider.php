@@ -118,6 +118,9 @@ class QuoteRoutingServiceProvider extends ServiceProvider {
 			Route::get('quotes/submitted', [
 				'as'	=> 'admin.quotes.submitted',
 				'uses'	=> 'QuoteController@submitted']);
+			Route::get('quotes/survey-results/{code}', [
+				'as'	=> 'admin.quotes.survey-results',
+				'uses'	=> 'QuoteController@surveyResults']);
 
 			Route::get('regions/{id}/remove', [
 				'as'	=> 'admin.regions.remove',

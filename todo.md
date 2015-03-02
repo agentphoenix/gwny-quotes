@@ -1,5 +1,4 @@
 - Cron job
-- Survey results
 - Email content
 - Phone layout
 - Tablet layout
