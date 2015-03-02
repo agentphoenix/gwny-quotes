@@ -23,7 +23,7 @@ abstract class BaseRepository {
 		return $query->find($id);
 	}
 
-	public function getByPage($page = 1, $limit = 10, array $with = [])
+	public function getByPage($page = 1, $limit = 10, array $with = [], $order = false)
 	{
 		// Start building the result set
 		$result = new stdClass;
@@ -36,8 +36,16 @@ abstract class BaseRepository {
 		$query = $this->make($with);
 
 		$model = $query->skip($limit * ($page - 1))
-			->take($limit)
-			->get();
+			->take($limit);
+
+		if ($order)
+		{
+			list($field, $direction) = explode('|', $order);
+
+			$model = $model->orderBy($field, $direction);
+		}
+
+		$model = $model->get();
 
 		// Fill in the result set
 		$result->totalItems = $this->model->count();
