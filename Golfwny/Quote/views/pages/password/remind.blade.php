@@ -33,7 +33,3 @@
 		</div>
 	</div>
 @stop
-
-@section('scripts')
-	{{ partial('js-footerFix') }}
-@stop

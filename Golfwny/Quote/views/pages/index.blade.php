@@ -20,7 +20,6 @@
 	{{ HTML::script('js/picker.date.js') }}
 	{{ HTML::script('js/moment.min.js') }}
 	{{ HTML::script('js/bootcards.min.js') }}
-	{{ partial('js-footerFix') }}
 	<script>
 		$('.js-addCourse-action').on('click', function(e)
 		{
