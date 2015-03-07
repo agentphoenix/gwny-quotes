@@ -56,7 +56,7 @@ main {
 	
 	h2 {
 		color: @color-green;
-		font-weight: 300;
+		font-weight: 400;
 		font-size: 28px;
 	}
 }
@@ -94,6 +94,7 @@ hr {
 
 	border-color: @color-bg;
 	border-top: none;
+	background-color: darken(@color-bg, 6.5%);
 }
 
 .data-table {
@@ -195,35 +196,14 @@ label {
 	font-size: 20px;
 }
 
-.ui.toggle.checkbox input:checked ~ .box, .ui.toggle.checkbox input:checked ~ label {
-	color: darken(@color-green, 5%);
-}
-.ui.toggle.checkbox input:checked ~ .box:before, .ui.toggle.checkbox input:checked ~ label:before {
-	background-color: @color-green;
-}
-
-.ui.statistic {
-	max-width: 300px;
-	margin: 0 4em 2em 2em;
-}
-.ui.statistic>.value {
-	font-family: @font-primary;
-	font-weight: 400;
-	color: @color-dark;
-}
-.ui.statistic>.label {
-	display: block;
-
-	font-family: @font-primary;
-	font-weight: 700;
-	font-style: italic;
-	font-size: @font-size;
-}
-
 .alert {
 	h4 {
 		margin-bottom: @spacing-sm;
 	}
+}
+
+.nav-pills {
+	margin-bottom: @spacing;
 }
 
 .bootcards-media {
@@ -241,4 +221,34 @@ label {
 }
 .picker--focused .picker__day--highlighted {
 	color: @color-green !important;
+}
+
+.ui.toggle.checkbox label {
+	font-size: @font-size-sm;
+}
+.ui.toggle.checkbox input:checked ~ .box, .ui.toggle.checkbox input:checked ~ label {
+	color: darken(@color-green, 5%) !important;
+}
+.ui.toggle.checkbox input:checked ~ .box:before, .ui.toggle.checkbox input:checked ~ label:before {
+	background-color: @color-green !important;
+}
+
+.ui.statistic {
+	max-width: 300px;
+	margin: 0 4em 2em 2em;
+
+	>.value {
+		font-family: @font-primary;
+		font-weight: 400;
+		color: @color-dark;
+	}
+
+	>.label {
+		display: block;
+
+		font-family: @font-primary;
+		font-weight: 700;
+		font-style: italic;
+		font-size: @font-size !important;
+	}
 }
