@@ -22,65 +22,67 @@
 		<title>@yield('title') &bull; Golf Western NY</title>
 	</head>
 	<body>
-		<nav id="nav-main" class="navbar navbar-default navbar-static-top">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#gwny-menu">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="{{ route('home') }}">Golf WNY</a>
-				</div>
-
-				<div class="collapse navbar-collapse" id="gwny-menu">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="{{ route('home') }}">New Quote</a></li>
-						<li><a href="{{ route('checkStatus') }}">Check Quote</a></li>
-						<li><a href="http://golfwny.com">Golf WNY</a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-
-		<main>
-			<div class="container">
-				@if (Session::has('flash.message'))
-					@include('partials.flash')
-				@endif
-
-				@yield('content')
-			</div>
-		</main>
-
-		<footer>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-9">
-						<h4>Golf WNY</h4>
-
-						<p>Our golf packages are designed to fit your budget and allow you to play the best golf courses in Rochester, NY or Buffalo, NY. We know it's never easy planning a golf trip in an area you aren't familiar with, so we're here to guide you in the right direction. Our Stay &amp; Play golf packages offer excellent accommodations that cater to both large and small groups.</p>
-
-						<p><a href="http://golfwny.com" class="btn btn-primary btn-sm">Visit Our Site</a></p>
+		<div class="wrapper">
+			<nav id="nav-main" class="navbar navbar-default navbar-static-top">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#gwny-menu">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="{{ route('home') }}">Golf WNY</a>
 					</div>
-					<div class="col-md-3">
-						<h5>Follow Golf WNY</h5>
 
-						<ul class="list-unstyled">
-							<li><a href="http://twitter.com/GolfWesternNY" target="_blank">@GolfWesternNY</a></li>
-						</ul>
-
-						<h5>Golf WNY Cities</h5>
-
-						<ul class="list-unstyled">
-							<li><a href="http://golfwny.com/rochester">Rochester, NY</a></li>
-							<li><a href="http://golfwny.com/buffalo">Buffalo, NY</a></li>
+					<div class="collapse navbar-collapse" id="gwny-menu">
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="{{ route('home') }}">New Quote</a></li>
+							<li><a href="{{ route('checkStatus') }}">Check Quote</a></li>
+							<li><a href="http://golfwny.com">Golf WNY</a></li>
 						</ul>
 					</div>
 				</div>
-			</div>
-		</footer>
+			</nav>
+
+			<main>
+				<div class="container">
+					@if (Session::has('flash.message'))
+						@include('partials.flash')
+					@endif
+
+					@yield('content')
+				</div>
+			</main>
+
+			<footer>
+				<div class="container">
+					<div class="row">
+						<div class="col-md-9">
+							<h4>Golf WNY</h4>
+
+							<p>Our golf packages are designed to fit your budget and allow you to play the best golf courses in Rochester, NY or Buffalo, NY. We know it's never easy planning a golf trip in an area you aren't familiar with, so we're here to guide you in the right direction. Our Stay &amp; Play golf packages offer excellent accommodations that cater to both large and small groups.</p>
+
+							<p><a href="http://golfwny.com" class="btn btn-primary btn-sm">Visit Our Site</a></p>
+						</div>
+						<div class="col-md-3">
+							<h5>Follow Golf WNY</h5>
+
+							<ul class="list-unstyled">
+								<li><a href="http://twitter.com/GolfWesternNY" target="_blank">@GolfWesternNY</a></li>
+							</ul>
+
+							<h5>Golf WNY Cities</h5>
+
+							<ul class="list-unstyled">
+								<li><a href="http://golfwny.com/rochester">Rochester, NY</a></li>
+								<li><a href="http://golfwny.com/buffalo">Buffalo, NY</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
 		@yield('modals')
 
 		@if (App::environment() == 'production')

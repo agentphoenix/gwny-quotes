@@ -42,3 +42,7 @@
 		</div>
 	</div>
 @stop
+
+@section('styles')
+	{{ HTML::style('semantic/components/statistic.min.css') }}
+@stop

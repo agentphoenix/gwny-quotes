@@ -39,41 +39,36 @@ class QuoteEventHandler {
 	{
 		if ($quote->status == Status::ESTIMATE)
 		{
-			$this->customerEmail->sendEstimate($quote);
+			$this->customerEmail->estimateAvailable($quote);
 		}
 
 		if ($quote->status == Status::ESTIMATE_ACCEPTED)
 		{
-			$this->adminEmail->acceptedEstimate($quote);
-			$this->customerEmail->acceptedEstimate($quote);
+			$this->adminEmail->estimateAccepted($quote);
+			$this->customerEmail->estimateAccepted($quote);
 		}
 
 		if ($quote->status == Status::ESTIMATE_REJECTED)
 		{
-			$this->adminEmail->rejectedEstimate($quote);
-			$this->customerEmail->rejectedEstimate($quote);
+			$this->adminEmail->estimateRejected($quote);
+			$this->customerEmail->estimateRejected($quote);
 		}
 
 		if ($quote->status == Status::CONTRACT)
 		{
-			$this->customerEmail->packageContract($quote);
+			$this->customerEmail->contractAvailable($quote);
 		}
 
 		if ($quote->status == Status::CONTRACT_ACCEPTED)
 		{
-			$this->adminEmail->acceptedContract($quote);
-			$this->customerEmail->acceptedContract($quote);
+			$this->adminEmail->contractAccepted($quote);
+			$this->customerEmail->contractAccepted($quote);
 		}
 
 		if ($quote->status == Status::CONTRACT_REJECTED)
 		{
-			$this->adminEmail->rejectedContract($quote);
-			$this->customerEmail->rejectedContract($quote);
-		}
-
-		if ($quote->status == Status::WITHDRAWN)
-		{
-			$this->adminEmail->withdrawnQuote($quote);
+			$this->adminEmail->contractRejected($quote);
+			$this->customerEmail->contractRejected($quote);
 		}
 	}
 

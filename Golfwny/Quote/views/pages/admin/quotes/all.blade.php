@@ -28,9 +28,15 @@
 					<p>{{ $quote->present()->statusAsLabel }}</p>
 				</div>
 				<div class="col-md-3">
-					<div class="btn-toolbar pull-right">
-						<div class="btn-group">
-							<a href="{{ route('admin.quotes.edit', [$quote->id]) }}" class="btn btn-default">Manage</a>
+					<div class="visible-xs visible-sm">
+						<p><a href="{{ route('admin.quotes.edit', [$quote->id]) }}" class="btn btn-default btn-lg btn-block">Manage</a></p>
+					</div>
+
+					<div class="visible-md visible-lg">
+						<div class="btn-toolbar pull-right">
+							<div class="btn-group">
+								<a href="{{ route('admin.quotes.edit', [$quote->id]) }}" class="btn btn-default">Manage</a>
+							</div>
 						</div>
 					</div>
 				</div>

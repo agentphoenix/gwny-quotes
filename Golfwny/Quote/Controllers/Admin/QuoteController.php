@@ -11,6 +11,7 @@ use Date,
 	HotelRepositoryInterface,
 	QuoteRepositoryInterface,
 	CourseRepositoryInterface,
+	SurveyRepositoryInterface,
 	QuoteItemRepositoryInterface;
 use Quote\Controllers\BaseController;
 use Quote\Services\QuoteCalculatorService;
@@ -21,11 +22,13 @@ class QuoteController extends BaseController {
 	protected $hotels;
 	protected $quotes;
 	protected $courses;
+	protected $surveys;
 
 	public function __construct(QuoteRepositoryInterface $quotes,
 			QuoteItemRepositoryInterface $items,
 			HotelRepositoryInterface $hotels,
-			CourseRepositoryInterface $courses)
+			CourseRepositoryInterface $courses,
+			SurveyRepositoryInterface $surveys)
 	{
 		parent::__construct();
 
@@ -33,15 +36,16 @@ class QuoteController extends BaseController {
 		$this->hotels = $hotels;
 		$this->quotes = $quotes;
 		$this->courses = $courses;
+		$this->surveys = $surveys;
 	}
 
 	public function index()
 	{
 		// Find all the mods
-		$data = $this->quotes->getByPage(Input::get('page', 1), 25, ['items']);
+		$data = $this->quotes->getByPage(Input::get('page', 1), 25, ['items'], 'arrival|desc');
 
 		// Build the paginator
-		$paginator = Paginator::make($data->items, $data->totalItems, 15);
+		$paginator = Paginator::make($data->items, $data->totalItems, 25);
 
 		return View::make('pages.admin.quotes.all')
 			->withHeader("All Quotes")
@@ -211,6 +215,15 @@ class QuoteController extends BaseController {
 			'rate'				=> $lastCourse->rate,
 			'replay_rate'		=> $lastCourse->replay_rate,
 		]);
+	}
+
+	public function surveyResults($code)
+	{
+		$quote = $this->quotes->getByCode($code);
+
+		return View::make('pages.admin.quotes.surveys')
+			->withQuote($quote)
+			->withResults($quote->surveys);
 	}
 
 }
