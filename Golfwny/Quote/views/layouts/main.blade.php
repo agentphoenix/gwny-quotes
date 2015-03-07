@@ -16,9 +16,8 @@
 		{{ HTML::style('css/style.css') }}
 		{{ HTML::style('css/responsive.css') }}
 		{{ HTML::style('css/retina.css', ['media' => 'only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2)']) }}
-		@yield('styles')
-
 		<!--[if lt IE 9]>{{ HTML::style('css/ie.css') }}<![endif]-->
+		@yield('styles')
 
 		<title>@yield('title') &bull; Golf Western NY</title>
 	</head>

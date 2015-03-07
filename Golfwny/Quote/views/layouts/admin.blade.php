@@ -12,85 +12,87 @@
 		<link href="//fonts.googleapis.com/css?family=Gruppo" rel="stylesheet">
 		<link href="//fonts.googleapis.com/css?family=Lato:300,400,400italic,700,900italic" rel="stylesheet">
 
-		@if (App::environment() == 'production')
-			<link href="//fonts.googleapis.com/css?family=Gruppo" rel="stylesheet">
-			<link href="//fonts.googleapis.com/css?family=Lato:300,400,400italic,700,900italic" rel="stylesheet">
-			<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
-		@else
-			<link href="//localhost/global/bootstrap/3.3/css/bootstrap.min.css" rel="stylesheet">
-		@endif
-
-		{{ HTML::style('semantic/semantic.min.css') }}
+		{{ HTML::style('css/bootstrap.min.css') }}
 		{{ HTML::style('css/style.css') }}
 		{{ HTML::style('css/responsive.css') }}
+		{{ HTML::style('css/retina.css', ['media' => "only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2)"]) }}
+		<!--[if lt IE 9]>{{ HTML::style('css/ie.css') }}<![endif]-->
 		@yield('styles')
-
-		<!-- High pixel density displays -->
-		<link rel="stylesheet" href="{{ asset('css/retina.css') }}" media="only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2)">
-
-		<!--[if lt IE 9]>
-		{{ HTML::style('css/ie.css') }}
-		<![endif]-->
 
 		<title>@yield('title') &bull; Golf Western NY</title>
 	</head>
 	<body>
-		<div class="ui left vertical inverted sidebar menu">
-			{{ partial('nav-sub') }}
-		</div>
-		<div class="pusher">
-			<header>
-				<div class="container">
-					<div class="overlay">
-						<a class="sidebar-toggle"><i class="content icon"></i></a>
-						<h1>GolfWNY</h1>
-					</div>
-				</div>
-			</header>
-
+		<nav id="nav-main" class="navbar navbar-default navbar-static-top">
 			<div class="container">
-				<nav class="nav-main">
-					<ul>
-						<li><a href="{{ route('home') }}">Create a New Quote</a></li>
-						<li><a href="{{ route('checkStatus') }}">Check the Status of a Quote</a></li>
-						<li><a href="http://golfwny.com">Back to GolfWNY</a></li>
-					</ul>
-				</nav>
-
-				<div class="visible-xs">
-					<ul class="nav nav-list">
-
-					</ul>
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#gwny-menu">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="{{ route('home') }}">Golf WNY</a>
 				</div>
 
+				<div class="collapse navbar-collapse" id="gwny-menu">
+					<ul class="nav navbar-nav visible-xs">
+						{{ partial('nav-sub') }}
+					</ul>
+
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="{{ route('home') }}">New Quote</a></li>
+						<li><a href="{{ route('checkStatus') }}">Check Quote</a></li>
+						<li><a href="http://golfwny.com">Golf WNY</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<main>
+			<div class="container">
 				<div class="row">
-					<div class="col-xs-12">
-						<div class="row">
-							<div class="col-md-2 visible-md visible-lg">
-								<div class="ui fluid vertical menu">
-									{{ partial('nav-sub') }}
-								</div>
-							</div>
+					<div class="col-md-3 visible-sm visible-md visible-lg">
+						{{ partial('nav-sub') }}
+					</div>
 
-							<div class="col-md-10">
-								<section>
-									@if (Session::has('flash.message'))
-										@include('partials.flash')
-									@endif
+					<div class="col-md-9">
+						@if (Session::has('flash.message'))
+							@include('partials.flash')
+						@endif
 
-									@yield('content')
-								</section>
-							</div>
-						</div>
+						@yield('content')
 					</div>
 				</div>
-
-				<footer>
-					<div class="pull-right">Check out <a href="/">other GolfWNY cities</a>!</div>
-					&copy; {{ date('Y') }} Golf Western NY<br>Follow <a href="http://twitter.com/GolfWesternNY" target="_blank">@GolfWesternNY</a>
-				</footer>
 			</div>
-		</div>
+		</main>
+
+		<footer>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-9">
+						<h4>Golf WNY</h4>
+
+						<p>Our golf packages are designed to fit your budget and allow you to play the best golf courses in Rochester, NY or Buffalo, NY. We know it's never easy planning a golf trip in an area you aren't familiar with, so we're here to guide you in the right direction. Our Stay &amp; Play golf packages offer excellent accommodations that cater to both large and small groups.</p>
+
+						<p><a href="http://golfwny.com" class="btn btn-primary btn-sm">Visit Our Site</a></p>
+					</div>
+					<div class="col-md-3">
+						<h5>Follow Golf WNY</h5>
+
+						<ul class="list-unstyled">
+							<li><a href="http://twitter.com/GolfWesternNY" target="_blank">@GolfWesternNY</a></li>
+						</ul>
+
+						<h5>Golf WNY Cities</h5>
+
+						<ul class="list-unstyled">
+							<li><a href="http://golfwny.com/rochester">Rochester, NY</a></li>
+							<li><a href="http://golfwny.com/buffalo">Buffalo, NY</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</footer>
 
 		@yield('modals')
 
