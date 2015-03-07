@@ -86,7 +86,7 @@ class SendEmailsCommand extends Command {
 
 			foreach ($packages as $quote)
 			{
-				//$this->mailer->sendEstimateReminder($quote);
+				//$this->mailer->estimateReminder($quote);
 				$this->info($quote->present()->code);
 			}
 		}
@@ -113,7 +113,7 @@ class SendEmailsCommand extends Command {
 
 			foreach ($packages as $quote)
 			{
-				//$this->mailer->sendContractReminder($quote);
+				//$this->mailer->contractReminder($quote);
 				$this->info($quote->present()->code);
 			}
 		}
@@ -140,7 +140,7 @@ class SendEmailsCommand extends Command {
 
 			foreach ($packages as $quote)
 			{
-				//$this->mailer->depositPayment($quote);
+				//$this->mailer->paymentDeposit($quote);
 				$this->info($quote->present()->code);
 			}
 		}
@@ -167,7 +167,7 @@ class SendEmailsCommand extends Command {
 
 			foreach ($packages as $quote)
 			{
-				//$this->mailer->finalPayment($quote);
+				//$this->mailer->paymentFinal($quote);
 				$this->info($quote->present()->code);
 			}
 		}

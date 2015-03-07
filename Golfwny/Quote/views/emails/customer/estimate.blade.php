@@ -1,13 +1,13 @@
 @extends('layouts.email')
 
 @section('content')
-	<h1>Package Estimate</h1>
+	<p>Dear {{ $name }},</p>
 
-	<p>You can check the status of your package at any point from the link below.</p>
+	<p>We would like to let you know that your quote for your Stay N Play Golf Package is available for review. Once reviewed please approve or reject this quote. If you have any questions please feel free to contact us anytime.</p>
 
-	<p><a href="{{ route('package', [$code]) }}">Your Quote</a></p>
+	<p><a href="{{ route('package', [$code]) }}">Your Package Information</a></p>
 
-	<hr>
-		
-	{{ $quote }}
+	<p>Eric LaBarr<br>
+	Golf Western NY<br>
+	585-281-8942</p>
 @stop

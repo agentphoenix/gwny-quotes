@@ -1,4 +1,3 @@
 - Cron job
-- Email content
 - Phone layout
 - Tablet layout
