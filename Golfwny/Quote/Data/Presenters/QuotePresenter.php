@@ -238,27 +238,27 @@ class QuotePresenter extends Presenter {
 		switch ($this->status())
 		{
 			case Status::SUBMITTED:
-				$class = 'blue';
+				$class = 'info';
 			break;
 
 			case Status::ESTIMATE:
 			case Status::CONTRACT:
-				$class = 'yellow';
+				$class = 'warning';
 			break;
 
 			case Status::ESTIMATE_REJECTED:
 			case Status::CONTRACT_REJECTED:
-				$class = 'red';
+				$class = 'danger';
 			break;
 
 			case Status::ESTIMATE_ACCEPTED:
 			case Status::CONTRACT_ACCEPTED:
-				$class = 'green';
+				$class = 'success';
 			break;
 
 			case Status::COMPLETED:
 			case Status::CLOSED:
-				$class = 'black';
+				$class = 'default';
 			break;
 		}
 

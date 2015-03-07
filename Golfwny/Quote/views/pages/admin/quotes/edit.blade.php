@@ -30,10 +30,10 @@
 		</div>
 	</div>
 
-	<hr>
+	<div class="ui divider"></div>
 
 	<div class="row">
-		<div class="col-xs-6 col-md-3">
+		<div class="col-xs-6 col-sm-4">
 			<div class="form-group">
 				<label class="control-label">Deposit Percentage</label>
 				<div class="row">
@@ -51,7 +51,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-xs-6 col-md-3">
+		<div class="col-xs-6 col-sm-4">
 			<div class="form-group">
 				<label class="control-label">Package Percentage</label>
 				<div class="row">
@@ -69,7 +69,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-xs-12 col-md-3">
+		<div class="col-xs-12 col-sm-4">
 			<div class="form-group">
 				<label class="control-label">Square Receipt Number</label>
 				{{ Form::text('receiptNumber', $quote->present()->receiptNumber, ['class' => 'form-control js-updateField', 'data-id' => $quote->id, 'data-table' => 'quotes', 'data-field' => 'square_receipt_number']) }}
@@ -119,13 +119,13 @@
 				<h2>Submitter Info</h2>
 
 				<div class="row">
-					<div class="col-md-4">
+					<div class="col-sm-6">
 						<div class="form-group">
 							<label class="control-label">Name</label>
 							{{ Form::text('name', null, ['class' => 'form-control js-updateField', 'data-id' => $quote->id, 'data-table' => 'quotes', 'data-field' => 'name']) }}
 						</div>
 					</div>
-					<div class="col-md-4">
+					<div class="col-sm-6">
 						<div class="form-group">
 							<label class="control-label">Email Address</label>
 							{{ Form::email('email', null, ['class' => 'form-control js-updateField', 'data-id' => $quote->id, 'data-table' => 'quotes', 'data-field' => 'email']) }}
@@ -134,13 +134,13 @@
 				</div>
 
 				<div class="row">
-					<div class="col-md-4">
+					<div class="col-sm-6">
 						<div class="form-group">
 							<label class="control-label">City</label>
 							{{ Form::text('city', null, ['class' => 'form-control js-updateField', 'data-id' => $quote->id, 'data-table' => 'quotes', 'data-field' => 'city']) }}
 						</div>
 					</div>
-					<div class="col-md-3">
+					<div class="col-sm-6 col-md-3">
 						<div class="form-group">
 							<label class="control-label">Phone Number</label>
 							{{ Form::text('phone', null, ['class' => 'form-control js-updateField', 'data-id' => $quote->id, 'data-table' => 'quotes', 'data-field' => 'phone']) }}
@@ -155,21 +155,21 @@
 				<h2>Package Details</h2>
 
 				<div class="row">
-					<div class="col-md-4">
+					<div class="col-sm-4">
 						<div class="form-group">
 							<label class="control-label">Region</label>
 							<p>{{ $quote->present()->region }}</p>
 						</div>
 					</div>
 
-					<div class="col-md-4">
+					<div class="col-sm-4">
 						<div class="form-group">
 							<label class="control-label">Code</label>
 							<p>{{ $quote->present()->code }}</p>
 						</div>
 					</div>
 
-					<div class="col-md-4">
+					<div class="col-sm-4">
 						<div class="form-group">
 							<label class="control-label">Status</label>
 							<p>{{ Status::toString($quote->status) }}</p>
@@ -178,7 +178,7 @@
 				</div>
 
 				<div class="row">
-					<div class="col-md-4">
+					<div class="col-sm-4">
 						<div class="form-group">
 							<label class="control-label">Arrival Date</label>
 							<div class="row">
@@ -188,7 +188,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-4">
+					<div class="col-sm-4">
 						<div class="form-group">
 							<label class="control-label">Departure Date</label>
 							<div class="row">
@@ -198,11 +198,11 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-4">
+					<div class="col-sm-4">
 						<div class="form-group">
-							<label class="control-label">Number of People</label>
+							<label class="control-label">People</label>
 							<div class="row">
-								<div class="col-md-4">
+								<div class="col-md-6 col-lg-4">
 									{{ Form::text('people', null, ['class' => 'form-control js-updateField', 'data-id' => $quote->id, 'data-table' => 'quotes', 'data-field' => 'people', 'data-old' => $quote->people]) }}
 								</div>
 							</div>
@@ -224,7 +224,7 @@
 							{{ Form::select('hotel[id]', $hotels, $hotel->hotel_id, ['class' => 'form-control js-updateField js-updateHotel', 'data-id' => $hotel->id, 'data-table' => 'quotes_items', 'data-field' => 'hotel_id']) }}
 						</div>
 					</div>
-					<div class="col-md-2">
+					<div class="col-sm-6 col-md-3">
 						<div class="form-group">
 							<label class="control-label">Rate</label>
 							<div class="input-group">
@@ -233,7 +233,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-2">
+					<div class="col-sm-6 col-md-3">
 						<div class="form-group">
 							<label class="control-label">People</label>
 							{{ Form::text('hotel[people]', $hotel->people, ['class' => 'form-control js-updateField', 'data-id' => $hotel->id, 'data-table' => 'quotes_items', 'data-field' => 'people']) }}
@@ -242,27 +242,27 @@
 				</div>
 
 				<div class="row">
-					<div class="col-md-3">
+					<div class="col-sm-6 col-md-3">
 						<div class="form-group">
 							<label class="control-label">Arrival</label>
 							{{ Form::text('hotel[arrival]', $hotel->present()->arrival(false), ['class' => 'form-control js-datepicker', 'data-id' => $hotel->id, 'data-table' => 'quotes_items', 'data-field' => 'arrival', 'data-value' => $hotel->present()->arrival(false)]) }}
 						</div>
 					</div>
-					<div class="col-md-3">
+					<div class="col-sm-6 col-md-3">
 						<div class="form-group">
 							<label class="control-label">Departure</label>
 							{{ Form::text('hotel[departure]', $hotel->present()->departure(false), ['class' => 'form-control js-datepicker', 'data-id' => $hotel->id, 'data-table' => 'quotes_items', 'data-field' => 'departure', 'data-value' => $hotel->present()->departure(false)]) }}
 						</div>
 					</div>
-					<div class="col-md-3">
+					<div class="col-sm-6 col-md-3">
 						<div class="form-group">
 							<label class="control-label">Check-In Time</label>
 							{{ Form::text('hotel[time]', $hotel->present()->time(false), ['class' => 'form-control js-updateField js-timepicker', 'data-id' => $hotel->id, 'data-table' => 'quotes_items', 'data-field' => 'time', 'data-value' => $hotel->present()->time(false)]) }}
 						</div>
 					</div>
-					<div class="col-md-3">
+					<div class="col-sm-6 col-md-3">
 						<div class="form-group">
-							<label class="control-label">Confirmation Number</label>
+							<label class="control-label">Confirmation</label>
 							{{ Form::text('hotel[confirmation]', $hotel->confirmation, ['class' => 'form-control js-updateField', 'data-id' => $hotel->id, 'data-table' => 'quotes_items', 'data-field' => 'confirmation']) }}
 						</div>
 					</div>
@@ -279,13 +279,13 @@
 				@foreach ($courses as $item)
 					<div class="course-row">
 						<div class="row" id="row-{{ $item->id }}">
-							<div class="col-md-4">
+							<div class="col-xs-12 col-md-6 col-lg-4">
 								<div class="form-group">
 									<label class="control-label">Course</label>
 									{{ Form::select('golf[course]', $golfCourses, $item->course_id, ['class' => 'form-control js-updateField js-updateCourse', 'data-id' => $item->id, 'data-table' => 'quotes_items', 'data-field' => 'course_id']) }}
 								</div>
 							</div>
-							<div class="col-md-2">
+							<div class="col-sm-6 col-md-3 col-lg-2">
 								<div class="form-group">
 									<label class="control-label">Rate</label>
 									<div class="input-group">
@@ -294,7 +294,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-2">
+							<div class="col-sm-6 col-md-3 col-lg-2">
 								<div class="form-group">
 									<label class="control-label">Replay Rate</label>
 									<div class="input-group">
@@ -303,39 +303,39 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-2">
+							<div class="col-sm-6 col-md-3 col-lg-2">
 								<div class="form-group">
-									<label class="control-label">No. of Players</label>
+									<label class="control-label">Players</label>
 									{{ Form::text('golf[people]', $item->people, ['class' => 'form-control js-updateField', 'data-id' => $item->id, 'data-table' => 'quotes_items', 'data-field' => 'people']) }}
 								</div>
 							</div>
-							<div class="col-md-2" id="numHoles">
+							<div class="col-sm-6 col-md-3 col-lg-2" id="numHoles">
 								<div class="form-group">
-									<label class="control-label">No. of Holes</label>
+									<label class="control-label">Holes</label>
 									{{ Form::select('golf[holes]', [18 => '18 holes', 36 => '36 holes'], $item->holes, ['class' => 'form-control js-updateField', 'data-id' => $item->id, 'data-table' => 'quotes_items', 'data-field' => 'holes']) }}
 								</div>
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-md-4">
+							<div class="col-sm-6 col-md-6 col-lg-4">
 								<div class="form-group">
 									<label class="control-label">Confirmation Number</label>
 									{{ Form::text('golf[confirmation]', $item->confirmation, ['class' => 'form-control js-updateField', 'data-id' => $item->id, 'data-table' => 'quotes_items', 'data-field' => 'confirmation']) }}
 								</div>
 							</div>
-							<div class="col-md-2">
+							<div class="col-sm-6 col-lg-2">
 								<div class="form-group">
 									<label class="control-label">Date</label>
 									{{ Form::text('golf[arrival]', $item->present()->arrival(false), ['class' => 'form-control js-datepicker', 'data-id' => $item->id, 'data-table' => 'quotes_items', 'data-field' => 'arrival', 'data-value' => $item->present()->arrival(false)]) }}
 								</div>
 							</div>
-							<div class="col-md-2">
+							<div class="col-sm-6 col-md-3 col-lg-2">
 								<div class="form-group">
 									<label class="control-label">Tee Time</label>
 									{{ Form::text('golf[time]', $item->present()->time, ['class' => 'form-control js-updateField', 'data-id' => $item->id, 'data-table' => 'quotes_items', 'data-field' => 'time']) }}
 								</div>
 							</div>
-							<div class="col-md-2 hide" id="teeTime2">
+							<div class="col-sm-6 col-md-3 col-lg-2 hide" id="teeTime2">
 								<div class="form-group">
 									<label class="control-label">2nd Tee Time</label>
 									{{ Form::text('golf[time2]', $item->present()->time2, ['class' => 'form-control js-updateField', 'data-id' => $item->id, 'data-table' => 'quotes_items', 'data-field' => 'time2']) }}
@@ -355,6 +355,9 @@
 
 @section('styles')
 	{{ HTML::style('css/datepicker.css') }}
+	{{ HTML::style('semantic/components/statistic.min.css') }}
+	{{ HTML::style('semantic/components/checkbox.min.css') }}
+	{{ HTML::style('semantic/components/divider.min.css') }}
 @stop
 
 @section('scripts')
@@ -362,6 +365,7 @@
 	{{ HTML::script('js/picker.date.js') }}
 	{{ HTML::script('js/picker.time.js') }}
 	{{ HTML::script('js/moment.min.js') }}
+	{{ HTML::style('semantic/components/checkbox.min.js') }}
 	{{ partial('js-changeStatus') }}
 	<script>
 		$('.ui.checkbox').checkbox({
