@@ -44,13 +44,13 @@ class QuoteEventHandler {
 
 		if ($quote->status == Status::ESTIMATE_ACCEPTED)
 		{
-			$this->adminEmail->acceptedEstimate($quote);
+			$this->adminEmail->estimateAccepted($quote);
 			$this->customerEmail->acceptedEstimate($quote);
 		}
 
 		if ($quote->status == Status::ESTIMATE_REJECTED)
 		{
-			$this->adminEmail->rejectedEstimate($quote);
+			$this->adminEmail->estimateRejected($quote);
 			$this->customerEmail->rejectedEstimate($quote);
 		}
 
@@ -61,19 +61,14 @@ class QuoteEventHandler {
 
 		if ($quote->status == Status::CONTRACT_ACCEPTED)
 		{
-			$this->adminEmail->acceptedContract($quote);
+			$this->adminEmail->contractAccepted($quote);
 			$this->customerEmail->acceptedContract($quote);
 		}
 
 		if ($quote->status == Status::CONTRACT_REJECTED)
 		{
-			$this->adminEmail->rejectedContract($quote);
+			$this->adminEmail->contractRejected($quote);
 			$this->customerEmail->rejectedContract($quote);
-		}
-
-		if ($quote->status == Status::WITHDRAWN)
-		{
-			$this->adminEmail->withdrawnQuote($quote);
 		}
 	}
 
