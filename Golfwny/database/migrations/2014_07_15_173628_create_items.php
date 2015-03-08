@@ -26,6 +26,9 @@ class CreateItems extends Migration {
 			$table->increments('id');
 			$table->integer('region_id')->unsigned();
 			$table->string('name');
+			$table->text('address');
+			$table->string('phone');
+			$table->string('general_manager')->nullable();
 			$table->float('rate');
 			$table->float('replay_rate');
 			$table->timestamps();
@@ -37,6 +40,9 @@ class CreateItems extends Migration {
 			$table->increments('id');
 			$table->integer('region_id')->unsigned();
 			$table->string('name');
+			$table->text('address');
+			$table->string('phone');
+			$table->string('general_manager')->nullable();
 			$table->float('rate');
 			$table->float('tax_rate', 8, 4);
 			$table->boolean('default')->default((int) false);

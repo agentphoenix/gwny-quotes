@@ -5,6 +5,11 @@ use Laracasts\Presenter\Presenter;
 
 class QuoteItemPresenter extends Presenter {
 
+	public function address()
+	{
+		return nl2br($this->entity->address);
+	}
+
 	public function hotel()
 	{
 		return $this->entity->hotel->present()->name;
@@ -13,6 +18,11 @@ class QuoteItemPresenter extends Presenter {
 	public function course()
 	{
 		return $this->entity->course->present()->name;
+	}
+
+	public function gm()
+	{
+		return $this->entity->general_manager;
 	}
 
 	public function people()
@@ -25,6 +35,11 @@ class QuoteItemPresenter extends Presenter {
 		}
 
 		return "{$people} people";
+	}
+
+	public function phone()
+	{
+		return $this->entity->phone;
 	}
 
 	public function rate()

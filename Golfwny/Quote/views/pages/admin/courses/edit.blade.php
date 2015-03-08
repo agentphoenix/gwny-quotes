@@ -33,6 +33,33 @@
 		</div>
 
 		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label class="control-label">Address</label>
+					{{ Form::textarea('address', null, ['class' => 'form-control', 'rows' => 3]) }}
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-group">
+					<label class="control-label">Phone Number</label>
+					{{ Form::text('phone', null, ['class' => 'form-control']) }}
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-group">
+					<label class="control-label">General Manager</label>
+					{{ Form::text('general_manager', null, ['class' => 'form-control']) }}
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
 			<div class="col-md-2">
 				<div class="form-group">
 					<label class="control-label">Rate</label>

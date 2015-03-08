@@ -11,7 +11,8 @@ class Course extends Eloquent {
 
 	protected $table = 'courses';
 
-	protected $fillable = ['region_id', 'name', 'rate', 'replay_rate'];
+	protected $fillable = ['region_id', 'name', 'address', 'phone', 'general_manager',
+		'rate', 'replay_rate'];
 
 	protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
