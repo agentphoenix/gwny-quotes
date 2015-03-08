@@ -150,10 +150,19 @@ class CustomerMailer extends BaseMailer {
 
 	public function welcome(Quote $quote)
 	{
+		// Get the hotel
+		$hotel = $quote->getHotel();
+
 		$data = [
 			'subject' => "Golf Western NY Welcome Package",
 			'to' => $quote->email,
 			'name' => $quote->name,
+			'dates' => $quote->present()->dates,
+			'hotelName' => $hotel->present()->name,
+			'hotelAddress' => $hotel->present()->address,
+			'hotelPhone' => $hotel->present()->phone,
+			'hotelGM' => $hotel->present()->gm,
+			'hotelConfirmation' => $quote->getHotel()->present()->confirmation,
 		];
 
 		return $this->send('customer.welcome', $data);
