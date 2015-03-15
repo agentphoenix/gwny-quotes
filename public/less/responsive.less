@@ -32,6 +32,31 @@
 		-webkit-overflow-scrolling: touch;
 	}
 
+	#nav-main {
+		.navbar-nav {
+			a {
+				color: @color-white;
+				font-size: @font-size !important;
+				font-weight: normal;
+				font-style: normal;
+
+				&:hover {
+					color: @color-white;
+					text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+				}
+			}
+		}
+
+		.dropdown-menu>li>a {
+			color: @color-white;
+
+			&:hover {
+				color: @color-white;
+				text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+			}
+		}
+	}
+
 	main {
 		padding-bottom: 375px;
 	}
