@@ -13,25 +13,25 @@ class FlashNotifierService {
 
 	public function error($message)
 	{
-		$this->session->flash('flash.level', 'red');
+		$this->session->flash('flash.level', 'danger');
 		$this->session->flash('flash.message', $message);
 	}
 
 	public function info($message)
 	{
-		$this->session->flash('flash.level', 'blue');
+		$this->session->flash('flash.level', 'info');
 		$this->session->flash('flash.message', $message);
 	}
 
 	public function success($message)
 	{
-		$this->session->flash('flash.level', 'green');
+		$this->session->flash('flash.level', 'success');
 		$this->session->flash('flash.message', $message);
 	}
 
 	public function warning($message)
 	{
-		$this->session->flash('flash.level', 'yellow');
+		$this->session->flash('flash.level', 'warning');
 		$this->session->flash('flash.message', $message);
 	}
 
