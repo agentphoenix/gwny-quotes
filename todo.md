@@ -1,3 +1,2 @@
 - Cron job
-- Phone layout
-- Tablet layout
+- Welcome email
