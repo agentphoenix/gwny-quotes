@@ -36,14 +36,58 @@
 					</div>
 
 					<div class="collapse navbar-collapse" id="gwny-menu">
-						<ul class="nav navbar-nav visible-xs">
-							{{ partial('nav-sub') }}
-						</ul>
-
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="{{ route('home') }}">New Quote</a></li>
-							<li><a href="{{ route('checkStatus') }}">Check Quote</a></li>
-							<li><a href="http://golfwny.com">Golf WNY</a></li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Quotes <span class="caret"></span></a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="{{ route('admin.quotes.active') }}">
+										Active
+										@if ($_countActive > 0)
+											<span class="label label-success">{{ $_countActive }}</span>
+										@endif
+									</a></li>
+									<li><a href="{{ route('admin.quotes.submitted') }}">
+										Awaiting Review
+										@if ($_countSubmitted > 0)
+											<span class="label label-success">{{ $_countSubmitted }}</span>
+										@endif
+									</a></li>
+									<li><a href="{{ route('admin.quotes.accepted') }}">
+										Accepted
+										@if ($_countAccepted > 0)
+											<span class="label label-success">{{ $_countAccepted }}</span>
+										@endif
+									</a></li>
+									<li><a href="{{ route('admin.quotes.rejected') }}">
+										Rejected
+										@if ($_countRejected > 0)
+											<span class="label label-danger">{{ $_countRejected }}</span>
+										@endif
+									</a></li>
+									<li><a href="{{ route('admin.quotes.index') }}">All Quotes</a></li>
+								</ul>
+							</li>
+
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Content <span class="caret"></span></a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="{{ route('admin.regions.index') }}">Regions</a></li>
+									<li><a href="{{ route('admin.courses.index') }}">Courses</a></li>
+									<li><a href="{{ route('admin.hotels.index') }}">Hotels</a></li>
+									<li><a href="{{ route('admin.users.index') }}">Users</a></li>
+								</ul>
+							</li>
+
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Reports <span class="caret"></span></a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="{{ route('admin.reports.revenue') }}">Revenue</a></li>
+									<li><a href="{{ route('admin.reports.courses') }}">Courses</a></li>
+									<li><a href="{{ route('admin.reports.hotels') }}">Hotels</a></li>
+								</ul>
+							</li>
+
+							<li><a href="{{ route('logout') }}" class="header item"><i class="sign out icon"></i>Log Out</a></li>
 						</ul>
 					</div>
 				</div>
@@ -51,19 +95,11 @@
 
 			<main>
 				<div class="container">
-					<div class="row">
-						<div class="col-md-3 visible-sm visible-md visible-lg">
-							{{ partial('nav-sub') }}
-						</div>
+					@if (Session::has('flash.message'))
+						@include('partials.flash')
+					@endif
 
-						<div class="col-md-9">
-							@if (Session::has('flash.message'))
-								@include('partials.flash')
-							@endif
-
-							@yield('content')
-						</div>
-					</div>
+					@yield('content')
 				</div>
 			</main>
 
