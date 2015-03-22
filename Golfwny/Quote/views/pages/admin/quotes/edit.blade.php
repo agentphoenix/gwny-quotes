@@ -425,7 +425,8 @@
 			format: 'h:i A',
 			min: [6, 0],
 			max: [22, 0],
-			container: 'section',
+			interval: 15,
+			container: 'main',
 			onSet: function(context)
 			{
 				var date = moment(this.$node.context.value, "h:mm A");
