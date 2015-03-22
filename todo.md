@@ -1,1 +1,0 @@
-- Manually send welcome email
