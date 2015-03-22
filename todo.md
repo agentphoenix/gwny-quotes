@@ -1,2 +1,3 @@
 - Cron job
 - Welcome email
+- Manually send welcome email
