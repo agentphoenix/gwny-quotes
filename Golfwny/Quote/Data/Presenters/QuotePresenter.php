@@ -67,8 +67,11 @@ class QuotePresenter extends Presenter {
 		{
 			return "immediately";
 		}
-		
-		return $this->entity->contract_accepted->addDays(7)->format(config('gwny.dates.dateNoDay'));
+
+		if ($this->entity->contract_accepted)
+			return $this->entity->contract_accepted->addDays(7)->format(config('gwny.dates.dateNoDay'));
+
+		return "7 days after accepting this contract";
 	}
 
 	public function email()
