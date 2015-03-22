@@ -1,6 +1,6 @@
 <?php namespace Quote\Data\Models;
 
-use Str, Eloquent;
+use Str, Status, Eloquent;
 use Laracasts\Presenter\PresentableTrait;
 use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
@@ -77,6 +77,19 @@ class Quote extends Eloquent {
 	| Model Methods
 	|---------------------------------------------------------------------------
 	*/
+
+	public static function boot()
+	{
+		parent::boot();
+
+		Quote::updated(function($quote)
+		{
+			if ( ! empty($quote->contract_initials) and $quote->status != Status::AWAITING_ARRIVAL and (bool) $quote->paid_total == true)
+			{
+				$quote->fill(['status' => Status::AWAITING_ARRIVAL])->save();
+			}
+		});
+	}
 
 	public function getCourses()
 	{
