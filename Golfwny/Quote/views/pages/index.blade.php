@@ -32,7 +32,7 @@
 			}).end().appendTo('#coursesTable');
 		});
 
-		$('.js-removeCourse-action').on('click', function(e)
+		$(document).on('click', '.js-removeCourse-action', function(e)
 		{
 			e.preventDefault();
 
