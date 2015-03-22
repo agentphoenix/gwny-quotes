@@ -62,7 +62,7 @@ class QuoteRepository extends BaseRepository implements QuoteRepositoryInterface
 			'rate'		=> $hotel->rate,
 			'arrival'	=> $quote->arrival,
 			'departure'	=> $quote->departure,
-			'time'		=> "11:00 AM",
+			'time'		=> "3:00 PM",
 		]);
 	}
 
