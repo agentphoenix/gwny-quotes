@@ -168,7 +168,7 @@ class SendEmailsCommand extends Command {
 	protected function sendWelcomeMessages()
 	{
 		// Get all packages that have been completed
-		$packages = $this->quotes->getByStatus('contract-accepted');
+		$packages = $this->quotes->getByStatus('awaiting-arrival');
 
 		// Only get packages where they're arriving in 7 days
 		$packages = $packages->filter(function($p)
