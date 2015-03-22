@@ -13,6 +13,7 @@ use Date,
 	CourseRepositoryInterface,
 	SurveyRepositoryInterface,
 	QuoteItemRepositoryInterface;
+use Quote\Mailers\CustomerMailer;
 use Quote\Controllers\BaseController;
 use Quote\Services\QuoteCalculatorService;
 
@@ -231,6 +232,22 @@ class QuoteController extends BaseController {
 		$this->items->delete(Input::get('item'));
 
 		return json_encode(['code' => 1]);
+	}
+
+	public function sendWelcomeEmail()
+	{
+		$quote = $this->quotes->getByCode(Input::get('code'));
+
+		if ($quote)
+			(new CustomerMailer(app('mailer')))->welcome($quote);
+	}
+
+	public function sendSurveyEmail()
+	{
+		$quote = $this->quotes->getByCode(Input::get('code'));
+
+		if ($quote)
+			(new CustomerMailer(app('mailer')))->survey($quote);
 	}
 
 }

@@ -101,6 +101,18 @@
 					</div>
 				@endif
 
+				@if ($quote->status == Status::CONTRACT_ACCEPTED and (bool) $quote->paid_total == true)
+					<div class="btn-group">
+						<a class="btn btn-info js-sendWelcomeEmail" data-quote="{{ $quote->code }}">Re-Send Welcome Email</a>
+					</div>
+				@endif
+
+				@if ($quote->status == Status::COMPLETED)
+					<div class="btn-group">
+						<a class="btn btn-info js-sendSurveyEmail" data-quote="{{ $quote->code }}">Re-Send Survey Email</a>
+					</div>
+				@endif
+
 				@if ($quote->surveys->count() > 0)
 					<div class="btn-group">
 						<a href="{{ route('admin.quotes.survey-results', [$quote->code]) }}" class="btn btn-info">Survey Results</a>
@@ -438,6 +450,42 @@
 					value: date.format('h:mm A')
 				});
 			}
+		});
+
+		$('.js-sendWelcomeEmail').on('click', function(e)
+		{
+			e.preventDefault();
+
+			$.ajax({
+				url: "{{ URL::to('admin/quotes/send-welcome-email') }}",
+				type: "POST",
+				data: {
+					code: $(this).data('quote'),
+					"_token": "{{ csrf_token() }}"
+				},
+				success: function(data)
+				{
+					alert("Welcome email has been re-sent.");
+				}
+			});
+		});
+
+		$('.js-sendSurveyEmail').on('click', function(e)
+		{
+			e.preventDefault();
+
+			$.ajax({
+				url: "{{ URL::to('admin/quotes/send-survey-email') }}",
+				type: "POST",
+				data: {
+					code: $(this).data('quote'),
+					"_token": "{{ csrf_token() }}"
+				},
+				success: function(data)
+				{
+					alert("Survey email has been re-sent.");
+				}
+			});
 		});
 
 		$('.js-updateField').on('change', function(e)
