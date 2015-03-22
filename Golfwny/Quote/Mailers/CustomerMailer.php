@@ -1,6 +1,6 @@
 <?php namespace Quote\Mailers;
 
-use HTML, View, Quote;
+use Str, HTML, View, Quote;
 
 class CustomerMailer extends BaseMailer {
 
@@ -153,17 +153,39 @@ class CustomerMailer extends BaseMailer {
 		// Get the hotel
 		$hotel = $quote->getHotel();
 
+		// Get the courses
+		$courses = $quote->getCourses();
+
 		$data = [
 			'subject' => "Golf Western NY Welcome Package",
 			'to' => $quote->email,
 			'name' => $quote->name,
 			'dates' => $quote->present()->dates,
-			'hotelName' => $hotel->present()->name,
-			'hotelAddress' => $hotel->present()->address,
-			'hotelPhone' => $hotel->present()->phone,
-			'hotelGM' => $hotel->present()->gm,
-			'hotelConfirmation' => $quote->getHotel()->present()->confirmation,
+			'logo' => asset('img/GOLFWNY.png'),
+			'hotel' => [
+				'name' => $hotel->present()->hotel,
+				'address' => $hotel->present()->address,
+				'phone' => $hotel->present()->phone,
+				'gm' => $hotel->present()->gm,
+				'confirmation' => $hotel->present()->confirmation,
+			],
 		];
+
+		foreach ($courses as $course)
+		{
+			$data['courses'][] = [
+				'name' => $course->present()->course,
+				'address' => $course->present()->address,
+				'phone' => $course->present()->phone,
+				'confirmation' => $course->present()->confirmation,
+				'rounds' => $course->present()->totalRounds,
+				'holes' => $course->present()->holesRaw,
+				'date' => $course->present()->arrival(false),
+				'teeTime1' => $course->present()->time,
+				'teeTime2' => $course->present()->time2,
+				'logo' => asset('img/logos/'.Str::slug($course->present()->course).'.jpg'),
+			];
+		}
 
 		return $this->send('customer.welcome', $data);
 	}

@@ -10,13 +10,15 @@
 	<p><strong>{{ $dates }}</strong></p>
 
 	<p>
-		<strong>{{ $hotelName }}</strong><br>
-		{{ $hotelAddress }}
-		{{ $hotelPhone }}<br>
-		General Manager &mdash; {{ $hotelGM }}
+		<strong>{{ $hotel['name'] }}</strong><br>
+		{{ $hotel['address'] }}<br>
+		{{ $hotel['phone'] }}<br>
+		General Manager &ndash; {{ $hotel['gm'] }}
 	</p>
 
-	<p>Rooms confirmation number: {{ $hotelConfirmation }}</p>
+	@if ( ! empty($hotel['confirmation']))
+		<p>Rooms confirmation number: {{ $hotel['confirmation'] }}</p>
+	@endif
 
 	<p>If you have any questions or concerns, please do not hesitate to contact me.</p>
 
@@ -25,4 +27,42 @@
 	<p>Eric LaBarr<br>
 	Golf Western NY<br>
 	585-281-8942</p>
+
+	<hr>
+
+	<table cellpadding="0" cellspacing="0" border="0" width="100%">
+	@foreach ($courses as $course)
+		<tr>
+			<td width="125"><img src="{{ $message->embed($course['logo']) }}" width="125"></td>
+			<td width="25">&nbsp;</td>
+			<td align="center">
+				{{ $course['name'] }}<br>
+				{{ $course['address'] }}<br>
+				{{ $course['phone'] }}
+
+				@if ( ! empty($course['confirmation']))
+					<br><em>Confirmation:</em> {{ $course['confirmation'] }}
+				@endif
+			</td>
+			<td width="25">&nbsp;</td>
+			<td width="125"><img src="{{ $message->embed($logo) }}" width="125"></td>
+		</tr>
+		<tr>
+			<td colspan="5">
+				<p>This certificate entitles {{ $name }} ({{ $course['rounds'] }}) rounds of golf with cart at {{ $course['name'] }} on {{ $course['date'] }}.
+
+				@if ($course['holes'] == 18)
+					The booked tee time is {{ $course['teeTime1'] }}.
+				@else
+					The first booked tee time is {{ $course['teeTime1'] }} and the second booked tee time is {{ $course['teeTime2'] }}.
+				@endif
+
+				Please present this certificate at check-in.</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="5"><hr></td>
+		</tr>
+	@endforeach
+	</table>
 @stop
