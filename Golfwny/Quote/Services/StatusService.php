@@ -10,9 +10,10 @@ class StatusService {
 	const CONTRACT				= 6;
 	const CONTRACT_ACCEPTED		= 7;
 	const CONTRACT_REJECTED		= 8;
-	const WITHDRAWN				= 9;
-	const CLOSED				= 10;
-	const COMPLETED				= 11;
+	const AWAITING_ARRIVAL		= 9;
+	const WITHDRAWN				= 10;
+	const CLOSED				= 11;
+	const COMPLETED				= 12;
 
 	public static function toCode($value)
 	{
@@ -56,6 +57,10 @@ class StatusService {
 
 			case 'completed':
 				return static::COMPLETED;
+			break;
+
+			case 'awaiting-arrival':
+				return static::AWAITING_ARRIVAL;
 			break;
 		}
 	}
@@ -102,6 +107,10 @@ class StatusService {
 
 			case static::COMPLETED:
 				return "Completed";
+			break;
+
+			case static::AWAITING_ARRIVAL:
+				return "Awaiting Arrival";
 			break;
 		}
 	}

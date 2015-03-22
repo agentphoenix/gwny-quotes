@@ -101,7 +101,7 @@
 					</div>
 				@endif
 
-				@if ($quote->status == Status::CONTRACT_ACCEPTED and (bool) $quote->paid_total == true)
+				@if ($quote->status == Status::AWAITING_ARRIVAL and (bool) $quote->paid_total == true)
 					<div class="btn-group">
 						<a class="btn btn-info js-sendWelcomeEmail" data-quote="{{ $quote->code }}">Re-Send Welcome Email</a>
 					</div>

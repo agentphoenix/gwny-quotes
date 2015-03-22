@@ -34,6 +34,7 @@ class QuoteRepository extends BaseRepository implements QuoteRepositoryInterface
 			Status::ESTIMATE_ACCEPTED,
 			Status::CONTRACT,
 			Status::CONTRACT_ACCEPTED,
+			Status::AWAITING_ARRIVAL,
 		])->count();
 	}
 
@@ -94,6 +95,7 @@ class QuoteRepository extends BaseRepository implements QuoteRepositoryInterface
 			Status::ESTIMATE_ACCEPTED,
 			Status::CONTRACT,
 			Status::CONTRACT_ACCEPTED,
+			Status::AWAITING_ARRIVAL,
 		])->orderBy('arrival', 'desc')->get();
 	}
 

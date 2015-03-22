@@ -284,6 +284,7 @@ class QuotePresenter extends Presenter {
 
 			case Status::ESTIMATE_ACCEPTED:
 			case Status::CONTRACT_ACCEPTED:
+			case Status::AWAITING_ARRIVAL:
 				$class = 'success';
 			break;
 
