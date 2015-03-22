@@ -10,7 +10,7 @@
 	<div class="btn-toolbar">
 		<div class="btn-group">
 		@foreach ($years as $year)
-			<a href="#" class="btn btn-default">{{ $year }}</a>
+			<a href="{{ route('admin.reports.courses', [$year]) }}" class="btn btn-default">{{ $year }}</a>
 		@endforeach
 		</div>
 	</div>
