@@ -49,15 +49,11 @@ class SendEmailsCommand extends Command {
 		$this->info("");
 
 		$this->sendEstimateReminders();
-
 		$this->sendContractReminders();
-
 		$this->sendDepositReminders();
-
 		$this->sendPaymentReminders();
-
 		$this->sendWelcomeMessages();
-
+		$this->markPackagesCompleted();
 		$this->sendSurveyLinks();
 
 		$this->info("");
@@ -86,8 +82,7 @@ class SendEmailsCommand extends Command {
 
 			foreach ($packages as $quote)
 			{
-				//$this->mailer->estimateReminder($quote);
-				$this->info($quote->present()->code);
+				$this->mailer->estimateReminder($quote);
 			}
 		}
 	}
@@ -113,8 +108,7 @@ class SendEmailsCommand extends Command {
 
 			foreach ($packages as $quote)
 			{
-				//$this->mailer->contractReminder($quote);
-				$this->info($quote->present()->code);
+				$this->mailer->contractReminder($quote);
 			}
 		}
 	}
@@ -140,8 +134,7 @@ class SendEmailsCommand extends Command {
 
 			foreach ($packages as $quote)
 			{
-				//$this->mailer->paymentDeposit($quote);
-				$this->info($quote->present()->code);
+				$this->mailer->paymentDeposit($quote);
 			}
 		}
 	}
@@ -167,8 +160,7 @@ class SendEmailsCommand extends Command {
 
 			foreach ($packages as $quote)
 			{
-				//$this->mailer->paymentFinal($quote);
-				$this->info($quote->present()->code);
+				$this->mailer->paymentFinal($quote);
 			}
 		}
 	}
@@ -192,8 +184,31 @@ class SendEmailsCommand extends Command {
 
 			foreach ($packages as $quote)
 			{
-				//$this->mailer->welcome($quote);
-				$this->info($quote->present()->code);
+				$this->mailer->welcome($quote);
+			}
+		}
+	}
+
+	protected function markPackagesCompleted()
+	{
+		// Get all packages that have been completed
+		$packages = $this->quotes->getByStatus('contract-accepted');
+
+		// Only get packages where yesterday was the completed date
+		$packages = $packages->filter(function($p)
+		{
+			$days = (int) $p->departure->startOfDay()->diffInDays(Date::now()->startOfDay());
+
+			return $days == 1;
+		});
+
+		if ($packages->count() > 0)
+		{
+			$this->info("Marking packages as complete...");
+
+			foreach ($packages as $quote)
+			{
+				$quote->fill(['status' => Status::COMPLETED])->save();
 			}
 		}
 	}
@@ -217,8 +232,7 @@ class SendEmailsCommand extends Command {
 
 			foreach ($packages as $quote)
 			{
-				//$this->mailer->survey($quote);
-				$this->info($quote->present()->code);
+				$this->mailer->survey($quote);
 			}
 		}
 	}
