@@ -95,7 +95,7 @@ class ReportRepository extends BaseRepository implements ReportRepositoryInterfa
 				'tax'		=> (float) 0.00,
 				'rooms'		=> (int) 0,
 				'people'	=> (int) 0,
-				'days'		=> (int) 0,
+				'nights'	=> (int) 0,
 			];
 		}
 
@@ -124,9 +124,9 @@ class ReportRepository extends BaseRepository implements ReportRepositoryInterfa
 
 				$revenue[$item->hotel_id]['revenue']+= $total;
 				$revenue[$item->hotel_id]['tax']+= $total * $item->hotel->tax_rate;
-				$revenue[$item->hotel_id]['rooms']+= $rooms;
+				$revenue[$item->hotel_id]['rooms']+= $rooms * $days;
 				$revenue[$item->hotel_id]['people']+= $quote->people;
-				$revenue[$item->hotel_id]['days']+= $days;
+				$revenue[$item->hotel_id]['nights']+= $days;
 			}
 		}
 
