@@ -348,6 +348,16 @@
 								</div>
 							</div>
 						</div>
+						<div class="row">
+							<div class="col-sm-6 col-md-3">
+								<div class="visible-xs visible-sm">
+									<p><a class="btn btn-danger btn-block js-removeCourse" data-item="{{ $item->id }}">Remove Course</a></p>
+								</div>
+								<div class="visible-md visible-lg">
+									<p><a class="btn btn-danger js-removeCourse" data-item="{{ $item->id }}">Remove Course</a></p>
+								</div>
+							</div>
+						</div>
 						<div class="ui divider"></div>
 					</div>
 				@endforeach
@@ -538,6 +548,34 @@
 
 					window.location.reload();
 				}
+			});
+		});
+
+		$(document).on('click', '.js-removeCourse', function(e)
+		{
+			e.preventDefault();
+
+			var $button = $(this);
+
+			$(this).closest('.course-row').fadeOut(300, function()
+			{
+				var $field = $(this);
+
+				$.ajax({
+					url: "{{ URL::to('admin/quotes/remove-course') }}",
+					type: "POST",
+					data: {
+						item: $button.data('item'),
+						"_token": "{{ csrf_token() }}"
+					},
+					dataType: "json",
+					success: function(data)
+					{
+						$field.remove();
+
+						recalculateCost();
+					}
+				});
 			});
 		});
 

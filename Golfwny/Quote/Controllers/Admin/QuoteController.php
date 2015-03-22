@@ -226,4 +226,11 @@ class QuoteController extends BaseController {
 			->withResults($quote->surveys);
 	}
 
+	public function removeCourse()
+	{
+		$this->items->delete(Input::get('item'));
+
+		return json_encode(['code' => 1]);
+	}
+
 }

@@ -18,6 +18,21 @@ class QuoteItemRepository extends BaseRepository implements QuoteItemRepositoryI
 		return $this->model->create($data);
 	}
 
+	public function delete($id)
+	{
+		// Get the item
+		$item = $this->getById($id);
+
+		if ($item)
+		{
+			$item->forceDelete();
+
+			return $item;
+		}
+
+		return false;
+	}
+
 	public function update($id, array $data)
 	{
 		// Get the item
