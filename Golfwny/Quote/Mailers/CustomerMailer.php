@@ -1,6 +1,6 @@
 <?php namespace Quote\Mailers;
 
-use Str, HTML, View, Quote;
+use Str, File, HTML, View, Quote;
 
 class CustomerMailer extends BaseMailer {
 
@@ -183,7 +183,9 @@ class CustomerMailer extends BaseMailer {
 				'date' => $course->present()->arrival(false),
 				'teeTime1' => $course->present()->time,
 				'teeTime2' => $course->present()->time2,
-				'logo' => asset('img/logos/'.Str::slug($course->present()->course).'.jpg'),
+				'logo' => (File::exists(public_path('img/logos/'.Str::slug($course->present()->course).'.jpg')))
+					? asset('img/logos/'.Str::slug($course->present()->course).'.jpg')
+					: false,
 			];
 		}
 

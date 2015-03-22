@@ -33,7 +33,11 @@
 	<table cellpadding="0" cellspacing="0" border="0" width="100%">
 	@foreach ($courses as $course)
 		<tr>
-			<td width="125"><img src="{{ $message->embed($course['logo']) }}" width="125"></td>
+			<td width="125">
+				@if ( ! empty($course['logo']))
+					<img src="{{ $message->embed($course['logo']) }}" width="125">
+				@endif
+			</td>
 			<td width="25">&nbsp;</td>
 			<td align="center">
 				{{ $course['name'] }}<br>
