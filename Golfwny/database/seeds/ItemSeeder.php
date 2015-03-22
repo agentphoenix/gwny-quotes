@@ -64,7 +64,8 @@ class ItemSeeder extends Seeder {
 				'address' => "3052 Transit Road\r\nOrchard Park, NY 14127",
 				'phone' => "716-662-1980",
 				'general_manager' => "Josh Wojtaszczyk",
-				'rate' => 75.00
+				'rate' => 59.00,
+				'replay_rate' => 35.00
 			],
 			[
 				'region_id' => 2,
@@ -72,7 +73,8 @@ class ItemSeeder extends Seeder {
 				'address' => "12089 Main Road\r\nAkron, NY 14001",
 				'phone' => "716-542-6342",
 				'general_manager' => "Jim Fisk",
-				'rate' => 49.00
+				'rate' => 55.00,
+				'replay_rate' => 30.00
 			],
 			[
 				'region_id' => 2,
@@ -80,7 +82,8 @@ class ItemSeeder extends Seeder {
 				'address' => "255 Sonwil Drive\r\nCheektowaga, NY 14225",
 				'phone' => "716-651-0700",
 				'general_manager' => "Andy Mummey",
-				'rate' => 60.00
+				'rate' => 59.00,
+				'replay_rate' => 35.00
 			],
 			[
 				'region_id' => 2,
@@ -88,7 +91,8 @@ class ItemSeeder extends Seeder {
 				'address' => "12089 Clarence Center Road\r\nAkron, NY 14001",
 				'phone' => "716-542-4325",
 				'general_manager' => "Chris Carroll",
-				'rate' => 39.00
+				'rate' => 35.00,
+				'replay_rate' => 20.00
 			],
 			[
 				'region_id' => 2,
@@ -96,7 +100,8 @@ class ItemSeeder extends Seeder {
 				'address' => "4560 Creek Road\r\nLewiston, NY 14092",
 				'phone' => "716-754-2424",
 				'general_manager' => "Jason Moravec",
-				'rate' => 39.00
+				'rate' => 72.00,
+				'replay_rate' => 37.00
 			],
 		];
 
@@ -128,7 +133,7 @@ class ItemSeeder extends Seeder {
 				'address' => "6615 Transit Road\r\nWilliamsville, NY 14221",
 				'phone' => "716-635-9000",
 				'general_manager' => "Jeanine Panzica",
-				'rate' => 129.00,
+				'rate' => 150.00,
 				'tax_rate' => 0.00
 			],
 			[
@@ -137,8 +142,8 @@ class ItemSeeder extends Seeder {
 				'address' => "601 Main Street\r\nBuffalo, NY 14203",
 				'phone' => "716-854-5500",
 				'general_manager' => "Matt Spencer",
-				'rate' => 85.00,
-				'tax_rate' => 0.00,
+				'rate' => 99.00,
+				'tax_rate' => 12.75,
 				'default' => 1
 			],
 		];
