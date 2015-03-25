@@ -5,6 +5,11 @@ use Laracasts\Presenter\Presenter;
 
 class HotelPresenter extends Presenter {
 
+	public function amenities()
+	{
+		return Markdown::parse($this->entity->amenities);
+	}
+
 	public function defaultMarker()
 	{
 		if ((bool) $this->entity->default == true)

@@ -134,6 +134,11 @@ class QuotePresenter extends Presenter {
 		return $this->entity->getHotel()->hotel->present()->name;
 	}
 
+	public function hotelAmenities()
+	{
+		return $this->entity->getHOtel()->hotel->present()->amenities;
+	}
+
 	public function name()
 	{
 		return $this->entity->name;

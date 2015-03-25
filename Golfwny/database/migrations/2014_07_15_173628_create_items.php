@@ -45,6 +45,7 @@ class CreateItems extends Migration {
 			$table->string('general_manager')->nullable();
 			$table->float('rate');
 			$table->float('tax_rate', 8, 4);
+			$table->text('amenities')->nullable();
 			$table->boolean('default')->default((int) false);
 			$table->timestamps();
 			$table->softDeletes();

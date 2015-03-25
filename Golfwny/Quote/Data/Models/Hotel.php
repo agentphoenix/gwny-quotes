@@ -12,7 +12,7 @@ class Hotel extends Eloquent {
 	protected $table = 'hotels';
 
 	protected $fillable = ['region_id', 'name', 'address', 'phone', 'general_manager',
-		'rate', 'tax_rate', 'default'];
+		'rate', 'tax_rate', 'default', 'amenities'];
 
 	protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 

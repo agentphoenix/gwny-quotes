@@ -25,9 +25,11 @@
 
 <h3>Golf WNY Stay-n-Play Golf Package Contract</h3>
 
-<p>The following package is for {{ $quote->present()->arrival }} - {{ $quote->present()->departure }} for {{ $quote->present()->people }}. All players will be lodging ({{ $quote->present()->numberOfNights }}) nights at the {{ $quote->present()->hotel }}, which includes complimentary breakfast. Pricing is based on double occupancy.</p>
+<p>The following package is for {{ $quote->present()->arrival }} - {{ $quote->present()->departure }} for {{ $quote->present()->people }}. All players will be lodging ({{ $quote->present()->numberOfNights }}) nights at the {{ $quote->present()->hotel }}. Pricing is based on double occupancy.</p>
 
-<p>Hotel accommodations include ({{ $quote->present()->numberOfRooms }}) rooms with 2-Queen Beds in each room.</p>
+<p>Hotel accommodations include ({{ $quote->present()->numberOfRooms }}) rooms with the following amenities:</p>
+
+{{ $quote->present()->hotelAmenities }}
 
 <p>This package will also include ({{ $quote->present()->daysOfGolf }}) days of golf at {{ $quote->present()->region }}'s finest golf courses. These courses include {{ $quote->present()->golfCoursesNice }}. Included will be golf with cart at the course(s). The total cost of the package is <strong>{{ $quote->present()->price }}</strong> (excludes any gratuities). Tee times and dates are as follows:</p>
 
