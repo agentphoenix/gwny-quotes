@@ -63,7 +63,7 @@
 		<div class="form-group">
 			<div class="col-md-3">
 				<div class="input-group">
-					<span class="input-group-addon"><strong>Initials</strong></span>
+					<span class="input-group-addon"><strong>Your Initials</strong></span>
 					{{ Form::text('initials', false, ['class' => 'input-lg form-control']) }}
 				</div>
 			</div>
@@ -74,14 +74,13 @@
 				<a class="btn btn-lg btn-block btn-danger js-changeStatus" data-status="rejected" data-quote="{{ $quote->id }}">Reject Estimate</a>
 			</div>
 		</div>
-		<p>&nbsp;</p>
 	@endif
 
 	@if ($quote->status == Status::CONTRACT)
 		<div class="form-group">
 			<div class="col-md-3">
 				<div class="input-group">
-					<span class="input-group-addon"><strong>Initials</strong></span>
+					<span class="input-group-addon"><strong>Your Initials</strong></span>
 					{{ Form::text('initials', false, ['class' => 'input-lg form-control']) }}
 				</div>
 			</div>
@@ -92,7 +91,6 @@
 				<a class="btn btn-lg btn-block btn-danger js-changeStatus" data-status="contract-rejected" data-quote="{{ $quote->id }}">Reject Contract</a>
 			</div>
 		</div>
-		<p>&nbsp;</p>
 	@endif
 @stop
 
