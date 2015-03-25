@@ -227,6 +227,26 @@
 						</div>
 					</div>
 				</div>
+
+				@if ( ! empty($quote->comments))
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="form-group">
+								<label class="control-label">Submitter Comments</label>
+								{{ $quote->present()->comments }}
+							</div>
+						</div>
+					</div>
+				@endif
+
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="form-group">
+							<label class="control-label">Notes</label>
+							{{ Form::textarea('notes', null, ['class' => 'form-control js-updateField', 'data-id' => $quote->id, 'data-table' => 'quotes', 'data-field' => 'notes', 'rows' => 5]) }}
+						</div>
+					</div>
+				</div>
 			{{ Form::close() }}
 		</div>
 

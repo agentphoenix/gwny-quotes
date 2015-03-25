@@ -23,6 +23,11 @@ class QuotePresenter extends Presenter {
 		return $this->entity->code;
 	}
 
+	public function comments()
+	{
+		return Markdown::parse($this->entity->comments);
+	}
+
 	public function contractAccepted()
 	{
 		return $this->entity->contract_accepted->format(config('gwny.dates.full'))." by ".$this->entity->contract_initials;
