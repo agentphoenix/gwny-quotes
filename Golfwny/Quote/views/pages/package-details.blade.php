@@ -74,6 +74,7 @@
 				<a class="btn btn-lg btn-block btn-danger js-changeStatus" data-status="rejected" data-quote="{{ $quote->id }}">Reject Estimate</a>
 			</div>
 		</div>
+		<p>&nbsp;</p>
 	@endif
 
 	@if ($quote->status == Status::CONTRACT)
@@ -91,6 +92,7 @@
 				<a class="btn btn-lg btn-block btn-danger js-changeStatus" data-status="contract-rejected" data-quote="{{ $quote->id }}">Reject Contract</a>
 			</div>
 		</div>
+		<p>&nbsp;</p>
 	@endif
 @stop
 
