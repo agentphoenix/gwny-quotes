@@ -31,7 +31,7 @@
 
 {{ $quote->present()->hotelAmenities }}
 
-<p>This package will also include ({{ $quote->present()->daysOfGolf }}) days of golf at {{ $quote->present()->region }}'s finest golf courses. These courses include {{ $quote->present()->golfCoursesNice }}. Included will be golf with cart at the course(s). The total cost of the package is <strong>{{ $quote->present()->price }}</strong> (excludes any gratuities). Tee times and dates are as follows:</p>
+<p>{{ $quote->present()->golfContract }} The total cost of the package is <strong>{{ $quote->present()->price }}</strong> (excludes any gratuities). Tee time(s) and date(s) are as follows:</p>
 
 <ul>
 	@foreach ($quote->getCourses() as $item)

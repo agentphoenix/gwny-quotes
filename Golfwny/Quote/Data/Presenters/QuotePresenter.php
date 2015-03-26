@@ -45,7 +45,22 @@ class QuotePresenter extends Presenter {
 
 	public function daysOfGolf()
 	{
-		return $this->entity->getCourses()->count();
+		$days = $this->entity->getCourses()->count();
+		$daysLabel = ($days == 1) ? 'day' : 'days';
+
+		return "($days) {$daysLabel}";
+	}
+
+	public function golfContract()
+	{
+		$days = $this->entity->getCourses()->count();
+
+		if ($days == 1)
+		{
+			return "This package will also include (1) day of golf with cart at one of {$this->region()}'s finest golf courses: {$this->golfCoursesNice()}.";
+		}
+
+		return "This package will also include ({$days}) days of golf with cart at some of {$this->region()}'s finest golf courses, including: {$this->golfCoursesNice()}.";
 	}
 
 	public function daysToPackage()
