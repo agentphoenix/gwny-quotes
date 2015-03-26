@@ -5,7 +5,7 @@
 	
 	<div class="btn-toolbar">
 		<div class="btn-group">
-			{{ Form::button('Submit Quote', ['type' => 'submit', 'class' => 'btn btn-lg btn-primary']) }}
+			{{ Form::button('Submit Request', ['type' => 'submit', 'class' => 'btn btn-lg btn-primary']) }}
 		</div>
 		<div class="btn-group">
 			<a href="{{ route('home') }}" class="btn btn-lg btn-default">Start Over</a>
