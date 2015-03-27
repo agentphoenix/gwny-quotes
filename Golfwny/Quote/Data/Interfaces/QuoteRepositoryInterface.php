@@ -5,6 +5,7 @@ use Quote;
 interface QuoteRepositoryInterface extends BaseRepositoryInterface {
 
 	public function countActive();
+	public function countByStatus(array $conditions);
 	public function create(array $data);
 	public function createHotelQuote(Quote $quote);
 	public function createGolfQuote(Quote $quote, array $data);

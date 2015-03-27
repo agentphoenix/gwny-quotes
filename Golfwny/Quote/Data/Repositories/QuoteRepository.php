@@ -28,14 +28,19 @@ class QuoteRepository extends BaseRepository implements QuoteRepositoryInterface
 
 	public function countActive()
 	{
-		return $this->model->whereIn('status', [
+		return $this->countByStatus([
 			Status::SUBMITTED,
 			Status::ESTIMATE,
 			Status::ESTIMATE_ACCEPTED,
 			Status::CONTRACT,
 			Status::CONTRACT_ACCEPTED,
 			Status::AWAITING_ARRIVAL,
-		])->count();
+		]);
+	}
+
+	public function countByStatus(array $conditions)
+	{
+		return $this->model->whereIn('status', $conditions)->count();
 	}
 
 	public function create(array $data)
