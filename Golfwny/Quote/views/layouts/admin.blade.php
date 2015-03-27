@@ -45,27 +45,15 @@
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Quotes <span class="caret"></span></a>
 								<ul class="dropdown-menu" role="menu">
 									<li><a href="{{ route('admin.quotes.active') }}">
-										Active
+										Active Quotes
 										@if ($_countActive > 0)
 											<span class="label label-success">{{ $_countActive }}</span>
 										@endif
 									</a></li>
 									<li><a href="{{ route('admin.quotes.submitted') }}">
-										Awaiting Review
+										Quotes Awaiting Review
 										@if ($_countSubmitted > 0)
 											<span class="label label-success">{{ $_countSubmitted }}</span>
-										@endif
-									</a></li>
-									<li><a href="{{ route('admin.quotes.accepted') }}">
-										Accepted
-										@if ($_countAccepted > 0)
-											<span class="label label-success">{{ $_countAccepted }}</span>
-										@endif
-									</a></li>
-									<li><a href="{{ route('admin.quotes.rejected') }}">
-										Rejected
-										@if ($_countRejected > 0)
-											<span class="label label-danger">{{ $_countRejected }}</span>
 										@endif
 									</a></li>
 									<li><a href="{{ route('admin.quotes.index') }}">All Quotes</a></li>
@@ -115,7 +103,8 @@
 
 							<p>Our golf packages are designed to fit your budget and allow you to play the best golf courses in Rochester, NY or Buffalo, NY. We know it's never easy planning a golf trip in an area you aren't familiar with, so we're here to guide you in the right direction. Our Stay &amp; Play golf packages offer excellent accommodations that cater to both large and small groups.</p>
 
-							<p><a href="http://golfwny.com" class="btn btn-primary btn-sm">Visit Our Site</a></p>
+							<p class="visible-xs visible-sm"><a href="http://golfwny.com" class="btn btn-primary btn-block">Visit Our Site</a></p>
+							<p class="visible-md visible-lg"><a href="http://golfwny.com" class="btn btn-primary btn-sm">Visit Our Site</a></p>
 						</div>
 						<div class="col-md-3">
 							<h5>Follow Golf WNY</h5>

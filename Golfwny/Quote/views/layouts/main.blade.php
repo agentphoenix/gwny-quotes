@@ -43,6 +43,11 @@
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="{{ route('home') }}">New Quote</a></li>
 							<li><a href="{{ route('checkStatus') }}">Check Quote</a></li>
+							
+							@if (Auth::check())
+								<li><a href="{{ route('admin.quotes.active') }}">Admin</a></li>
+							@endif
+							
 							<li><a href="http://golfwny.com">Golf WNY</a></li>
 						</ul>
 					</div>
@@ -67,7 +72,8 @@
 
 							<p>Our golf packages are designed to fit your budget and allow you to play the best golf courses in Rochester, NY or Buffalo, NY. We know it's never easy planning a golf trip in an area you aren't familiar with, so we're here to guide you in the right direction. Our Stay &amp; Play golf packages offer excellent accommodations that cater to both large and small groups.</p>
 
-							<p><a href="http://golfwny.com" class="btn btn-primary btn-sm">Visit Our Site</a></p>
+							<p class="visible-xs visible-sm"><a href="http://golfwny.com" class="btn btn-primary btn-block">Visit Our Site</a></p>
+							<p class="visible-md visible-lg"><a href="http://golfwny.com" class="btn btn-primary btn-sm">Visit Our Site</a></p>
 						</div>
 						<div class="col-md-3">
 							<h5>Follow Golf WNY</h5>
