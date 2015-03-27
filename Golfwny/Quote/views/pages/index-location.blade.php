@@ -8,10 +8,20 @@
 			<div class="panel-footer">
 				<div class="row">
 					<div class="col-sm-6">
-						<p><a href="http://golfwny.com/rochester/courses" target="_blank" class="btn btn-default btn-block">More Info</a></p>
+						<div class="visible-xs">
+							<p><a href="http://golfwny.com/rochester/courses" target="_blank" class="btn btn-default btn-lg btn-block">More Info</a></p>
+						</div>
+						<div class="hidden-xs">
+							<a href="http://golfwny.com/rochester/courses" target="_blank" class="btn btn-default btn-block">More Info</a>
+						</div>
 					</div>
 					<div class="col-sm-6">
-						<p><a href="{{ route('home', ['rochester', 'info']) }}" class="btn btn-primary btn-block">Get Started</a></p>
+						<div class="visible-xs">
+							<p><a href="{{ route('home', ['rochester', 'info']) }}" class="btn btn-primary btn-lg btn-block">Get Started</a></p>
+						</div>
+						<div class="hidden-xs">
+							<a href="{{ route('home', ['rochester', 'info']) }}" class="btn btn-primary btn-block">Get Started</a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -27,10 +37,20 @@
 			<div class="panel-footer">
 				<div class="row">
 					<div class="col-sm-6">
-						<p><a href="http://golfwny.com/buffalo/courses" target="_blank" class="btn btn-default btn-block">More Info</a></p>
+						<div class="visible-xs">
+							<p><a href="http://golfwny.com/buffalo/courses" target="_blank" class="btn btn-default btn-lg btn-block">More Info</a></p>
+						</div>
+						<div class="hidden-xs">
+							<a href="http://golfwny.com/buffalo/courses" target="_blank" class="btn btn-default btn-block">More Info</a>
+						</div>
 					</div>
 					<div class="col-sm-6">
-						<p><a href="{{ route('home', ['buffalo', 'info']) }}" class="btn btn-primary btn-block">Get Started</a></p>
+						<div class="visible-xs">
+							<p><a href="{{ route('home', ['buffalo', 'info']) }}" class="btn btn-primary btn-lg btn-block">Get Started</a></p>
+						</div>
+						<div class="hidden-xs">
+							<a href="{{ route('home', ['buffalo', 'info']) }}" class="btn btn-primary btn-block">Get Started</a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -46,10 +66,20 @@
 			<div class="panel-footer">
 				<div class="row">
 					<div class="col-sm-6">
-						<p><a href="http://golfwny.com/rochester/course/silver-lake-country-club" target="_blank" class="btn btn-default btn-block">More Info</a></p>
+						<div class="visible-xs">
+							<p><a href="http://golfwny.com/rochester/course/silver-lake-country-club" target="_blank" class="btn btn-default btn-lg btn-block">More Info</a></p>
+						</div>
+						<div class="hidden-xs">
+							<a href="http://golfwny.com/rochester/course/silver-lake-country-club" target="_blank" class="btn btn-default btn-block">More Info</a>
+						</div>
 					</div>
 					<div class="col-sm-6">
-						<p><a href="http://golfwny.com/rochester/book-package" target="_blank" class="btn btn-primary btn-block">Get Started</a></p>
+						<div class="visible-xs">
+							<p><a href="http://golfwny.com/rochester/book-package" target="_blank" class="btn btn-primary btn-lg btn-block">Get Started</a></p>
+						</div>
+						<div class="hidden-xs">
+							<a href="http://golfwny.com/rochester/book-package" target="_blank" class="btn btn-primary btn-block">Get Started</a>
+						</div>
 					</div>
 				</div>
 			</div>
