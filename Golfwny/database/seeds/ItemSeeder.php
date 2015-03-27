@@ -114,7 +114,8 @@ class ItemSeeder extends Seeder {
 				'phone' => "585-475-9191",
 				'general_manager' => "Manoj Patel",
 				'rate' => 119.00,
-				'tax_rate' => 14.00
+				'tax_rate' => 14.00,
+				'amenities' => "- 2-Queen Beds\r\n- Complimentary Hot Breakfast Buffet\r\n- Mini Fridge and Microwave\r\n- Large Heated Indoor Pool\r\n- FREE High Speed Internet Access\r\n- DVD Player In Rooms with Complimentary Rentals\r\n- Restaurant and Lounge On-Site\r\n- Fitness Center\r\n- FREE Parking\r\n- 37\" Flat Panel HDTVs"
 			],
 			[
 				'region_id' => 1,
@@ -124,7 +125,8 @@ class ItemSeeder extends Seeder {
 				'general_manager' => "Patrick Hansen",
 				'rate' => 85.00,
 				'tax_rate' => 11.00,
-				'default' => 1
+				'default' => 1,
+				'amenities' => "- 2-Queen Beds\r\n- Complimentary Hot Breakfast Buffet\r\n- Mini Fridge and Microwave\r\n- Large Indoor Heated Swimming Pool\r\n- FREE High Speed Internet Access\r\n- Fitness Center\r\n- FREE Parking\r\n- Cable or Satellite Television"
 			],
 
 			[
@@ -134,7 +136,8 @@ class ItemSeeder extends Seeder {
 				'phone' => "716-635-9000",
 				'general_manager' => "Jeanine Panzica",
 				'rate' => 150.00,
-				'tax_rate' => 0.00
+				'tax_rate' => 0.00,
+				'amenities' => "- 2-Queen Beds\r\n- Complimentary Hot Breakfast Buffet\r\n- Shuttle Service To Salvatore's Italian Garden Restaurant\r\n- High Speed WiFi Internet Access\r\n- Fitness Center\r\n- FREE Parking"
 			],
 			[
 				'region_id' => 2,
@@ -144,7 +147,8 @@ class ItemSeeder extends Seeder {
 				'general_manager' => "Matt Spencer",
 				'rate' => 99.00,
 				'tax_rate' => 12.75,
-				'default' => 1
+				'default' => 1,
+				'amenities' => "- King Bed with Queen Sofa Bed and Living Room\r\n- Complimentary Hot Breakfast Buffet\r\n- FREE Valet Parking\r\n- High Speed WiFi Internet Access\r\n- Fitness Center\r\n- Cable and Satellite TV\r\n- Mini Fridge and Coffee Maker"
 			],
 		];
 
