@@ -68,10 +68,10 @@
 
 	<div class="visible-xs visible-sm">
 		<div class="row">
-			<div class="col-xs-6">
+			<div class="col-sm-6">
 				<p>{{ Form::button('Review &amp; Confirm', ['type' => 'submit', 'class' => 'btn btn-lg btn-block btn-primary']) }}</p>
 			</div>
-			<div class="col-xs-6">
+			<div class="col-sm-6">
 				<p><a href="{{ route('home') }}" class="btn btn-lg btn-block btn-default">Start Over</a></p>
 			</div>
 		</div>

@@ -76,48 +76,79 @@
 			</div>
 		</div>
 		<div class="col-xs-12">
-			<div class="btn-toolbar">
+			<div class="visible-xs visible-sm">
 				@if ($quote->status == Status::SUBMITTED)
-					<div class="btn-group">
-						<a class="btn btn-primary js-changeStatus" data-status="estimate" data-quote="{{ $quote->id }}">Send Estimate</a>
-					</div>
+					<p><a class="btn btn-primary btn-lg btn-block js-changeStatus" data-status="estimate" data-quote="{{ $quote->id }}">Send Estimate</a></p>
 				@endif
 
 				@if ($quote->status >= Status::ESTIMATE_ACCEPTED and $quote->status <= Status::WITHDRAWN)
-					<div class="btn-group">
-						<a class="btn btn-primary js-changeStatus" data-status="estimate" data-quote="{{ $quote->id }}">Re-Send Estimate</a>
-					</div>
+					<p><a class="btn btn-primary btn-lg btn-block js-changeStatus" data-status="estimate" data-quote="{{ $quote->id }}">Re-Send Estimate</a></p>
 				@endif
 
 				@if ($quote->status == Status::ESTIMATE_ACCEPTED)
-					<div class="btn-group">
-						<a class="btn btn-primary js-changeStatus" data-status="contract" data-quote="{{ $quote->id }}">Send Contract</a>
-					</div>
+					<p><a class="btn btn-lg btn-block btn-primary js-changeStatus" data-status="contract" data-quote="{{ $quote->id }}">Send Contract</a></p>
 				@endif
 
 				@if ($quote->status < Status::COMPLETED)
-					<div class="btn-group">
-						<a class="btn btn-danger js-changeStatus" data-status="closed" data-quote="{{ $quote->id }}">Close Quote</a>
-					</div>
+					<p><a class="btn btn-lg btn-block btn-danger js-changeStatus" data-status="closed" data-quote="{{ $quote->id }}">Close Quote</a></p>
 				@endif
 
 				@if ($quote->status == Status::AWAITING_ARRIVAL and (bool) $quote->paid_total == true)
-					<div class="btn-group">
-						<a class="btn btn-info js-sendWelcomeEmail" data-quote="{{ $quote->code }}">Re-Send Welcome Email</a>
-					</div>
+					<p><a class="btn btn-lg btn-block btn-info js-sendWelcomeEmail" data-quote="{{ $quote->code }}">Re-Send Welcome Email</a></p>
 				@endif
 
 				@if ($quote->status == Status::COMPLETED)
-					<div class="btn-group">
-						<a class="btn btn-info js-sendSurveyEmail" data-quote="{{ $quote->code }}">Re-Send Survey Email</a>
-					</div>
+					<p><a class="btn btn-lg btn-block btn-info js-sendSurveyEmail" data-quote="{{ $quote->code }}">Re-Send Survey Email</a></p>
 				@endif
 
 				@if ($quote->surveys->count() > 0)
-					<div class="btn-group">
-						<a href="{{ route('admin.quotes.survey-results', [$quote->code]) }}" class="btn btn-info">Survey Results</a>
-					</div>
+					<p><a href="{{ route('admin.quotes.survey-results', [$quote->code]) }}" class="btn btn-lg btn-block btn-info">Survey Results</a></p>
 				@endif
+			</div>
+			<div class="visible-md visible-lg">
+				<div class="btn-toolbar">
+					@if ($quote->status == Status::SUBMITTED)
+						<div class="btn-group">
+							<a class="btn btn-primary js-changeStatus" data-status="estimate" data-quote="{{ $quote->id }}">Send Estimate</a>
+						</div>
+					@endif
+
+					@if ($quote->status >= Status::ESTIMATE_ACCEPTED and $quote->status <= Status::WITHDRAWN)
+						<div class="btn-group">
+							<a class="btn btn-primary js-changeStatus" data-status="estimate" data-quote="{{ $quote->id }}">Re-Send Estimate</a>
+						</div>
+					@endif
+
+					@if ($quote->status == Status::ESTIMATE_ACCEPTED)
+						<div class="btn-group">
+							<a class="btn btn-primary js-changeStatus" data-status="contract" data-quote="{{ $quote->id }}">Send Contract</a>
+						</div>
+					@endif
+
+					@if ($quote->status < Status::COMPLETED)
+						<div class="btn-group">
+							<a class="btn btn-danger js-changeStatus" data-status="closed" data-quote="{{ $quote->id }}">Close Quote</a>
+						</div>
+					@endif
+
+					@if ($quote->status == Status::AWAITING_ARRIVAL and (bool) $quote->paid_total == true)
+						<div class="btn-group">
+							<a class="btn btn-info js-sendWelcomeEmail" data-quote="{{ $quote->code }}">Re-Send Welcome Email</a>
+						</div>
+					@endif
+
+					@if ($quote->status == Status::COMPLETED)
+						<div class="btn-group">
+							<a class="btn btn-info js-sendSurveyEmail" data-quote="{{ $quote->code }}">Re-Send Survey Email</a>
+						</div>
+					@endif
+
+					@if ($quote->surveys->count() > 0)
+						<div class="btn-group">
+							<a href="{{ route('admin.quotes.survey-results', [$quote->code]) }}" class="btn btn-info">Survey Results</a>
+						</div>
+					@endif
+				</div>
 			</div>
 		</div>
 	</div>
@@ -395,7 +426,8 @@
 				@endforeach
 				</div>
 
-				<p><a class="btn btn-default js-addCourse">Add Another Course</a></p>
+				<p class="visible-xs visible-sm"><a class="btn btn-default btn-block js-addCourse">Add Another Course</a></p>
+				<p class="visible-md visible-lg"><a class="btn btn-default js-addCourse">Add Another Course</a></p>
 			{{ Form::close() }}
 		</div>
 	</div>
@@ -440,6 +472,7 @@
 
 		$('.js-datepicker').pickadate({
 			format: "mm/dd/yyyy",
+			container: 'main',
 			onSet: function(context)
 			{
 				var date = moment(this.$node.context.value, "MM/DD/YYYY");

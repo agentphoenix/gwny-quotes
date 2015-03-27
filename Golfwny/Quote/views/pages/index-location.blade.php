@@ -7,11 +7,11 @@
 			{{ HTML::image('img/rochester.jpg', null, ['class' => 'img-responsive']) }}
 			<div class="panel-footer">
 				<div class="row">
-					<div class="col-xs-6">
-						<a href="http://golfwny.com/rochester/courses" target="_blank" class="btn btn-default btn-block">More Info</a>
+					<div class="col-sm-6">
+						<p><a href="http://golfwny.com/rochester/courses" target="_blank" class="btn btn-default btn-block">More Info</a></p>
 					</div>
-					<div class="col-xs-6">
-						<a href="{{ route('home', ['rochester', 'info']) }}" class="btn btn-primary btn-block">Get Started</a>
+					<div class="col-sm-6">
+						<p><a href="{{ route('home', ['rochester', 'info']) }}" class="btn btn-primary btn-block">Get Started</a></p>
 					</div>
 				</div>
 			</div>
@@ -26,11 +26,11 @@
 			{{ HTML::image('img/buffalo.jpg', null, ['class' => 'img-responsive']) }}
 			<div class="panel-footer">
 				<div class="row">
-					<div class="col-xs-6">
-						<a href="http://golfwny.com/buffalo/courses" target="_blank" class="btn btn-default btn-block">More Info</a>
+					<div class="col-sm-6">
+						<p><a href="http://golfwny.com/buffalo/courses" target="_blank" class="btn btn-default btn-block">More Info</a></p>
 					</div>
-					<div class="col-xs-6">
-						<a href="{{ route('home', ['buffalo', 'info']) }}" class="btn btn-primary btn-block">Get Started</a>
+					<div class="col-sm-6">
+						<p><a href="{{ route('home', ['buffalo', 'info']) }}" class="btn btn-primary btn-block">Get Started</a></p>
 					</div>
 				</div>
 			</div>
@@ -45,11 +45,11 @@
 			{{ HTML::image('img/silverlake.jpg', null, ['class' => 'img-responsive']) }}
 			<div class="panel-footer">
 				<div class="row">
-					<div class="col-xs-6">
-						<a href="http://golfwny.com/rochester/course/silver-lake-country-club" target="_blank" class="btn btn-default btn-block">More Info</a>
+					<div class="col-sm-6">
+						<p><a href="http://golfwny.com/rochester/course/silver-lake-country-club" target="_blank" class="btn btn-default btn-block">More Info</a></p>
 					</div>
-					<div class="col-xs-6">
-						<a href="http://golfwny.com/rochester/book-package" target="_blank" class="btn btn-primary btn-block">Get Started</a>
+					<div class="col-sm-6">
+						<p><a href="http://golfwny.com/rochester/book-package" target="_blank" class="btn btn-primary btn-block">Get Started</a></p>
 					</div>
 				</div>
 			</div>
