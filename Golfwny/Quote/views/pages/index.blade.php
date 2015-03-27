@@ -11,7 +11,8 @@
 @stop
 
 @section('styles')
-	{{ HTML::style('css/datepicker.css') }}
+	{{ HTML::style('css/default.css') }}
+	{{ HTML::style('css/default.date.css') }}
 	{{ HTML::style('css/bootcards-desktop-lite.min.css') }}
 @stop
 
@@ -44,14 +45,12 @@
 
 		$('.js-datepicker-arrival').pickadate({
 			format: "dddd, mmmm d, yyyy",
-			formatSubmit: "mm/dd/yyyy",
-			container: 'main'
+			formatSubmit: "mm/dd/yyyy"
 		});
 
 		$('.js-datepicker-departure').pickadate({
 			format: "dddd, mmmm d, yyyy",
 			formatSubmit: "mm/dd/yyyy",
-			container: 'main',
 			onOpen: function()
 			{
 				// Build the new minimum date
