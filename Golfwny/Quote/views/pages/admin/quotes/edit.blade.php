@@ -434,7 +434,9 @@
 @stop
 
 @section('styles')
-	{{ HTML::style('css/datepicker.css') }}
+	{{ HTML::style('css/default.css') }}
+	{{ HTML::style('css/default.date.css') }}
+	{{ HTML::style('css/default.time.css') }}
 	{{ HTML::style('semantic/components/statistic.min.css') }}
 	{{ HTML::style('semantic/components/checkbox.min.css') }}
 	{{ HTML::style('semantic/components/divider.min.css') }}
@@ -472,7 +474,6 @@
 
 		$('.js-datepicker').pickadate({
 			format: "mm/dd/yyyy",
-			container: 'main',
 			onSet: function(context)
 			{
 				var date = moment(this.$node.context.value, "MM/DD/YYYY");
