@@ -44,12 +44,14 @@
 
 		$('.js-datepicker-arrival').pickadate({
 			format: "dddd, mmmm d, yyyy",
-			formatSubmit: "mm/dd/yyyy"
+			formatSubmit: "mm/dd/yyyy",
+			container: 'main'
 		});
 
 		$('.js-datepicker-departure').pickadate({
 			format: "dddd, mmmm d, yyyy",
 			formatSubmit: "mm/dd/yyyy",
+			container: 'main',
 			onOpen: function()
 			{
 				// Build the new minimum date
