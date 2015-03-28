@@ -1,6 +1,6 @@
 <?php namespace Quote\Data\Presenters;
 
-use Date, Status, Markdown;
+use Str, Date, Status, Markdown;
 use Laracasts\Presenter\Presenter;
 
 class QuotePresenter extends Presenter {
@@ -54,13 +54,23 @@ class QuotePresenter extends Presenter {
 	public function golfContract()
 	{
 		$days = $this->entity->getCourses()->count();
+		$daysLabel = ($days == 1) ? 'day' : 'days';
+		$courses = [];
 
-		if ($days == 1)
+		foreach ($this->entity->getCourses() as $item)
 		{
-			return "This package will also include (1) day of golf with cart at one of {$this->region()}'s finest golf courses: {$this->golfCoursesNice()}.";
+			$courses[] = $item->course->id;
 		}
 
-		return "This package will also include ({$days}) days of golf with cart at some of {$this->region()}'s finest golf courses, including: {$this->golfCoursesNice()}.";
+		// Make sure we have only unique courses
+		$courses = array_unique($courses);
+
+		if ($days == 1 or ($days > 1 and count($courses) == 1))
+		{
+			return "This package will also include ({$days}) {$daysLabel} of golf with cart at one of {$this->region()}'s finest golf courses: {$this->golfCoursesNice()}.";
+		}
+
+		return "This package will also include ({$days}) {$daysLabel} of golf with cart at some of {$this->region()}'s finest golf courses, including: {$this->golfCoursesNice()}.";
 	}
 
 	public function daysToPackage()
@@ -126,16 +136,20 @@ class QuotePresenter extends Presenter {
 
 		foreach ($courses as $course)
 		{
-			if ($i == $courses->count())
+			// Make sure the list doesn't already contain this course
+			if ( ! Str::contains($niceList, $course->course->present()->name))
 			{
-				$niceList.= " and";
-			}
+				if ($i == $courses->count() and $courses->count() > 1)
+				{
+					$niceList.= " and";
+				}
 
-			$niceList.= " ".$course->course->present()->name;
+				$niceList.= " ".$course->course->present()->name;
 
-			if ($i < $courses->count() and $courses->count() > 2)
-			{
-				$niceList.= ",";
+				if ($i < $courses->count() and $courses->count() > 2)
+				{
+					$niceList.= ",";
+				}
 			}
 
 			++$i;

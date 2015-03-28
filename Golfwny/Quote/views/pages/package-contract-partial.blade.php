@@ -36,9 +36,9 @@
 <ul>
 	@foreach ($quote->getCourses() as $item)
 		@if ($item->holes == 18)
-			<li>{{ $item->present()->holes }} for {{ $item->present()->people }} at {{ $item->present()->course }} on {{ $item->present()->arrival }} at {{ $item->present()->time }}</li>
+			<li>{{ $item->present()->holes }} and cart for {{ $item->present()->people }} at {{ $item->present()->course }} on {{ $item->present()->arrival }} at {{ $item->present()->time }}</li>
 		@else
-			<li>{{ $item->present()->holes }} for {{ $item->present()->people }} at {{ $item->present()->course }} on {{ $item->present()->arrival }} at {{ $item->present()->time }} and {{ $item->present()->time2 }}</li>
+			<li>{{ $item->present()->holes }} and cart for {{ $item->present()->people }} at {{ $item->present()->course }} on {{ $item->present()->arrival }} at {{ $item->present()->time }} and {{ $item->present()->time2 }}</li>
 		@endif
 	@endforeach
 </ul>
@@ -108,16 +108,3 @@ otherwise space will no longer be held and the terms of this agreement may be vo
 <p>We look forward to working with you.</p>
 
 <p><strong>I have read these terms and conditions and agree that they are included as a part of the contract.</strong></p>
-
-<!--<p><u>By {{ $quote->present()->name }} authorized representative:</u></p>
-
-<p><u>____________________________________ Date:_________</u></p>
-
-<p><u>{{ $quote->present()->name }}</u></p>
-
-<p><u>By the Golf WNY authorized representative:</u></p>
-
-<p><u>____________________________________ Date:_________</u></p>
-
-<p><u>Eric LaBarr<br>
-Golf WNY Founder</u></p>-->
