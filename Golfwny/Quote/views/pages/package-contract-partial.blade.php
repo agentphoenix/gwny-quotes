@@ -36,9 +36,9 @@
 <ul>
 	@foreach ($quote->getCourses() as $item)
 		@if ($item->holes == 18)
-			<li>{{ $item->present()->holes }} and cart for {{ $item->present()->people }} at {{ $item->present()->course }} on {{ $item->present()->arrival }} at {{ $item->present()->time }}</li>
+			<li>{{ $item->present()->holes }} with cart for {{ $item->present()->people }} at {{ $item->present()->course }} on {{ $item->present()->arrival }} at {{ $item->present()->time }}</li>
 		@else
-			<li>{{ $item->present()->holes }} and cart for {{ $item->present()->people }} at {{ $item->present()->course }} on {{ $item->present()->arrival }} at {{ $item->present()->time }} and {{ $item->present()->time2 }}</li>
+			<li>{{ $item->present()->holes }} with cart for {{ $item->present()->people }} at {{ $item->present()->course }} on {{ $item->present()->arrival }} at {{ $item->present()->time }} and {{ $item->present()->time2 }}</li>
 		@endif
 	@endforeach
 </ul>
