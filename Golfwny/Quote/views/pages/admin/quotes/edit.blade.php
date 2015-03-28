@@ -232,7 +232,7 @@
 							<label class="control-label">Arrival Date</label>
 							<div class="row">
 								<div class="col-md-9">
-									{{ Form::text('arrival', $quote->present()->arrival(false), ['class' => 'form-control js-datepicker', 'data-id' => $quote->id, 'data-table' => 'quotes', 'data-field' => 'arrival', 'data-value' => $quote->present()->arrival(false)]) }}
+									{{ Form::text('arrival', $quote->present()->arrival(false), ['class' => 'form-control js-datepicker-arrival', 'data-id' => $quote->id, 'data-table' => 'quotes', 'data-field' => 'arrival', 'data-value' => $quote->present()->arrival(false)]) }}
 								</div>
 							</div>
 						</div>
@@ -242,7 +242,7 @@
 							<label class="control-label">Departure Date</label>
 							<div class="row">
 								<div class="col-md-9">
-									{{ Form::text('departure', $quote->present()->departure(false), ['class' => 'form-control js-datepicker', 'data-id' => $quote->id, 'data-table' => 'quotes', 'data-field' => 'departure', 'data-value' => $quote->present()->departure(false)]) }}
+									{{ Form::text('departure', $quote->present()->departure(false), ['class' => 'form-control js-datepicker-departure', 'data-id' => $quote->id, 'data-table' => 'quotes', 'data-field' => 'departure', 'data-value' => $quote->present()->departure(false)]) }}
 								</div>
 							</div>
 						</div>
@@ -314,13 +314,13 @@
 					<div class="col-sm-6 col-md-3">
 						<div class="form-group">
 							<label class="control-label">Arrival</label>
-							{{ Form::text('hotel[arrival]', $hotel->present()->arrival(false), ['class' => 'form-control js-datepicker', 'data-id' => $hotel->id, 'data-table' => 'quotes_items', 'data-field' => 'arrival', 'data-value' => $hotel->present()->arrival(false)]) }}
+							{{ Form::text('hotel[arrival]', $hotel->present()->arrival(false), ['class' => 'form-control js-datepicker-hotelArrival', 'data-id' => $hotel->id, 'data-table' => 'quotes_items', 'data-field' => 'arrival', 'data-value' => $hotel->present()->arrival(false)]) }}
 						</div>
 					</div>
 					<div class="col-sm-6 col-md-3">
 						<div class="form-group">
 							<label class="control-label">Departure</label>
-							{{ Form::text('hotel[departure]', $hotel->present()->departure(false), ['class' => 'form-control js-datepicker', 'data-id' => $hotel->id, 'data-table' => 'quotes_items', 'data-field' => 'departure', 'data-value' => $hotel->present()->departure(false)]) }}
+							{{ Form::text('hotel[departure]', $hotel->present()->departure(false), ['class' => 'form-control js-datepicker-hotelDeparture', 'data-id' => $hotel->id, 'data-table' => 'quotes_items', 'data-field' => 'departure', 'data-value' => $hotel->present()->departure(false)]) }}
 						</div>
 					</div>
 					<div class="col-sm-6 col-md-3">
@@ -472,6 +472,66 @@
 			}
 		});
 
+		var arrivalPicker = $('.js-datepicker-arrival').pickadate({
+			format: "mm/dd/yyyy",
+			onSet: function(context)
+			{
+				var date = moment(this.$node.context.value, "MM/DD/YYYY");
+
+				updateField({
+					table: this.$node.context.dataset.table,
+					field: this.$node.context.dataset.field,
+					id: this.$node.context.dataset.id,
+					value: date.format('YYYY-MM-DD')
+				});
+			}
+		});
+
+		var hotelArrivalPicker = $('.js-datepicker-hotelArrival').pickadate({
+			format: "mm/dd/yyyy",
+			onSet: function(context)
+			{
+				var date = moment(this.$node.context.value, "MM/DD/YYYY");
+
+				updateField({
+					table: this.$node.context.dataset.table,
+					field: this.$node.context.dataset.field,
+					id: this.$node.context.dataset.id,
+					value: date.format('YYYY-MM-DD')
+				});
+			}
+		});
+
+		var departurePicker = $('.js-datepicker-departure').pickadate({
+			format: "mm/dd/yyyy",
+			onSet: function(context)
+			{
+				var date = moment(this.$node.context.value, "MM/DD/YYYY");
+
+				updateField({
+					table: this.$node.context.dataset.table,
+					field: this.$node.context.dataset.field,
+					id: this.$node.context.dataset.id,
+					value: date.format('YYYY-MM-DD')
+				});
+			}
+		});
+
+		var hotelDeparturePicker = $('.js-datepicker-hotelDeparture').pickadate({
+			format: "mm/dd/yyyy",
+			onSet: function(context)
+			{
+				var date = moment(this.$node.context.value, "MM/DD/YYYY");
+
+				updateField({
+					table: this.$node.context.dataset.table,
+					field: this.$node.context.dataset.field,
+					id: this.$node.context.dataset.id,
+					value: date.format('YYYY-MM-DD')
+				});
+			}
+		});
+
 		$('.js-datepicker').pickadate({
 			format: "mm/dd/yyyy",
 			onSet: function(context)
@@ -599,12 +659,14 @@
 
 		$('[name="arrival"]').on('change', function(e)
 		{
-			$('[name="hotel[arrival]"]').val($(this).val()).trigger('change');
+			hotelArrivalPicker.pickadate('picker').set('select', $(this).val());
+			//$('[name="hotel[arrival]"]').val($(this).val()).trigger('change');
 		});
 
 		$('[name="departure"]').on('change', function(e)
 		{
-			$('[name="hotel[departure]"]').val($(this).val()).trigger('change');
+			hotelDeparturePicker.pickadate('picker').set('select', $(this).val());
+			//$('[name="hotel[departure]"]').val($(this).val()).trigger('change');
 		});
 
 		$('[name="golf[time2]"]').each(function()
@@ -684,6 +746,8 @@
 
 		function updateField(object, quote)
 		{
+			console.log(object);
+
 			$.ajax({
 				type: "PUT",
 				url: "{{ URL::to('admin/quotes') }}/" + object.id,
