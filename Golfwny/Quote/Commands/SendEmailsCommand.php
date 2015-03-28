@@ -192,7 +192,7 @@ class SendEmailsCommand extends Command {
 	protected function markPackagesCompleted()
 	{
 		// Get all packages that have been completed
-		$packages = $this->quotes->getByStatus('contract-accepted');
+		$packages = $this->quotes->getByStatus('awaiting-arrival');
 
 		// Only get packages where yesterday was the completed date
 		$packages = $packages->filter(function($p)
