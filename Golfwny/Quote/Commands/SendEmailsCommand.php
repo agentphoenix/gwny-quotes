@@ -71,7 +71,7 @@ class SendEmailsCommand extends Command {
 		// don't send an email every single day
 		$packages = $packages->filter(function($p)
 		{
-			$days = (int) $p->updated_at->startOfDay()->diffInDays(Date::now()->startOfDay());
+			$days = (int) $p->estimate_sent->startOfDay()->diffInDays(Date::now()->startOfDay());
 
 			return $days >= 7 and ($days & 1);
 		});
@@ -82,6 +82,7 @@ class SendEmailsCommand extends Command {
 
 			foreach ($packages as $quote)
 			{
+				$this->info("Package: {$quote->code}");
 				$this->mailer->estimateReminder($quote);
 			}
 		}
@@ -97,7 +98,7 @@ class SendEmailsCommand extends Command {
 		// don't send an email every single day
 		$packages = $packages->filter(function($p)
 		{
-			$days = (int) $p->updated_at->startOfDay()->diffInDays(Date::now()->startOfDay());
+			$days = (int) $p->contract_sent->startOfDay()->diffInDays(Date::now()->startOfDay());
 
 			return $days >= 7 and ($days & 1);
 		});
@@ -108,6 +109,7 @@ class SendEmailsCommand extends Command {
 
 			foreach ($packages as $quote)
 			{
+				$this->info("Package: {$quote->code}");
 				$this->mailer->contractReminder($quote);
 			}
 		}
@@ -134,6 +136,7 @@ class SendEmailsCommand extends Command {
 
 			foreach ($packages as $quote)
 			{
+				$this->info("Package: {$quote->code}");
 				$this->mailer->paymentDeposit($quote);
 			}
 		}
@@ -160,6 +163,7 @@ class SendEmailsCommand extends Command {
 
 			foreach ($packages as $quote)
 			{
+				$this->info("Package: {$quote->code}");
 				$this->mailer->paymentFinal($quote);
 			}
 		}
@@ -184,6 +188,7 @@ class SendEmailsCommand extends Command {
 
 			foreach ($packages as $quote)
 			{
+				$this->info("Package: {$quote->code}");
 				$this->mailer->welcome($quote);
 			}
 		}
@@ -208,6 +213,7 @@ class SendEmailsCommand extends Command {
 
 			foreach ($packages as $quote)
 			{
+				$this->info("Package: {$quote->code}");
 				$quote->fill(['status' => Status::COMPLETED])->save();
 			}
 		}
@@ -232,6 +238,7 @@ class SendEmailsCommand extends Command {
 
 			foreach ($packages as $quote)
 			{
+				$this->info("Package: {$quote->code}");
 				$this->mailer->survey($quote);
 			}
 		}
