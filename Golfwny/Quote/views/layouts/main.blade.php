@@ -21,7 +21,7 @@
 
 		<title>@yield('title') &bull; Golf Western NY</title>
 
-		<link rel="icon" type="image/x-icon" href="{{ URL::asset('favicon.ico?v1') }}">
+		<link rel="icon" type="image/x-icon" href="{{ URL::asset('favicon.ico?v2') }}">
 		<link rel="apple-touch-icon-precomposed" href="{{ URL::asset('apple-touch-icon.png') }}">
 		<link rel="image_src" href="{{ URL::asset('apple-touch-icon.png') }}">
 	</head>
