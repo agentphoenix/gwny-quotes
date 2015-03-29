@@ -21,7 +21,7 @@ class Quote extends Eloquent {
 
 	protected $dates = ['created_at', 'updated_at', 'deleted_at', 'arrival',
 		'departure', 'estimate_accepted', 'estimate_rejected', 'contract_accepted',
-		'contract_rejected'];
+		'contract_rejected', 'estimate_sent', 'contract_sent'];
 
 	protected $presenter = 'Quote\Data\Presenters\QuotePresenter';
 
