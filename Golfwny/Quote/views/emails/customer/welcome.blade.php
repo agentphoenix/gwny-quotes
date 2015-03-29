@@ -39,7 +39,7 @@
 				@endif
 			</td>
 			<td width="25">&nbsp;</td>
-			<td align="center">
+			<td>
 				{{ $course['name'] }}<br>
 				{{ $course['address'] }}<br>
 				{{ $course['phone'] }}
@@ -48,11 +48,9 @@
 					<br><em>Confirmation:</em> {{ $course['confirmation'] }}
 				@endif
 			</td>
-			<td width="25">&nbsp;</td>
-			<td width="125"><img src="{{ $message->embed($logo) }}" width="125"></td>
 		</tr>
 		<tr>
-			<td colspan="5">
+			<td colspan="3">
 				<p>This certificate entitles {{ $name }} ({{ $course['rounds'] }}) rounds of golf with cart at {{ $course['name'] }} on {{ $course['date'] }}.
 
 				@if ($course['holes'] == 18)
@@ -65,7 +63,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="5"><hr></td>
+			<td colspan="3"><hr></td>
 		</tr>
 	@endforeach
 	</table>
