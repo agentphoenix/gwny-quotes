@@ -22,6 +22,16 @@ abstract class BaseMailer {
 			{
 				$msg->from($data['fromEmail'], $data['fromName']);
 			}
+
+			if (array_key_exists('cc', $data))
+			{
+				$msg->cc($data['cc']);
+			}
+
+			if (array_key_exists('bcc', $data))
+			{
+				$msg->bcc($data['bcc']);
+			}
 		});
 	}
 

@@ -23,6 +23,7 @@ class CustomerMailer extends BaseMailer {
 			'code' => $quote->present()->code,
 			'to' => $quote->email,
 			'name' => $quote->name,
+			'bcc' => config('gwny.email.to'),
 		];
 
 		return $this->send('customer.contract', $data);
@@ -71,6 +72,7 @@ class CustomerMailer extends BaseMailer {
 			'code' => $quote->present()->code,
 			'to' => $quote->email,
 			'name' => $quote->name,
+			'bcc' => config('gwny.email.to'),
 		];
 
 		return $this->send('customer.estimate', $data);
@@ -143,6 +145,7 @@ class CustomerMailer extends BaseMailer {
 			'code' => $quote->present()->code,
 			'to' => $quote->email,
 			'name' => $quote->name,
+			'bcc' => config('gwny.email.to'),
 		];
 
 		return $this->send('customer.survey', $data);
@@ -169,6 +172,7 @@ class CustomerMailer extends BaseMailer {
 				'gm' => $hotel->present()->gm,
 				'confirmation' => $hotel->present()->confirmation,
 			],
+			'bcc' => config('gwny.email.to'),
 		];
 
 		foreach ($courses as $course)
