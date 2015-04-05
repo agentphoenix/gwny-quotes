@@ -13,7 +13,10 @@ return array(
 	|
 	*/
 
-	'paths' => array(__DIR__.'/../../Golfwny/Quote/views'),
+	'paths' => array(
+		__DIR__.'/../../Golfwny/Quote/views',
+		__DIR__.'/../views'
+	),
 
 	/*
 	|--------------------------------------------------------------------------
