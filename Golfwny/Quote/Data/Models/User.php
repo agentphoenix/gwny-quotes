@@ -1,6 +1,6 @@
 <?php namespace Quote\Data\Models;
 
-use Hash, Eloquent;
+use Str, Hash, Eloquent;
 use Laracasts\Presenter\PresentableTrait;
 use Illuminate\Auth\UserTrait,
 	Illuminate\Auth\UserInterface,
@@ -33,7 +33,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	public function setPasswordAttribute($value)
 	{
-		$this->attributes['password'] = Hash::make($value);
+		if (Str::length($value) < 32)
+		{
+			$this->attributes['password'] = Hash::make($value);
+		}
 	}
 
 }
