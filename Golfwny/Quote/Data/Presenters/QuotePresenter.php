@@ -93,15 +93,19 @@ class QuotePresenter extends Presenter {
 
 	public function depositDue()
 	{
-		if ($this->entity->arrival->diffInDays(Date::now()) < 30)
+		if ($this->entity->arrival->diffInDays(Date::now()) < config('gwny.paymentDue'))
 		{
 			return "immediately";
 		}
 
 		if ($this->entity->contract_accepted)
-			return $this->entity->contract_accepted->addDays(7)->format(config('gwny.dates.dateNoDay'));
+		{
+			return $this->entity->contract_accepted
+				->addDays(config('gwny.depositDue'))
+				->format(config('gwny.dates.dateNoDay'));
+		}
 
-		return "7 days after accepting this contract";
+		return config('gwny.depositDue')." days after accepting this contract";
 	}
 
 	public function email()
@@ -290,12 +294,14 @@ class QuotePresenter extends Presenter {
 
 	public function remainingDue()
 	{
-		if ($this->entity->arrival->diffInDays(Date::now()) <= 30)
+		if ($this->entity->arrival->diffInDays(Date::now()) <= config('gwny.paymentDue'))
 		{
 			return "immediately";
 		}
 
-		return $this->entity->arrival->subDays(30)->format(config('gwny.dates.dateNoDay'));
+		return $this->entity->arrival
+			->subDays(config('gwny.paymentDue'))
+			->format(config('gwny.dates.dateNoDay'));
 	}
 
 	public function status()

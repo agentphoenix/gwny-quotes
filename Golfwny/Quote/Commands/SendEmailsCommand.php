@@ -127,7 +127,7 @@ class SendEmailsCommand extends Command {
 		{
 			$days = (int) $p->contract_accepted->startOfDay()->diffInDays(Date::now()->startOfDay());
 
-			return $days >= 7 and ($days & 1) and (bool) $p->paid_deposit == false;
+			return $days >= config('gwny.depositDue') and ($days & 1) and (bool) $p->paid_deposit == false;
 		});
 
 		if ($packages->count() > 0)
@@ -154,7 +154,7 @@ class SendEmailsCommand extends Command {
 		{
 			$days = (int) $p->arrival->startOfDay()->diffInDays(Date::now()->startOfDay());
 
-			return $days <= 30 and ! ($days & 1) and (bool) $p->paid_total == false;
+			return $days <= config('gwny.paymentDue') and ! ($days & 1) and (bool) $p->paid_total == false;
 		});
 
 		if ($packages->count() > 0)

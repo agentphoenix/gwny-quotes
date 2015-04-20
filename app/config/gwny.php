@@ -27,4 +27,7 @@ return [
 		'deposit'	=> 25,
 	],
 
+	'depositDue' => 7,
+	'paymentDue' => 15,
+
 ];

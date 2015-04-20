@@ -7,8 +7,8 @@
 <p>Payments are as follows:</p>
 
 <ul>
-	@if ($quote->present()->daysToPackage() <= 30)
-		<li>Because your package will occur within 30 days of today, the entire package cost of <strong>{{ $quote->present()->price }}</strong> is due immediately.</li>
+	@if ($quote->present()->daysToPackage() <= config('gwny.paymentDue'))
+		<li>Because your package will occur within {{ config('gwny.paymentDue') }} days of today, the entire package cost of <strong>{{ $quote->present()->price }}</strong> is due immediately.</li>
 	@else
 		<li>A <strong>{{ $quote->present()->deposit }}</strong> deposit is due {{ $quote->present()->depositDue }}.</li>
 		<li>The remaining <strong>{{ $quote->present()->remaining }}</strong> is due {{ $quote->present()->remainingDue }}.</li>
@@ -51,10 +51,10 @@
 
 <p>In the event of cancellation by {{ $quote->present()->name }}, Golf WNY is entitled to liquidated damages as follows:</p>
 
-@if ($quote->present()->daysToPackage <= 30)
+@if ($quote->present()->daysToPackage <= config('gwny.paymentDue'))
 	<p>This Stay-N-Play Package is non-refundable. Golf WNY is not responsible for inclement weather.</p>
 @else
-	<p>This Stay-N-Play Package is refundable up to 30 days of arrival with all funds being returned. Any package cancelled inside of 30 days of arrival is non-refundable. Golf WNY is not responsible for inclement weather.</p>
+	<p>This Stay-N-Play Package is refundable up to {{ config('gwny.paymentDue') }} days of arrival with all funds being returned. Any package cancelled inside of {{ config('gwny.paymentDue') }} days of arrival is non-refundable. Golf WNY is not responsible for inclement weather.</p>
 @endif
 
 <p>Please follow the email link sent to make payment via credit card.</p>
@@ -63,7 +63,7 @@
 
 <p>This agreement shall be effective between the {{ $quote->present()->name }} and Golf WNY.
 
-@if ($quote->present()->daysToPackage <= 30)
+@if ($quote->present()->daysToPackage <= config('gwny.paymentDue'))
 	Acceptance is due immediately,
 @else
 	Acceptance is due no later than {{ $quote->present()->depositDue }},

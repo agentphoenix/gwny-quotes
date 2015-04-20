@@ -23,7 +23,8 @@ class QuoteRepository extends BaseRepository implements QuoteRepositoryInterface
 
 	public function all()
 	{
-		return $this->model->orderBy('arrival', 'desc')->get();
+		return $this->model->whereNotIn('status', [Status::PENDING])
+			->orderBy('arrival', 'desc')->get();
 	}
 
 	public function countActive()

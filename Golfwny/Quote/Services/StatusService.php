@@ -2,6 +2,7 @@
 
 class StatusService {
 
+	const INVALID				= 0;
 	const PENDING				= 1;
 	const SUBMITTED				= 2;
 	const ESTIMATE				= 3;
@@ -69,6 +70,7 @@ class StatusService {
 	{
 		switch ($value)
 		{
+			case static::INVALID:
 			case static::PENDING:
 				return "Incomplete";
 			break;

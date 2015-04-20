@@ -81,7 +81,7 @@
 					<p><a class="btn btn-primary btn-lg btn-block js-changeStatus" data-status="estimate" data-quote="{{ $quote->id }}">Send Estimate</a></p>
 				@endif
 
-				@if ($quote->status >= Status::ESTIMATE_ACCEPTED and $quote->status <= Status::WITHDRAWN)
+				@if ($quote->status >= Status::SUBMITTED and $quote->status <= Status::WITHDRAWN)
 					<p><a class="btn btn-primary btn-lg btn-block js-changeStatus" data-status="estimate" data-quote="{{ $quote->id }}">Re-Send Estimate</a></p>
 				@endif
 
@@ -113,7 +113,7 @@
 						</div>
 					@endif
 
-					@if ($quote->status >= Status::ESTIMATE_ACCEPTED and $quote->status <= Status::WITHDRAWN)
+					@if ($quote->status >= Status::SUBMITTED and $quote->status <= Status::WITHDRAWN)
 						<div class="btn-group">
 							<a class="btn btn-primary js-changeStatus" data-status="estimate" data-quote="{{ $quote->id }}">Re-Send Estimate</a>
 						</div>
