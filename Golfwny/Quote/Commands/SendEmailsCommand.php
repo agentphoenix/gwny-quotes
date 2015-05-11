@@ -82,13 +82,13 @@ class SendEmailsCommand extends Command {
 		if ($packages->count() > 0)
 		{
 			if (app('env') != 'production')
-			{
 				$this->info("Sending package estimate reminder emails...");
-			}
 
 			foreach ($packages as $quote)
 			{
-				$this->info("Package: {$quote->code}");
+				if (app('env') != 'production')
+					$this->info("Package: {$quote->code}");
+
 				$this->mailer->estimateReminder($quote);
 			}
 		}
@@ -112,13 +112,13 @@ class SendEmailsCommand extends Command {
 		if ($packages->count() > 0)
 		{
 			if (app('env') != 'production')
-			{
 				$this->info("Sending package contract reminder emails...");
-			}
 
 			foreach ($packages as $quote)
 			{
-				$this->info("Package: {$quote->code}");
+				if (app('env') != 'production')
+					$this->info("Package: {$quote->code}");
+				
 				$this->mailer->contractReminder($quote);
 			}
 		}
@@ -142,13 +142,13 @@ class SendEmailsCommand extends Command {
 		if ($packages->count() > 0)
 		{
 			if (app('env') != 'production')
-			{
 				$this->info("Sending package deposit reminder emails...");
-			}
 
 			foreach ($packages as $quote)
 			{
-				$this->info("Package: {$quote->code}");
+				if (app('env') != 'production')
+					$this->info("Package: {$quote->code}");
+				
 				$this->mailer->paymentDeposit($quote);
 			}
 		}
@@ -172,13 +172,13 @@ class SendEmailsCommand extends Command {
 		if ($packages->count() > 0)
 		{
 			if (app('env') != 'production')
-			{
 				$this->info("Sending payment reminder emails...");
-			}
 
 			foreach ($packages as $quote)
 			{
-				$this->info("Package: {$quote->code}");
+				if (app('env') != 'production')
+					$this->info("Package: {$quote->code}");
+				
 				$this->mailer->paymentFinal($quote);
 			}
 		}
@@ -200,13 +200,13 @@ class SendEmailsCommand extends Command {
 		if ($packages->count() > 0)
 		{
 			if (app('env') != 'production')
-			{
 				$this->info("Sending welcome emails...");
-			}
 
 			foreach ($packages as $quote)
 			{
-				$this->info("Package: {$quote->code}");
+				if (app('env') != 'production')
+					$this->info("Package: {$quote->code}");
+				
 				$this->mailer->welcome($quote);
 			}
 		}
@@ -228,13 +228,13 @@ class SendEmailsCommand extends Command {
 		if ($packages->count() > 0)
 		{
 			if (app('env') != 'production')
-			{
 				$this->info("Marking packages as complete...");
-			}
 
 			foreach ($packages as $quote)
 			{
-				$this->info("Package: {$quote->code}");
+				if (app('env') != 'production')
+					$this->info("Package: {$quote->code}");
+				
 				$quote->fill(['status' => Status::COMPLETED])->save();
 			}
 		}
@@ -256,13 +256,13 @@ class SendEmailsCommand extends Command {
 		if ($packages->count() > 0)
 		{
 			if (app('env') != 'production')
-			{
 				$this->info("Sending survey link emails...");
-			}
 
 			foreach ($packages as $quote)
 			{
-				$this->info("Package: {$quote->code}");
+				if (app('env') != 'production')
+					$this->info("Package: {$quote->code}");
+				
 				$this->mailer->survey($quote);
 			}
 		}
