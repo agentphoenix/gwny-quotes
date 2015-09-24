@@ -28,7 +28,7 @@ class ReportRepository extends BaseRepository implements ReportRepositoryInterfa
 	public function getCourseRevenue($year)
 	{
 		// Get all the courses
-		$allCourses = $this->courses->all();
+		$allCourses = $this->courses->allWithTrashed();
 
 		foreach ($allCourses as $ac)
 		{
@@ -54,8 +54,8 @@ class ReportRepository extends BaseRepository implements ReportRepositoryInterfa
 		{
 			foreach ($quotes as $quote)
 			{
-				// Get the courses item (with trashed items)
-				$courses = $quote->getCourses(true);
+				// Get the courses item
+				$courses = $quote->getCourses();
 
 				foreach ($courses as $course)
 				{

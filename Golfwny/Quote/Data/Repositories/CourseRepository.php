@@ -18,6 +18,12 @@ class CourseRepository extends BaseRepository implements CourseRepositoryInterfa
 			->orderBy('name', 'asc')->get();
 	}
 
+	public function allWithTrashed()
+	{
+		return $this->model->withTrashed()->orderBy('region_id', 'asc')
+			->orderBy('name', 'asc')->get();
+	}
+
 	public function create(array $data)
 	{
 		return $this->model->create($data);
@@ -54,5 +60,5 @@ class CourseRepository extends BaseRepository implements CourseRepositoryInterfa
 
 		return false;
 	}
-	
+
 }
