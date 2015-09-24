@@ -54,8 +54,8 @@ class ReportRepository extends BaseRepository implements ReportRepositoryInterfa
 		{
 			foreach ($quotes as $quote)
 			{
-				// Get the courses item
-				$courses = $quote->getCourses();
+				// Get the courses item (with trashed items)
+				$courses = $quote->getCourses(true);
 
 				foreach ($courses as $course)
 				{
@@ -200,5 +200,5 @@ class ReportRepository extends BaseRepository implements ReportRepositoryInterfa
 
 		return $revenue;
 	}
-	
+
 }

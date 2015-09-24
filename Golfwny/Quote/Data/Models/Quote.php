@@ -54,21 +54,21 @@ class Quote extends Eloquent {
 
 	public function setCodeAttribute($value)
 	{
-		$this->attributes['code'] = ( ! empty($value)) 
-			? $value 
+		$this->attributes['code'] = ( ! empty($value))
+			? $value
 			: Str::quoteCode(12);
 	}
 
 	public function setPercentPackageAttribute($value)
 	{
-		$this->attributes['percent_package'] = ( ! empty($value)) 
+		$this->attributes['percent_package'] = ( ! empty($value))
 			? $value * .01
 			: 0.00;
 	}
 
 	public function setPercentDepositAttribute($value)
 	{
-		$this->attributes['percent_deposit'] = ( ! empty($value)) 
+		$this->attributes['percent_deposit'] = ( ! empty($value))
 			? $value * .01
 			: 0.00;
 	}
@@ -92,9 +92,11 @@ class Quote extends Eloquent {
 		});
 	}
 
-	public function getCourses()
+	public function getCourses($withTrashed = false)
 	{
-		return $this->items->filter(function($i)
+		$items = ($withTrashed) ? $this->items->withTrashed() : $this->items;
+
+		return $items->filter(function($i)
 		{
 			return $i->course_id !== null;
 		});
