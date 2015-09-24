@@ -92,11 +92,9 @@ class Quote extends Eloquent {
 		});
 	}
 
-	public function getCourses($withTrashed = false)
+	public function getCourses()
 	{
-		$items = ($withTrashed) ? $this->items->withTrashed() : $this->items;
-
-		return $items->filter(function($i)
+		return $this->items->filter(function($i)
 		{
 			return $i->course_id !== null;
 		});
