@@ -28,7 +28,7 @@ class ReportRepository extends BaseRepository implements ReportRepositoryInterfa
 	public function getCourseRevenue($year)
 	{
 		// Get all the courses
-		$allCourses = $this->courses->allWithTrashed();
+		$allCourses = $this->courses->withTrashed()->get();
 
 		foreach ($allCourses as $ac)
 		{
