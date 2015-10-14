@@ -1,7 +1,6 @@
 <?php namespace Quote\Services;
 
-use Quote,
-	QuoteItem;
+use Quote, QuoteItem;
 
 class QuoteCalculatorService {
 
