@@ -46,7 +46,7 @@
 				</div>
 
 				<div class="ui toggle checkbox">
-					{{ Form::checkbox('paid_deposit', null, $quote->paid_deposit, ['class' => 'js-updateField', 'data-id' => $quote->id, 'data-table' => 'quotes', 'data-field' => 'paid_deposit']) }}
+					{{ Form::checkbox('paid_deposit', (int) true, $quote->paid_deposit, ['class' => 'js-updateField', 'data-id' => $quote->id, 'data-table' => 'quotes', 'data-field' => 'paid_deposit']) }}
 					<label>Deposit Paid</label>
 				</div>
 			</div>
@@ -64,7 +64,7 @@
 				</div>
 
 				<div class="ui toggle checkbox">
-					{{ Form::checkbox('paid_total', null, $quote->paid_total, ['class' => 'js-toggleField', 'data-id' => $quote->id, 'data-table' => 'quotes', 'data-field' => 'paid_total']) }}
+					{{ Form::checkbox('paid_total', (int) true, $quote->paid_total, ['class' => 'js-toggleField', 'data-id' => $quote->id, 'data-table' => 'quotes', 'data-field' => 'paid_total']) }}
 					<label>Package Paid</label>
 				</div>
 			</div>
