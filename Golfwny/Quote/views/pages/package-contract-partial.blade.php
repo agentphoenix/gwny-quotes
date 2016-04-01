@@ -83,9 +83,11 @@ otherwise space will no longer be held and the terms of this agreement may be vo
 
 <p>The {{ $quote->present()->hotel }} is a 100% non-smoking hotel. If there is evidence of smoking in the overnight rooms, there will be a charge of $150 applied to the credit card on file per room.</p>
 
-<h4>PARKING</h4>
+@if ($quote->region->slug != 'buffalo')
+	<h4>PARKING</h4>
 
-<p>Complimentary</p>
+	<p>Complimentary</p>
+@endif
 
 <h4>Americans with Disabilities Act</h4>
 
