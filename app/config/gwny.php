@@ -23,7 +23,7 @@ return [
 	],
 
 	'percent' => [
-		'package'	=> 12.275,
+		'package'	=> 13,
 		'deposit'	=> 25,
 	],
 
