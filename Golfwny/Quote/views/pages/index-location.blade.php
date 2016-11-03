@@ -86,7 +86,7 @@
 		</div>
 	</div>
 
-	<div class="col-md-6">
+	<!--<div class="col-md-6">
 		<div class="panel panel-default bootcards-media">
 			<div class="panel-heading">
 				<h3 class="panel-title">Reservoir Creek</h3>
@@ -113,7 +113,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>-->
 
 	<div class="col-md-6">
 		<div class="panel panel-default bootcards-media">
