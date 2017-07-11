@@ -143,4 +143,33 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="col-md-6">
+		<div class="panel panel-default bootcards-media">
+			<div class="panel-heading">
+				<h3 class="panel-title">Byrncliff Golf Resort</h3>
+			</div>
+			{{ HTML::image('img/byrncliff.jpg', null, ['class' => 'img-responsive']) }}
+			<div class="panel-footer">
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="visible-xs">
+							<p><a href="http://golfwny.com/buffalo/course/byrncliff-golf-resort" target="_blank" class="btn btn-default btn-lg btn-block">More Info</a></p>
+						</div>
+						<div class="hidden-xs">
+							<a href="http://golfwny.com/buffalo/course/byrncliff-golf-resort" target="_blank" class="btn btn-default btn-block">More Info</a>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="visible-xs">
+							<p><a href="http://golfwny.com/buffalo/book-package" target="_blank" class="btn btn-primary btn-lg btn-block">Get Started</a></p>
+						</div>
+						<div class="hidden-xs">
+							<a href="http://golfwny.com/buffalo/book-package" target="_blank" class="btn btn-primary btn-block">Get Started</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
