@@ -115,7 +115,7 @@
 		</div>
 	</div>-->
 
-	<div class="col-md-6">
+	{{-- <div class="col-md-6">
 		<div class="panel panel-default bootcards-media">
 			<div class="panel-heading">
 				<h3 class="panel-title">Ellicott Villas</h3>
@@ -142,7 +142,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> --}}
 
 	<div class="col-md-6">
 		<div class="panel panel-default bootcards-media">
