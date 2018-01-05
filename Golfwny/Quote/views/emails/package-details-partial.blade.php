@@ -73,3 +73,7 @@
 	<p><strong>Deposit Due</strong></p>
 	<p>{{ $quote->present()->deposit }}</p>
 @endif
+
+<h2>Notes from Golf Western NY</h2>
+
+{{ $quote->present()->notes }}
