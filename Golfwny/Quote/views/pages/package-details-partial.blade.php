@@ -146,3 +146,7 @@
 		</div>
 	</div>
 @endif
+
+<h2>Notes from Golf Western NY</h2>
+
+{{{ $quote->present()->notes }}}
