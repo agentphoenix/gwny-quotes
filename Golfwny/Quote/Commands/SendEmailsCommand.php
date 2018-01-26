@@ -69,14 +69,14 @@ class SendEmailsCommand extends Command {
 		// Get all packages that are in the estimate phase
 		$packages = $this->quotes->getByStatus('estimate');
 
-		// Only get packages that were created more than 7 days ago
+		// Only get packages that were created more than 15 days ago
 		// and are an odd number of days since being created so we
 		// don't send an email every single day
 		$packages = $packages->filter(function($p)
 		{
 			$days = (int) $p->estimate_sent->startOfDay()->diffInDays(Date::now()->startOfDay());
 
-			return $days >= 7 and ($days & 1);
+			return $days >= 15 and ($days & 1);
 		});
 
 		if ($packages->count() > 0)
@@ -118,7 +118,7 @@ class SendEmailsCommand extends Command {
 			{
 				if (app('env') != 'production')
 					$this->info("Package: {$quote->code}");
-				
+
 				$this->mailer->contractReminder($quote);
 			}
 		}
@@ -148,7 +148,7 @@ class SendEmailsCommand extends Command {
 			{
 				if (app('env') != 'production')
 					$this->info("Package: {$quote->code}");
-				
+
 				$this->mailer->paymentDeposit($quote);
 			}
 		}
@@ -178,7 +178,7 @@ class SendEmailsCommand extends Command {
 			{
 				if (app('env') != 'production')
 					$this->info("Package: {$quote->code}");
-				
+
 				$this->mailer->paymentFinal($quote);
 			}
 		}
@@ -206,7 +206,7 @@ class SendEmailsCommand extends Command {
 			{
 				if (app('env') != 'production')
 					$this->info("Package: {$quote->code}");
-				
+
 				$this->mailer->welcome($quote);
 			}
 		}
@@ -234,7 +234,7 @@ class SendEmailsCommand extends Command {
 			{
 				if (app('env') != 'production')
 					$this->info("Package: {$quote->code}");
-				
+
 				$quote->fill(['status' => Status::COMPLETED])->save();
 			}
 		}
@@ -262,7 +262,7 @@ class SendEmailsCommand extends Command {
 			{
 				if (app('env') != 'production')
 					$this->info("Package: {$quote->code}");
-				
+
 				$this->mailer->survey($quote);
 			}
 		}
